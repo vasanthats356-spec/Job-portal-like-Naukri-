@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>JobPortal — Jobs by Location · Professional Design</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* ----- RESET & BASE ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .mid-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        section {
+            margin: 120px 0;
+            position: relative;
+            width: 100%;
+            clear: both;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1e1e2f;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #4ecdc4;
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ----- AOS ANIMATIONS ----- */
+        [data-aos="fade-left"] { transform: translateX(-100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="fade-right"] { transform: translateX(100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="fade-up"] { transform: translateY(100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="fade-down"] { transform: translateY(-100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="zoom-in"] { transform: scale(0.8); opacity: 0; transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="zoom-out"] { transform: scale(1.2); opacity: 0; transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="flip-left"] { transform: perspective(2500px) rotateY(-120deg); opacity: 0; transition: all 1.2s ease; }
+        [data-aos="flip-right"] { transform: perspective(2500px) rotateY(120deg); opacity: 0; transition: all 1.2s ease; }
+        [data-aos].aos-animate { transform: translate(0) scale(1) rotateY(0); opacity: 1; }
+
+        /* ----- BUTTON STYLES ----- */
+        .primary-btn, .outline-btn, .location-btn, .city-btn, .region-btn, .trend-btn, .view-btn {
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 8px;
+            padding: 12px 24px;
+        }
+
+        .primary-btn {
+            background: #4ecdc4;
+            color: #1e1e2f;
+        }
+        .primary-btn:hover {
+            background: #1e1e2f;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .outline-btn {
+            background: transparent;
+            border: 2px solid #4ecdc4;
+            color: #1e1e2f;
+        }
+        .outline-btn:hover {
+            background: #4ecdc4;
+            color: #1e1e2f;
+            transform: translateY(-3px);
+        }
+
+        .location-btn, .city-btn, .region-btn {
+            background: #4ecdc4;
+            color: #1e1e2f;
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 6px;
+        }
+        .location-btn:hover, .city-btn:hover, .region-btn:hover {
+            background: #1e1e2f;
+            color: white;
+        }
+
+        .trend-btn, .view-btn {
+            background: white;
+            color: #1e1e2f;
+            border: 1px solid #e2e8f0;
+            padding: 6px 14px;
+            font-size: 13px;
+            border-radius: 6px;
+        }
+        .trend-btn:hover, .view-btn:hover {
+            background: #4ecdc4;
+            color: #1e1e2f;
+            border-color: #4ecdc4;
+        }
+
+        /* ===== SECTION 1: HERO (Jobs by Location) ===== */
+        .location-hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            margin-top: 20px;
+            background: linear-gradient(135deg, rgba(30,30,47,0.9), rgba(78,205,196,0.8)), url('newyork.webp');
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 900px;
+            padding: 60px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .hero-badge {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(5px);
+            padding: 10px 25px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-bottom: 30px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .hero-content h1 {
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .hero-content h1 span {
+            color: #4ecdc4;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        .hero-stats div {
+            text-align: center;
+        }
+        .hero-stats strong {
+            font-size: 28px;
+            color: #4ecdc4;
+            display: block;
+        }
+
+        /* ===== SECTION 2: MAJOR CITIES (Official Look with Images) ===== */
+        .cities-showcase {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .city-panel {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border: 1px solid #eef2f6;
+        }
+        .city-panel:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px rgba(78,205,196,0.15);
+            border-color: #4ecdc4;
+        }
+        .panel-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        .panel-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+        .city-panel:hover .panel-image img {
+            transform: scale(1.05);
+        }
+        .panel-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #4ecdc4;
+            color: #1e1e2f;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .panel-content {
+            padding: 30px;
+        }
+        .panel-content h3 {
+            font-size: 26px;
+            color: #1e1e2f;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .panel-stats {
+            display: flex;
+            gap: 25px;
+            color: #64748b;
+            font-size: 14px;
+            margin: 15px 0;
+        }
+        .panel-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .panel-tag {
+            background: #f1f5f9;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #1e1e2f;
+        }
+
+        /* ===== SECTION 3: REGIONAL HUBS (Grid with Icons) ===== */
+        .regions-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .region-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            transition: all 0.3s;
+            border: 1px solid #eef2f6;
+        }
+        .region-card:hover {
+            transform: translateY(-5px);
+            border-color: #4ecdc4;
+            box-shadow: 0 20px 30px rgba(78,205,196,0.1);
+        }
+        .region-card img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+        .region-card h4 {
+            font-size: 20px;
+            color: #1e1e2f;
+            margin-bottom: 10px;
+        }
+        .region-card p {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        /* ===== SECTION 4: REMOTE & TRENDING LOCATIONS ===== */
+        .remote-trends {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .remote-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            transition: all 0.3s;
+        }
+        .remote-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 35px rgba(78,205,196,0.15);
+        }
+        .remote-image {
+            height: 150px;
+            overflow: hidden;
+        }
+        .remote-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .remote-card:hover .remote-image img {
+            transform: scale(1.08);
+        }
+        .remote-content {
+            padding: 20px;
+        }
+        .remote-content h4 {
+            font-size: 18px;
+            color: #1e1e2f;
+            margin-bottom: 8px;
+        }
+        .remote-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0;
+        }
+        .remote-meta span {
+            color: #4ecdc4;
+            font-weight: 600;
+        }
+
+        /* ===== SECTION 5: SALARY BY LOCATION ===== */
+        .salary-showcase {
+            background: white;
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+        }
+        .salary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .salary-card {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #eef2f6;
+        }
+        .salary-card:hover {
+            background: white;
+            border-color: #4ecdc4;
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(78,205,196,0.1);
+        }
+        .salary-card h4 {
+            font-size: 22px;
+            color: #1e1e2f;
+            margin-bottom: 15px;
+        }
+        .salary-amount {
+            font-size: 36px;
+            font-weight: 700;
+            color: #4ecdc4;
+            margin: 20px 0;
+        }
+        .salary-range {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        /* ----- RESPONSIVE ----- */
+        @media (max-width: 1200px) {
+            .cities-showcase, .regions-grid, .remote-trends, .salary-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 992px) {
+            .mid-section { padding: 0 20px; }
+            .hero-content h1 { font-size: 42px; }
+            .cities-showcase, .regions-grid, .remote-trends, .salary-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .mid-section { padding: 0 15px; }
+            .hero-content h1 { font-size: 32px; }
+            .hero-stats { flex-direction: column; gap: 15px; }
+            .cities-showcase, .regions-grid, .remote-trends, .salary-grid {
+                grid-template-columns: 1fr;
+            }
+            .salary-showcase { padding: 30px; }
+        }
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 28px; }
+            .section-header h2 { font-size: 30px; }
+        }
+        html, body { max-width: 100%; overflow-x: hidden; }
+        img, video, svg { max-width: 100%; height: auto; }
+
+        /* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #4ecdc4;  /* You can change this color */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    border: 2px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #3ab7ad;  /* Darker shade on hover */
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(78,205,196,0.4);
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Back to Top Button -->
+<div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+    <!-- HEADER PLACEHOLDER - Header will load here -->
+    <div id="header-placeholder"></div>
+
+    <div class="mid-section">
+
+        <!-- ===== SECTION 1: HERO (Jobs by Location) ===== -->
+        <section class="location-hero" data-aos="fade-up">
+            <div class="hero-content">
+                <div class="hero-badge" data-aos="fade-down" data-aos-delay="100">
+                    <i class="fas fa-map-marker-alt"></i> 25 COUNTRIES · 150+ CITIES
+                </div>
+                <h1 data-aos="fade-right" data-aos-delay="200">
+                    Find Jobs by <span>Location</span>
+                </h1>
+                <p data-aos="fade-left" data-aos-delay="300" style="font-size: 18px; max-width: 600px; margin: 0 auto 30px;">
+                    Explore opportunities in major cities, remote hubs, and emerging markets worldwide.
+                </p>
+                <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
+                    <div><strong>25K+</strong> Jobs</div>
+                    <div><strong>150+</strong> Cities</div>
+                    <div><strong>45+</strong> Countries</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 2: MAJOR CITIES (Official Look with Images) ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Major Tech Hubs</h2>
+                <p>Top cities with the most job opportunities</p>
+            </div>
+            <div class="cities-showcase">
+                <!-- New York -->
+                <div class="city-panel" data-aos="fade-right" data-aos-delay="50">
+                    <div class="panel-image">
+                        <img src="newyork.webp" alt="New York">
+                        <div class="panel-overlay">2,345 jobs</div>
+                    </div>
+                    <div class="panel-content">
+                        <h3>New York</h3>
+                        <p>Financial & Tech Capital</p>
+                        <div class="panel-stats">
+                            <span><i class="fas fa-building"></i> 892 companies</span>
+                            <span><i class="fas fa-chart-line"></i> Avg $120k</span>
+                        </div>
+                        <div class="panel-tags">
+                            <span class="panel-tag">Finance</span>
+                            <span class="panel-tag">Tech</span>
+                            <span class="panel-tag">Media</span>
+                        </div>
+                        <button class="location-btn" onclick="window.location.href='404.html'">View Jobs →</button>
+                    </div>
+                </div>
+                <!-- London -->
+                <div class="city-panel" data-aos="fade-up" data-aos-delay="50">
+                    <div class="panel-image">
+                        <img src="london.webp" alt="London">
+                        <div class="panel-overlay">1,876 jobs</div>
+                    </div>
+                    <div class="panel-content">
+                        <h3>London</h3>
+                        <p>European Business Hub</p>
+                        <div class="panel-stats">
+                            <span><i class="fas fa-building"></i> 756 companies</span>
+                            <span><i class="fas fa-chart-line"></i> Avg $110k</span>
+                        </div>
+                        <div class="panel-tags">
+                            <span class="panel-tag">Banking</span>
+                            <span class="panel-tag">Tech</span>
+                            <span class="panel-tag">Consulting</span>
+                        </div>
+                        <button class="location-btn" onclick="window.location.href='404.html'">View Jobs →</button>
+                    </div>
+                </div>
+                <!-- San Francisco -->
+                <div class="city-panel" data-aos="fade-left" data-aos-delay="50">
+                    <div class="panel-image">
+                        <img src="singapore.webp" alt="San Francisco">
+                        <div class="panel-overlay">2,567 jobs</div>
+                    </div>
+                    <div class="panel-content">
+                        <h3>San Francisco</h3>
+                        <p>Silicon Valley Gateway</p>
+                        <div class="panel-stats">
+                            <span><i class="fas fa-building"></i> 1,234 companies</span>
+                            <span><i class="fas fa-chart-line"></i> Avg $145k</span>
+                        </div>
+                        <div class="panel-tags">
+                            <span class="panel-tag">Tech</span>
+                            <span class="panel-tag">Startups</span>
+                            <span class="panel-tag">VC</span>
+                        </div>
+                        <button class="location-btn" onclick="window.location.href='404.html'">View Jobs →</button>
+                    </div>
+                </div>
+                <!-- Singapore -->
+                <div class="city-panel" data-aos="fade-right" data-aos-delay="100">
+                    <div class="panel-image">
+                        <img src="newyork.webp" alt="Singapore">
+                        <div class="panel-overlay">1,543 jobs</div>
+                    </div>
+                    <div class="panel-content">
+                        <h3>Singapore</h3>
+                        <p>Asian Financial Hub</p>
+                        <div class="panel-stats">
+                            <span><i class="fas fa-building"></i> 645 companies</span>
+                            <span><i class="fas fa-chart-line"></i> Avg $105k</span>
+                        </div>
+                        <div class="panel-tags">
+                            <span class="panel-tag">Finance</span>
+                            <span class="panel-tag">Tech</span>
+                            <span class="panel-tag">Trade</span>
+                        </div>
+                        <button class="location-btn" onclick="window.location.href='404.html'">View Jobs →</button>
+                    </div>
+                </div>
+                <!-- Berlin -->
+                <div class="city-panel" data-aos="fade-up" data-aos-delay="100">
+                    <div class="panel-image">
+                        <img src="london.webp" alt="Berlin">
+                        <div class="panel-overlay">1,234 jobs</div>
+                    </div>
+                    <div class="panel-content">
+                        <h3>Berlin</h3>
+                        <p>European Startup Capital</p>
+                        <div class="panel-stats">
+                            <span><i class="fas fa-building"></i> 534 companies</span>
+                            <span><i class="fas fa-chart-line"></i> Avg $95k</span>
+                        </div>
+                        <div class="panel-tags">
+                            <span class="panel-tag">Tech</span>
+                            <span class="panel-tag">Startups</span>
+                            <span class="panel-tag">Creative</span>
+                        </div>
+                        <button class="location-btn" onclick="window.location.href='404.html'">View Jobs →</button>
+                    </div>
+                </div>
+                <!-- Tokyo -->
+                <div class="city-panel" data-aos="fade-left" data-aos-delay="100">
+                    <div class="panel-image">
+                        <img src="singapore.webp" alt="Tokyo">
+                        <div class="panel-overlay">1,987 jobs</div>
+                    </div>
+                    <div class="panel-content">
+                        <h3>Tokyo</h3>
+                        <p>Asian Tech Leader</p>
+                        <div class="panel-stats">
+                            <span><i class="fas fa-building"></i> 723 companies</span>
+                            <span><i class="fas fa-chart-line"></i> Avg $115k</span>
+                        </div>
+                        <div class="panel-tags">
+                            <span class="panel-tag">Tech</span>
+                            <span class="panel-tag">Automotive</span>
+                            <span class="panel-tag">Robotics</span>
+                        </div>
+                        <button class="location-btn" onclick="window.location.href='404.html'">View Jobs →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 3: REGIONAL HUBS (Grid with Icons) ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Regional Employment Hubs</h2>
+                <p>Fast-growing job markets by region</p>
+            </div>
+            <div class="regions-grid">
+                <div class="region-card" data-aos="zoom-in" data-aos-delay="50">
+                    <img src="Jp20.webp" alt="North America">
+                    <h4>North America</h4>
+                    <p>8,456 open jobs</p>
+                    <button class="region-btn" onclick="window.location.href='404.html'">Explore →</button>
+                </div>
+                <div class="region-card" data-aos="zoom-in" data-aos-delay="70">
+                    <img src="Jp19.webp" alt="Europe">
+                    <h4>Europe</h4>
+                    <p>6,234 open jobs</p>
+                    <button class="region-btn" onclick="window.location.href='404.html'">Explore →</button>
+                </div>
+                <div class="region-card" data-aos="zoom-in" data-aos-delay="90">
+                    <img src="Jp18.webp" alt="Asia">
+                    <h4>Asia Pacific</h4>
+                    <p>5,876 open jobs</p>
+                    <button class="region-btn" onclick="window.location.href='404.html'">Explore →</button>
+                </div>
+                <div class="region-card" data-aos="zoom-in" data-aos-delay="110">
+                    <img src="Jp17.webp" alt="Middle East">
+                    <h4>Middle East</h4>
+                    <p>2,345 open jobs</p>
+                    <button class="region-btn" onclick="window.location.href='404.html'">Explore →</button>
+                </div>
+                <div class="region-card" data-aos="zoom-in" data-aos-delay="130">
+                    <img src="Jp16.webp" alt="Latin America">
+                    <h4>Latin America</h4>
+                    <p>3,567 open jobs</p>
+                    <button class="region-btn" onclick="window.location.href='404.html'">Explore →</button>
+                </div>
+                <div class="region-card" data-aos="zoom-in" data-aos-delay="150">
+                    <img src="Jp15.webp" alt="Africa">
+                    <h4>Africa</h4>
+                    <p>1,876 open jobs</p>
+                    <button class="region-btn" onclick="window.location.href='404.html'">Explore →</button>
+                </div>
+                <div class="region-card" data-aos="zoom-in" data-aos-delay="170">
+                    <img src="Jp14.webp" alt="Australia">
+                    <h4>Australia</h4>
+                    <p>2,987 open jobs</p>
+                    <button class="region-btn" onclick="window.location.href='404.html'">Explore →</button>
+                </div>
+                <div class="region-card" data-aos="zoom-in" data-aos-delay="190">
+                    <img src="Jp13.webp" alt="Remote">
+                    <h4>Remote Global</h4>
+                    <p>4,567 open jobs</p>
+                    <button class="region-btn" onclick="window.location.href='404.html'">Explore →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 4: REMOTE & TRENDING LOCATIONS ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Remote & Emerging Hubs</h2>
+                <p>Work from anywhere or explore new markets</p>
+            </div>
+            <div class="remote-trends">
+                <div class="remote-card" data-aos="flip-left" data-aos-delay="50">
+                    <div class="remote-image">
+                        <img src="Jp1.webp" alt="Remote">
+                    </div>
+                    <div class="remote-content">
+                        <h4>Fully Remote</h4>
+                        <p>Work from anywhere</p>
+                        <div class="remote-meta">
+                            <span>4,567 jobs</span>
+                            <span>🌍 Global</span>
+                        </div>
+                        <button class="trend-btn" onclick="window.location.href='404.html'">Browse →</button>
+                    </div>
+                </div>
+                <div class="remote-card" data-aos="flip-left" data-aos-delay="70">
+                    <div class="remote-image">
+                        <img src="Jp2.webp" alt="Hybrid">
+                    </div>
+                    <div class="remote-content">
+                        <h4>Hybrid Work</h4>
+                        <p>Flexible arrangements</p>
+                        <div class="remote-meta">
+                            <span>3,245 jobs</span>
+                            <span>🏢 Mixed</span>
+                        </div>
+                        <button class="trend-btn" onclick="window.location.href='404.html'">Browse →</button>
+                    </div>
+                </div>
+                <div class="remote-card" data-aos="flip-left" data-aos-delay="90">
+                    <div class="remote-image">
+                        <img src="Jp3.webp" alt="Digital Nomad">
+                    </div>
+                    <div class="remote-content">
+                        <h4>Digital Nomad</h4>
+                        <p>Visa-friendly locations</p>
+                        <div class="remote-meta">
+                            <span>1,876 jobs</span>
+                            <span>✈️ 15 countries</span>
+                        </div>
+                        <button class="trend-btn" onclick="window.location.href='404.html'">Browse →</button>
+                    </div>
+                </div>
+                <div class="remote-card" data-aos="flip-left" data-aos-delay="110">
+                    <div class="remote-image">
+                        <img src="Jp4.webp" alt="Emerging">
+                    </div>
+                    <div class="remote-content">
+                        <h4>Emerging Markets</h4>
+                        <p>Fastest growing cities</p>
+                        <div class="remote-meta">
+                            <span>2,987 jobs</span>
+                            <span>📈 +45% growth</span>
+                        </div>
+                        <button class="trend-btn" onclick="window.location.href='404.html'">Browse →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 5: SALARY BY LOCATION ===== -->
+        <section class="salary-showcase" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Average Salaries by Location</h2>
+                <p>Compare compensation across major cities</p>
+            </div>
+            <div class="salary-grid">
+                <div class="salary-card" data-aos="fade-right" data-aos-delay="50">
+                    <h4>New York</h4>
+                    <div class="salary-amount">$120k</div>
+                    <div class="salary-range">Range: $85k - $210k</div>
+                    <button class="view-btn" onclick="window.location.href='404.html'">View Jobs</button>
+                </div>
+                <div class="salary-card" data-aos="fade-up" data-aos-delay="50">
+                    <h4>London</h4>
+                    <div class="salary-amount">£95k</div>
+                    <div class="salary-range">Range: £65k - £180k</div>
+                    <button class="view-btn" onclick="window.location.href='404.html'">View Jobs</button>
+                </div>
+                <div class="salary-card" data-aos="fade-left" data-aos-delay="50">
+                    <h4>Singapore</h4>
+                    <div class="salary-amount">S$145k</div>
+                    <div class="salary-range">Range: S$90k - S$220k</div>
+                    <button class="view-btn" onclick="window.location.href='404.html'">View Jobs</button>
+                </div>
+                <div class="salary-card" data-aos="fade-right" data-aos-delay="100">
+                    <h4>Berlin</h4>
+                    <div class="salary-amount">€85k</div>
+                    <div class="salary-range">Range: €55k - €150k</div>
+                    <button class="view-btn" onclick="window.location.href='404.html'">View Jobs</button>
+                </div>
+                <div class="salary-card" data-aos="fade-up" data-aos-delay="100">
+                    <h4>Tokyo</h4>
+                    <div class="salary-amount">¥12M</div>
+                    <div class="salary-range">Range: ¥8M - ¥20M</div>
+                    <button class="view-btn" onclick="window.location.href='404.html'">View Jobs</button>
+                </div>
+                <div class="salary-card" data-aos="fade-left" data-aos-delay="100">
+                    <h4>Remote</h4>
+                    <div class="salary-amount">$105k</div>
+                    <div class="salary-range">Range: $70k - $190k</div>
+                    <button class="view-btn" onclick="window.location.href='404.html'">View Jobs</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER - Footer will load here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true,
+            offset: 50,
+            easing: 'ease-in-out'
+        });
+
+        // All buttons redirect to 404.html
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                window.location.href = '404.html';
+            });
+        });
+
+        // =====================================
+        // ===== TAB FUNCTION =====
+    function showTab(event, tabId) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+        event.target.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+    }
+
+    // ===== NEWSLETTER VALIDATION =====
+    function validateNewsletter(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function showNewsletterError(message) {
+        // Remove any existing error message
+        const existingMsg = document.querySelector('.newsletter-error');
+        if (existingMsg) existingMsg.remove();
+        
+        // Create error message element
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'newsletter-error';
+        msgDiv.style.cssText = `
+            margin-top: 10px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+            background: #fee;
+            color: #c00;
+        `;
+        msgDiv.textContent = message;
+        
+        // Find newsletter container
+        const newsletter = document.querySelector('.newsletter-form, .footer-newsletter, [class*="newsletter"]');
+        if (newsletter) {
+            newsletter.appendChild(msgDiv);
+            
+            // Remove error message after 3 seconds
+            setTimeout(() => msgDiv.remove(), 3000);
+        } else {
+            alert(message);
+        }
+    }
+
+    // ===== HEADER & FOOTER LOADER =====
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load header
+        fetch('header1.html') // Make sure this filename is correct
+            .then(response => {
+                if (!response.ok) throw new Error('Header file not found');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                setTimeout(initHeaderInteractions, 100);
+            })
+            .catch(error => {
+                console.warn('Header could not be loaded:', error);
+                document.getElementById('header-placeholder').innerHTML = 
+                    '<header style="background: #6c5ce7; color: white; padding: 20px; text-align: center;">Header Not Found</header>';
+            });
+
+        // Load footer
+        fetch('footer1.html') // Make sure this filename is correct
+            .then(response => {
+                if (!response.ok) throw new Error('Footer file not found');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.warn('Footer could not be loaded:', error);
+                document.getElementById('footer-placeholder').innerHTML = 
+                    '<footer style="background: #1a1a2e; color: white; padding: 40px; text-align: center;">Footer Not Found</footer>';
+            });
+    });
+
+    // ===== HEADER INTERACTIONS =====
+    function initHeaderInteractions() {
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        // Mobile menu toggle
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                
+                if (navMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = 'auto';
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+        }
+        
+        // Dropdown functionality
+        document.querySelectorAll('.dropdown-icon').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const dropdownId = this.getAttribute('data-dropdown');
+                const dropdown = document.getElementById(dropdownId);
+                
+                if (!dropdown) return;
+                
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    if (menu.id !== dropdownId) {
+                        menu.classList.remove('show');
+                    }
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    if (btn !== this) {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                dropdown.classList.toggle('show');
+                this.classList.toggle('active');
+            });
+        });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-item-with-dropdown')) {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+        });
+        
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    if (menuToggle) menuToggle.classList.remove('active');
+                    if (navMenu) navMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                if (menuToggle) menuToggle.classList.remove('active');
+                if (navMenu) navMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+        });
+    }
+
+    // ===== AOS INITIALIZATION =====
+    const aosScript = document.createElement('script');
+    aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+    document.head.appendChild(aosScript);
+    
+    aosScript.onload = function() {
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true,
+            offset: 50,
+            easing: 'ease-in-out'
+        });
+    };
+
+    // ===== ANIMATION OBSERVER =====
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            const animatedElements = document.querySelectorAll('.fade-up, .fade-left, .fade-right, .scale-up, [data-aos]');
+            animatedElements.forEach(el => observer.observe(el));
+        }, 500);
+    });
+
+    // ===== NEWSLETTER HANDLER - VALIDATE THEN REDIRECT TO 404 =====
+    document.addEventListener('click', function(e) {
+        const newsletterBtn = e.target.closest('.newsletter-btn, .subscribe-btn, [class*="newsletter"] button, button[type="submit"]');
+        if (!newsletterBtn) return;
+        
+        const form = newsletterBtn.closest('form');
+        const newsletterInput = form ? form.querySelector('input[type="email"]') : 
+                                document.querySelector('.newsletter-input, input[type="email"][placeholder*="email"]');
+        
+        if (newsletterInput) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const email = newsletterInput.value.trim();
+            
+            // If email is empty or invalid, show error and DON'T redirect
+            if (!email) {
+                showNewsletterError('Please enter your email address');
+                newsletterInput.focus();
+                return false;
+            }
+            
+            if (!validateNewsletter(email)) {
+                showNewsletterError('Please enter a valid email address');
+                newsletterInput.focus();
+                return false;
+            }
+            
+            // Email is valid - redirect to 404.html
+            window.location.href = '404.html';
+            return false;
+        }
+    });
+
+    // ===== BUTTON REDIRECT HANDLER (for all other buttons) =====
+    document.addEventListener('click', function(e) {
+        const button = e.target.closest('button');
+        if (!button) return;
+        
+        // Skip newsletter buttons (already handled above)
+        if (button.closest('.newsletter-form') || 
+            button.classList.contains('newsletter-btn') || 
+            button.classList.contains('subscribe-btn') ||
+            button.closest('[class*="newsletter"]')) {
+            return;
+        }
+        
+        // Skip special buttons
+        if (button.hasAttribute('onclick') || 
+            button.classList.contains('dropdown-icon') || 
+            button.classList.contains('video-btn') ||
+            button.classList.contains('tab-btn')) {
+            return;
+        }
+        
+        // Redirect all other buttons to 404
+        e.preventDefault();
+        window.location.href = '404.html';
+    });
+
+    // Back to Top Button Functionality
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 500) {  // Show after scrolling 500px
+        backToTop.classList.add('show');
+    } else {
+        backToTop.classList.remove('show');
+    }
+});
+
+backToTop.addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'  // Smooth scroll animation
+    });
+});
+    </script>
+</body>
+</html>

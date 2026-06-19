@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Search Talent | Job Portal</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f5f5;
+            color: #0f172a;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            width: 100%;
+        }
+
+        /* Section Padding */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        /* Responsive Container */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 25px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .section-padding {
+                padding: 80px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            .section-padding {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            .section-padding {
+                padding: 50px 0;
+            }
+        }
+
+        /* ===== SECTION 1: DARK LUXURY HERO ===== */
+        .hero-dark {
+            background: linear-gradient(rgba(10, 12, 28, 0.9), rgba(20, 22, 42, 0.95)), 
+                        url('Jp3.webp') center/cover fixed;
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-text .highlight {
+            color: #FFD93D;
+        }
+
+        .hero-text p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255,255,255,0.05);
+            padding: 15px 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            color: #FFD93D;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-dark {
+            background: #FFD93D;
+            color: #2B32B2;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+        }
+
+        .btn-primary-dark:hover {
+            background: #2B32B2;
+            color: #FFD93D;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(43, 50, 178, 0.3);
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-outline-light:hover {
+            background: white;
+            color: #0a0c1c;
+            border-color: white;
+            transform: translateY(-5px);
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* ===== SECTION 2: LIGHT MINIMAL CARDS ===== */
+        .section-light {
+            background: #ffffff;
+        }
+
+        .light-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .light-header h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: #2B32B2;
+            margin-bottom: 15px;
+        }
+
+        .light-header p {
+            color: #334155;
+            font-size: clamp(1rem, 2vw, 1.1rem);
+        }
+
+        .minimal-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .minimal-card {
+            background: #f9fcff;
+            border-radius: 30px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s;
+            border: 1px solid #eef2f6;
+        }
+
+        .minimal-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            border: 3px solid #eef2f6;
+        }
+
+        .minimal-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .minimal-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: #2B32B2;
+        }
+
+        .minimal-card p {
+            color: #334155;
+            margin-bottom: 20px;
+        }
+
+        .minimal-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .minimal-skill {
+            background: #f0f4f9;
+            color: #2B32B2;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+
+        .minimal-btn {
+            background: transparent;
+            color: #2B32B2;
+            border: 2px solid #2B32B2;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .minimal-btn:hover {
+            background: #2B32B2;
+            color: white;
+        }
+
+        /* ===== SECTION 3: DARK PATTERN GRID ===== */
+        .section-dark-pattern {
+            background: linear-gradient(rgba(10, 12, 28, 0.95), rgba(20, 22, 42, 0.98)), 
+                        url('Jp1.webp') center/cover fixed;
+            color: white;
+        }
+
+        .pattern-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .pattern-header h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .pattern-header p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .pattern-item {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .pattern-item i {
+            font-size: clamp(2rem, 3vw, 3rem);
+            color: #FFD93D;
+            margin-bottom: 20px;
+        }
+
+        .pattern-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .pattern-item p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        .pattern-count {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 5px 15px;
+            background: rgba(43, 50, 178, 0.3);
+            border-radius: 50px;
+            color: #FFD93D;
+            font-size: 0.8rem;
+        }
+
+        .pattern-item:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-10px);
+            border-color: #FFD93D;
+        }
+
+        /* Section 3 Button */
+        .pattern-btn-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .pattern-btn {
+            background: #FFD93D;
+            color: #2B32B2;
+            padding: 15px 45px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            font-size: 1.1rem;
+        }
+
+        .pattern-btn:hover {
+            background: #2B32B2;
+            color: #FFD93D;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(43, 50, 178, 0.3);
+        }
+
+        /* ===== SECTION 4: LIGHT SOFT ACCORDION ===== */
+        .section-soft {
+            background: #f5f5f5;
+        }
+
+        .soft-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .soft-image img {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+        }
+
+        .soft-content h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: #2B32B2;
+            margin-bottom: 30px;
+        }
+
+        .soft-item {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .soft-header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            color: #0f172a;
+        }
+
+        .soft-header:hover {
+            background: #f0f4f9;
+        }
+
+        .soft-content-inner {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+            background: white;
+            color: #334155;
+        }
+
+        .soft-content-inner.show {
+            padding: 20px;
+            max-height: 200px;
+        }
+
+        .soft-btn {
+            background: #2B32B2;
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .soft-btn:hover {
+            background: #FFD93D;
+            color: #2B32B2;
+            transform: translateY(-3px);
+        }
+
+        /* ===== SECTION 5: DARK STACKED CARDS ===== */
+        .section-stack {
+            background: linear-gradient(rgba(15, 17, 33, 0.97), rgba(25, 27, 47, 0.98)), 
+                        url('Jp2.webp') center/cover fixed;
+            color: white;
+        }
+
+        .stack-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .stack-left h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .stack-left p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .stack-features {
+            list-style: none;
+        }
+
+        .stack-features li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .stack-features i {
+            color: #FFD93D;
+            font-size: 1.2rem;
+        }
+
+        .stack-right {
+            position: relative;
+            height: 400px;
+        }
+
+        .stack-card {
+            position: absolute;
+            width: 280px;
+            padding: 25px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 20px;
+            transition: all 0.5s;
+            cursor: pointer;
+            color: white;
+        }
+
+        .stack-card:nth-child(1) {
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .stack-card:nth-child(2) {
+            top: 80px;
+            right: 0;
+            z-index: 2;
+        }
+        .stack-card:nth-child(3) {
+            bottom: 0;
+            left: 50px;
+            z-index: 3;
+        }
+
+        .stack-card i {
+            font-size: 2rem;
+            color: #FFD93D;
+            margin-bottom: 15px;
+        }
+
+        .stack-card:hover {
+            transform: scale(1.05) translateY(-10px);
+            background: rgba(255,255,255,0.15);
+            border-color: #FFD93D;
+        }
+
+        .minimal-btn.mt-3 {
+            background: white;
+            color: #2B32B2;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .minimal-btn.mt-3:hover {
+            background: #FFD93D;
+            color: #2B32B2;
+            transform: translateY(-3px);
+        }
+
+        /* ===== SECTION 6: LIGHT HEXAGON ===== */
+        .section-hex-light {
+            background: white;
+        }
+
+        .hex-light-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .hex-light-header .light-header {
+            margin-bottom: 0;
+            text-align: left;
+            flex: 1;
+        }
+
+        .hex-light-header .light-header h2 {
+            margin-bottom: 10px;
+        }
+
+        .hex-light-btn {
+            background: #2B32B2;
+            color: white;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid transparent;
+            white-space: nowrap;
+        }
+
+        .hex-light-btn:hover {
+            background: #FFD93D;
+            color: #2B32B2;
+            transform: translateY(-3px);
+        }
+
+        .hex-light-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .hex-light-item {
+            width: 100%;
+            aspect-ratio: 0.9;
+            background: #f9fcff;
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.4s;
+            cursor: pointer;
+            border: 2px solid #eef2f6;
+        }
+
+        .hex-light-item i {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: #2B32B2;
+            margin-bottom: 10px;
+        }
+
+        .hex-light-item span {
+            font-size: 0.9rem;
+            color: #334155;
+        }
+
+        .hex-light-item:hover {
+            transform: scale(1.1);
+            border-color: #FFD93D;
+            box-shadow: 0 20px 40px rgba(255, 217, 61, 0.15);
+            background: #ffffff;
+        }
+
+        /* ===== SECTION 7: DARK TESTIMONIALS ===== */
+        .section-testimonial-dark {
+            background: linear-gradient(rgba(8, 10, 24, 0.95), rgba(18, 20, 38, 0.98)), 
+                        url('Jp3.webp') center/cover fixed;
+            color: white;
+        }
+
+        .testimonial-dark-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-dark-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s;
+        }
+
+        .testimonial-dark-card i {
+            color: #FFD93D;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .testimonial-dark-card p {
+            color: rgba(255,255,255,0.9);
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-dark-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.08);
+            border-color: #FFD93D;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #FFD93D;
+            flex-shrink: 0;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .author-info span {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* ===== SECTION 8: LIGHT CTA ===== */
+        .cta-light-box {
+            background: linear-gradient(135deg, #f8f8ff, #ffffff);
+            border: 2px solid #eef2f6;
+            border-radius: 50px;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-light-box h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: #2B32B2;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-light-box p {
+            color: #334155;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-light-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-light-primary {
+            background: #2B32B2;
+            color: white;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .btn-light-primary:hover {
+            background: #FFD93D;
+            color: #2B32B2;
+            transform: translateY(-5px);
+        }
+
+        .btn-light-secondary {
+            background: transparent;
+            color: #2B32B2;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid #2B32B2;
+        }
+
+        .btn-light-secondary:hover {
+            background: #2B32B2;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #FFD93D;
+            color: #2B32B2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+            border: 2px solid white;
+            box-shadow: 0 5px 15px rgba(43, 50, 178, 0.2);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #2B32B2;
+            color: #FFD93D;
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        /* ===== RESPONSIVE BREAKPOINTS ===== */
+        @media (max-width: 1200px) {
+            .pattern-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hex-light-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .minimal-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .soft-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .stack-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .stack-right {
+                height: 500px;
+            }
+            
+            .testimonial-dark-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hex-light-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hex-light-header .light-header {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .minimal-cards {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .pattern-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .hex-light-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .testimonial-dark-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .stack-right {
+                height: 400px;
+            }
+            
+            .stack-card {
+                width: 240px;
+            }
+            
+            .cta-light-box {
+                padding: 50px 30px;
+            }
+            
+            .cta-light-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-light-primary, .btn-light-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat-item {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary-dark, .btn-outline-light {
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .hex-light-grid {
+                grid-template-columns: 1fr;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+            
+            .hex-light-item {
+                aspect-ratio: 0.9;
+            }
+            
+            .stack-card {
+                position: relative;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            
+            .stack-card:nth-child(1),
+            .stack-card:nth-child(2),
+            .stack-card:nth-child(3) {
+                position: relative;
+                top: auto;
+                left: auto;
+                right: auto;
+                bottom: auto;
+                margin-bottom: 20px;
+            }
+            
+            .stack-right {
+                height: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .soft-header {
+                padding: 15px;
+                font-size: 0.95rem;
+            }
+            
+            .testimonial-author {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .author-avatar {
+                margin: 0 auto;
+            }
+            
+            .back-to-top {
+                bottom: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .pattern-btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            
+            .hex-light-btn {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder"></div>
+
+    <!-- SECTION 1: DARK LUXURY HERO -->
+    <section class="hero-dark">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" data-aos="fade-right">
+                    <h1>Discover <span class="highlight">Exceptional Talent</span> for Your Enterprise</h1>
+                    <p>Connect with pre-vetted, elite professionals who are ready to drive innovation and growth in your organization.</p>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">50K+</div>
+                            <div class="stat-label">Active Candidates</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">8K+</div>
+                            <div class="stat-label">Partner Companies</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Hiring Success</div>
+                        </div>
+                    </div>
+
+                    <div class="hero-buttons">
+                        <a href="4042.html" class="btn-primary-dark">Start Hiring <i class="fas fa-arrow-right"></i></a>
+                        <a href="4042.html" class="btn-outline-light">Browse All Talent <i class="fas fa-users"></i></a>
+                    </div>
+                </div>
+                <div class="hero-image" data-aos="fade-left">
+                    <img src="Jp4.webp" alt="Talent Search">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: LIGHT MINIMAL CARDS -->
+    <section class="section-light section-padding">
+        <div class="container">
+            <div class="light-header" data-aos="fade-down">
+                <h2>Featured Candidates</h2>
+                <p>Hand-picked talent ready for their next challenge</p>
+            </div>
+            <div class="minimal-cards">
+                <div class="minimal-card" data-aos="fade-up">
+                    <div class="minimal-img">
+                        <img src="Jp5.webp" alt="Candidate">
+                    </div>
+                    <h3>Alexander Chen</h3>
+                    <p>Senior Full Stack Developer</p>
+                    <div class="minimal-skills">
+                        <span class="minimal-skill">React</span>
+                        <span class="minimal-skill">Node.js</span>
+                        <span class="minimal-skill">Python</span>
+                    </div>
+                    <button class="minimal-btn" onclick="window.location.href='4042.html'">View Profile</button>
+                </div>
+                <div class="minimal-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="minimal-img">
+                        <img src="Jp6.webp" alt="Candidate">
+                    </div>
+                    <h3>Priya Sharma</h3>
+                    <p>Product Manager</p>
+                    <div class="minimal-skills">
+                        <span class="minimal-skill">Agile</span>
+                        <span class="minimal-skill">Strategy</span>
+                        <span class="minimal-skill">UX</span>
+                    </div>
+                    <button class="minimal-btn" onclick="window.location.href='4042.html'">View Profile</button>
+                </div>
+                <div class="minimal-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="minimal-img">
+                        <img src="Jp7.webp" alt="Candidate">
+                    </div>
+                    <h3>Marcus Wright</h3>
+                    <p>DevOps Architect</p>
+                    <div class="minimal-skills">
+                        <span class="minimal-skill">AWS</span>
+                        <span class="minimal-skill">K8s</span>
+                        <span class="minimal-skill">Terraform</span>
+                    </div>
+                    <button class="minimal-btn" onclick="window.location.href='4042.html'">View Profile</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: DARK PATTERN GRID -->
+    <section class="section-dark-pattern section-padding">
+        <div class="container">
+            <div class="pattern-header" data-aos="fade-down">
+                <h2>Browse by Expertise</h2>
+                <p>Find specialists in your industry</p>
+            </div>
+            <div class="pattern-grid">
+                <div class="pattern-item" data-aos="zoom-in" onclick="window.location.href='4042.html'">
+                    <i class="fas fa-code"></i>
+                    <h4>Development</h4>
+                    <p>Frontend, Backend, Mobile</p>
+                    <span class="pattern-count">12,450 candidates</span>
+                </div>
+                <div class="pattern-item" data-aos="zoom-in" data-aos-delay="50" onclick="window.location.href='4042.html'">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Marketing</h4>
+                    <p>Digital, Brand, Growth</p>
+                    <span class="pattern-count">8,230 candidates</span>
+                </div>
+                <div class="pattern-item" data-aos="zoom-in" data-aos-delay="100" onclick="window.location.href='4042.html'">
+                    <i class="fas fa-brain"></i>
+                    <h4>Data Science</h4>
+                    <p>ML, Analytics, BI</p>
+                    <span class="pattern-count">5,670 candidates</span>
+                </div>
+                <div class="pattern-item" data-aos="zoom-in" data-aos-delay="150" onclick="window.location.href='4042.html'">
+                    <i class="fas fa-paint-brush"></i>
+                    <h4>Design</h4>
+                    <p>UI/UX, Product, Graphic</p>
+                    <span class="pattern-count">6,890 candidates</span>
+                </div>
+            </div>
+            <div class="pattern-btn-container" data-aos="fade-up">
+                <a href="4042.html" class="pattern-btn">View All Categories <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: LIGHT SOFT ACCORDION -->
+    <section class="section-soft section-padding">
+        <div class="container">
+            <div class="soft-grid">
+                <div class="soft-image" data-aos="fade-right">
+                    <img src="Jp8.webp" alt="FAQ">
+                </div>
+                <div class="soft-content" data-aos="fade-left">
+                    <h2>Frequently Asked Questions</h2>
+                    
+                    <div class="soft-accordion">
+                        <div class="soft-item">
+                            <div class="soft-header" onclick="toggleAccordion(this)">
+                                <span>How quickly can I find candidates?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="soft-content-inner">
+                                <p>Most employers receive qualified matches within 48 hours of posting their requirements.</p>
+                            </div>
+                        </div>
+                        <div class="soft-item">
+                            <div class="soft-header" onclick="toggleAccordion(this)">
+                                <span>What's the cost of hiring?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="soft-content-inner">
+                                <p>Our pricing is transparent with no hidden fees. Contact our sales team for a customized quote.</p>
+                            </div>
+                        </div>
+                        <div class="soft-item">
+                            <div class="soft-header" onclick="toggleAccordion(this)">
+                                <span>Do you offer remote candidates?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="soft-content-inner">
+                                <p>Yes! We have candidates from around the world ready for remote positions.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="soft-btn" onclick="window.location.href='4042.html'">View All FAQs</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: DARK STACKED CARDS -->
+    <section class="section-stack section-padding">
+        <div class="container">
+            <div class="stack-container">
+                <div class="stack-left" data-aos="fade-right">
+                    <h2>Why Industry Leaders Choose Us</h2>
+                    <p>We go beyond traditional recruiting to find you candidates who not only have the right skills but also align with your company culture and values.</p>
+                    <ul class="stack-features">
+                        <li><i class="fas fa-check-circle"></i> Pre-screened, qualified candidates</li>
+                        <li><i class="fas fa-check-circle"></i> Average hire time: 10 days</li>
+                        <li><i class="fas fa-check-circle"></i> 95% retention rate after 1 year</li>
+                        <li><i class="fas fa-check-circle"></i> Dedicated talent advisors</li>
+                    </ul>
+                    <button class="minimal-btn mt-3" onclick="window.location.href='4042.html'">Start Hiring Now</button>
+                </div>
+                <div class="stack-right" data-aos="fade-left">
+                    <div class="stack-card" onclick="window.location.href='4042.html'">
+                        <i class="fas fa-rocket"></i>
+                        <h4>Fast Matching</h4>
+                        <p>Get matched within 24 hours</p>
+                    </div>
+                    <div class="stack-card" onclick="window.location.href='4042.html'">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Quality Assured</h4>
+                        <p>All candidates pre-screened</p>
+                    </div>
+                    <div class="stack-card" onclick="window.location.href='4042.html'">
+                        <i class="fas fa-handshake"></i>
+                        <h4>Risk-Free Trial</h4>
+                        <p>30-day satisfaction guarantee</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: LIGHT HEXAGON -->
+    <section class="section-hex-light section-padding">
+        <div class="container">
+            <div class="hex-light-header" data-aos="fade-down">
+                <div class="light-header">
+                    <h2>Popular Skills</h2>
+                    <p>Most in-demand expertise right now</p>
+                </div>
+                <a href="4042.html" class="hex-light-btn">Explore All Skills <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="hex-light-grid">
+                <div class="hex-light-item" data-aos="zoom-in" onclick="window.location.href='4042.html'">
+                    <i class="fab fa-react"></i>
+                    <span>React.js</span>
+                </div>
+                <div class="hex-light-item" data-aos="zoom-in" data-aos-delay="50" onclick="window.location.href='4042.html'">
+                    <i class="fab fa-python"></i>
+                    <span>Python</span>
+                </div>
+                <div class="hex-light-item" data-aos="zoom-in" data-aos-delay="100" onclick="window.location.href='4042.html'">
+                    <i class="fab fa-aws"></i>
+                    <span>AWS</span>
+                </div>
+                <div class="hex-light-item" data-aos="zoom-in" data-aos-delay="150" onclick="window.location.href='4042.html'">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Data Science</span>
+                </div>
+                <div class="hex-light-item" data-aos="zoom-in" data-aos-delay="200" onclick="window.location.href='4042.html'">
+                    <i class="fab fa-figma"></i>
+                    <span>UI/UX Design</span>
+                </div>
+                <div class="hex-light-item" data-aos="zoom-in" data-aos-delay="250" onclick="window.location.href='4042.html'">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Mobile Dev</span>
+                </div>
+                <div class="hex-light-item" data-aos="zoom-in" data-aos-delay="300" onclick="window.location.href='4042.html'">
+                    <i class="fas fa-cloud"></i>
+                    <span>DevOps</span>
+                </div>
+                <div class="hex-light-item" data-aos="zoom-in" data-aos-delay="350" onclick="window.location.href='4042.html'">
+                    <i class="fas fa-robot"></i>
+                    <span>AI/ML</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: DARK TESTIMONIALS -->
+    <section class="section-testimonial-dark section-padding">
+        <div class="container">
+            <div class="pattern-header" data-aos="fade-down">
+                <h2>Success Stories</h2>
+                <p>What our clients say about us</p>
+            </div>
+            <div class="testimonial-dark-grid">
+                <div class="testimonial-dark-card" data-aos="fade-right">
+                    <i class="fas fa-quote-left"></i>
+                    <p>"Found our lead engineer within 48 hours. The quality of candidates was exceptional."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="Jp9.webp" alt="Author">
+                        </div>
+                        <div class="author-info">
+                            <h4>David Chen</h4>
+                            <span>CTO, TechFlow</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-dark-card" data-aos="fade-up">
+                    <i class="fas fa-quote-left"></i>
+                    <p>"The AI matching saved us weeks of screening. Best hiring decision we've made."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="Jp10.webp" alt="Author">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Williams</h4>
+                            <span>HR Director, InnovateLabs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-dark-card" data-aos="fade-left">
+                    <i class="fas fa-quote-left"></i>
+                    <p>"Found three amazing team members in one week. This platform is a game-changer."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="Jp11.webp" alt="Author">
+                        </div>
+                        <div class="author-info">
+                            <h4>James Rodriguez</h4>
+                            <span>Founder, StartupHub</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: LIGHT CTA -->
+    <section class="section-cta-light section-padding">
+        <div class="container">
+            <div class="cta-light-box" data-aos="zoom-in">
+                <h2>Ready to Build Your Dream Team?</h2>
+                <p>Join thousands of companies who've found exceptional talent through our platform</p>
+                <div class="cta-light-buttons">
+                    <a href="4042.html" class="btn-light-primary">Post a Job</a>
+                    <a href="4042.html" class="btn-light-secondary">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true,
+            offset: 50,
+            easing: 'ease-in-out'
+        });
+
+        // Accordion Toggle Function
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('i');
+            
+            document.querySelectorAll('.soft-header').forEach(h => {
+                if (h !== header) {
+                    h.classList.remove('active');
+                    h.nextElementSibling.classList.remove('show');
+                    h.querySelector('i').style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            header.classList.toggle('active');
+            content.classList.toggle('show');
+            
+            if (content.classList.contains('show')) {
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Header and Footer Loader
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header
+            fetch('header2.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Header file not found');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                    setTimeout(initHeaderInteractions, 100);
+                })
+                .catch(error => {
+                    console.warn('Header could not be loaded:', error);
+                    document.getElementById('header-placeholder').innerHTML = 
+                        '<header style="background: #1a1a2e; color: white; padding: 20px; text-align: center;">Header Not Found</header>';
+                });
+
+            // Load footer
+            fetch('footer2.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Footer file not found');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                })
+                .catch(error => {
+                    console.warn('Footer could not be loaded:', error);
+                    document.getElementById('footer-placeholder').innerHTML = 
+                        '<footer style="background: #1a1a2e; color: white; padding: 40px; text-align: center;">Footer Not Found</footer>';
+                });
+        });
+
+        // Header interactions
+        function initHeaderInteractions() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    
+                    if (navMenu.classList.contains('active')) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+            
+            document.querySelectorAll('.dropdown-icon').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const dropdownId = this.getAttribute('data-dropdown');
+                    const dropdown = document.getElementById(dropdownId);
+                    
+                    if (!dropdown) return;
+                    
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        if (menu.id !== dropdownId) {
+                            menu.classList.remove('show');
+                        }
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        if (btn !== this) {
+                            btn.classList.remove('active');
+                        }
+                    });
+                    
+                    dropdown.classList.toggle('show');
+                    this.classList.toggle('active');
+                });
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav-item-with-dropdown')) {
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+        }
+
+        // Refresh AOS on load
+        window.addEventListener('load', () => AOS.refresh());
+        window.addEventListener('resize', () => AOS.refresh());
+
+        // ===== NEWSLETTER VALIDATION WITH MESSAGE UNDER BOX =====
+    document.addEventListener('DOMContentLoaded', function() {
+        // Wait a moment for footer to load
+        setTimeout(function() {
+            // Get the newsletter button and input from footer
+            const footerBtn = document.querySelector('.footer .newsletter-input button');
+            const footerInput = document.querySelector('.footer .newsletter-input input');
+            const newsletterForm = document.querySelector('.footer .newsletter-form');
+            
+            if (!footerBtn || !footerInput || !newsletterForm) {
+                console.log('Newsletter elements not found in footer');
+                return;
+            }
+            
+            // Remove any existing onclick attribute
+            footerBtn.removeAttribute('onclick');
+            
+            // Function to show message under the box
+            function showMessage(message, isError) {
+                // Remove any existing message
+                const existingMsg = document.querySelector('.footer .newsletter-message');
+                if (existingMsg) existingMsg.remove();
+                
+                // Create message element
+                const msgDiv = document.createElement('div');
+                msgDiv.className = 'newsletter-message';
+                msgDiv.style.cssText = `
+                    margin-top: 10px;
+                    padding: 8px 15px;
+                    border-radius: 50px;
+                    font-size: 14px;
+                    text-align: center;
+                    background: ${isError ? '#fee' : '#e8f5e9'};
+                    color: ${isError ? '#c00' : '#2e7d32'};
+                `;
+                msgDiv.textContent = message;
+                
+                // Add to newsletter form
+                newsletterForm.appendChild(msgDiv);
+                
+                // Remove after 3 seconds
+                setTimeout(() => {
+                    if (msgDiv.parentNode) msgDiv.remove();
+                }, 3000);
+            }
+            
+            // Add click event
+            footerBtn.addEventListener('click', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                
+                const email = footerInput.value.trim();
+                
+                // Check if empty
+                if (email === '') {
+                    showMessage('Please enter your email address', true);
+                    footerInput.focus();
+                    return false;
+                }
+                
+                // Check if valid email format (simple check)
+                if (!email.includes('@') || !email.includes('.')) {
+                    showMessage('Please enter a valid email address', true);
+                    footerInput.focus();
+                    return false;
+                }
+                
+                // Valid email - show success message
+                showMessage('Thank you for subscribing!', false);
+                
+                // Redirect after delay
+                setTimeout(() => {
+                    window.location.href = '4042.html';
+                }, 1500);
+                
+                return false;
+            });
+            
+            // Enter key support
+            footerInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    footerBtn.click();
+                }
+            });
+            
+            console.log('Newsletter validation with message working');
+        }, 500);
+    });
+
+    </script>
+</body>
+</html>

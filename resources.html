@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>JobPortal — Resources · Fully Responsive</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .mid-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        section {
+            margin: 100px 0;
+            position: relative;
+            width: 100%;
+            clear: both;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1e1e2f;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #4ecdc4;
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        [data-aos="fade-left"] { transform: translateX(-100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="fade-right"] { transform: translateX(100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="fade-up"] { transform: translateY(100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="fade-down"] { transform: translateY(-100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="zoom-in"] { transform: scale(0.7); opacity: 0; transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="zoom-out"] { transform: scale(1.3); opacity: 0; transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="flip-left"] { transform: perspective(2500px) rotateY(-120deg); opacity: 0; transition: all 1.2s ease; }
+        [data-aos="flip-right"] { transform: perspective(2500px) rotateY(120deg); opacity: 0; transition: all 1.2s ease; }
+        [data-aos].aos-animate { transform: translate(0) scale(1) rotateY(0); opacity: 1; }
+
+        /* BUTTON STYLES - FIXED FOR ALL STATES */
+        .primary-btn, .outline-btn, .card-btn, .resource-btn, .dark-card-btn, .light-card-btn {
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 8px;
+            padding: 12px 24px;
+        }
+
+        .primary-btn, .card-btn, .resource-btn {
+            background: #4ecdc4;
+            color: #1e1e2f;
+        }
+
+        .primary-btn:hover, .card-btn:hover, .resource-btn:hover {
+            background: #1e1e2f;
+            color: white !important;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .dark-card-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .dark-card-btn:hover {
+            background: white !important;
+            color: #1e1e2f !important;
+            transform: translateY(-3px);
+        }
+
+        .light-card-btn {
+            background: #4ecdc4;
+            color: #1e1e2f;
+        }
+
+        .light-card-btn:hover {
+            background: #1e1e2f;
+            color: white !important;
+            transform: translateY(-3px);
+        }
+
+        .outline-btn {
+            background: transparent;
+            border: 2px solid #4ecdc4;
+            color: #1e1e2f;
+        }
+        .outline-btn:hover {
+            background: #4ecdc4;
+            color: #1e1e2f;
+        }
+
+        /* SECTION 1: HERO - KEPT */
+        .hero-resources {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            margin-top: 20px;
+            background: #1e1e2f;
+        }
+        .hero-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(78,205,196,0.2) 0%, transparent 50%);
+        }
+        .hero-grid {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            padding: 60px;
+            color: white;
+        }
+        .hero-left h1 {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 25px;
+        }
+        .hero-left h1 span {
+            color: #4ecdc4;
+            display: block;
+        }
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .hero-tag {
+            background: rgba(255,255,255,0.1);
+            padding: 10px 25px;
+            border-radius: 40px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .hero-right {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        .stat-block {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            color: #4ecdc4;
+        }
+
+        /* SECTION 2: BOOK-STYLE - KEPT */
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .book-card {
+            background: white;
+            border-radius: 10px 30px 30px 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            transition: all 0.4s;
+            border-left: 5px solid #4ecdc4;
+        }
+        .book-card:hover {
+            transform: translateY(-15px) rotate(1deg);
+            box-shadow: 0 30px 60px rgba(78,205,196,0.2);
+        }
+        .book-image {
+            height: 180px;
+            overflow: hidden;
+        }
+        .book-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .book-content {
+            padding: 25px;
+        }
+
+        /* SECTION 3: FILM STRIP - KEPT */
+        .filmstrip-section {
+            background: linear-gradient(135deg, #1e1e2f 0%, #2a3a4a 100%);
+            border-radius: 50px;
+            padding: 80px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .filmstrip-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+        .film-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .film-card:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(78,205,196,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s;
+        }
+        .film-card:hover:before {
+            transform: rotate(45deg) translate(50%, 50%);
+        }
+        .film-card:hover {
+            background: #4ecdc4;
+            transform: translateY(-15px) scale(1.02);
+        }
+        .film-card:hover * {
+            color: #1e1e2f;
+        }
+        .film-icon {
+            font-size: 48px;
+            color: #4ecdc4;
+            margin-bottom: 20px;
+        }
+
+        /* SECTION 4: MAGAZINE - KEPT */
+        .magazine-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 25px;
+        }
+        .magazine-feature {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            grid-row: span 2;
+        }
+        .magazine-feature img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .magazine-feature-content {
+            padding: 30px;
+        }
+        .magazine-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+        }
+        .magazine-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .magazine-card-content {
+            padding: 20px;
+        }
+
+        /* SECTION 5: ORBIT - KEPT */
+        .orbit-section {
+            background: white;
+            border-radius: 50px;
+            padding: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .orbit-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .orbit-item {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(145deg, #f8fafc, #ffffff);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(78,205,196,0.1);
+            border: 2px solid #4ecdc4;
+            transition: all 0.5s;
+            position: relative;
+        }
+        .orbit-item:nth-child(2) {
+            transform: scale(1.2);
+        }
+        .orbit-item:nth-child(4) {
+            transform: scale(1.1);
+        }
+        .orbit-item:hover {
+            transform: scale(1.3) rotate(360deg);
+            background: #4ecdc4;
+            border-color: white;
+        }
+        .orbit-item:hover * {
+            color: #1e1e2f;
+        }
+        .orbit-item i {
+            font-size: 42px;
+            color: #4ecdc4;
+            margin-bottom: 15px;
+        }
+
+        /* ===== SECTION 6: NEW - TILED MOSAIC DESIGN ===== */
+        .mosaic-section {
+            background: linear-gradient(135deg, #1e1e2f 0%, #2a3a4a 100%);
+            border-radius: 50px;
+            padding: 80px;
+            color: white;
+        }
+        .mosaic-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .mosaic-item {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.4s;
+            backdrop-filter: blur(5px);
+        }
+        .mosaic-item:hover {
+            background: #4ecdc4;
+            transform: translateY(-15px) scale(1.05);
+        }
+        .mosaic-item:hover * {
+            color: #1e1e2f;
+        }
+        .mosaic-item i {
+            font-size: 42px;
+            color: #4ecdc4;
+            margin-bottom: 20px;
+        }
+        .mosaic-item h4 {
+            margin-bottom: 15px;
+        }
+
+        /* ===== SECTION 7: NEW - STEPLADDER DESIGN ===== */
+        .stepladder-section {
+            background: white;
+            border-radius: 50px;
+            padding: 80px;
+        }
+        .stepladder-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .step-item {
+            background: #f8fafc;
+            border-radius: 30px;
+            padding: 30px 40px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            border: 1px solid #eef2f6;
+            transition: all 0.4s;
+            position: relative;
+        }
+        .step-item:hover {
+            transform: translateX(30px) scale(1.02);
+            border-color: #4ecdc4;
+            box-shadow: 0 20px 40px rgba(78,205,196,0.1);
+        }
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background: #4ecdc4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: #1e1e2f;
+        }
+        .step-content {
+            flex: 1;
+        }
+        .step-content h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #1e1e2f;
+        }
+        .step-content p {
+            color: #64748b;
+        }
+
+        /* SECTION 8: SLIDING - KEPT */
+        .sliding-section {
+            background: linear-gradient(135deg, #1e1e2f 0%, #2a3a4a 100%);
+            border-radius: 50px;
+            padding: 80px;
+            color: white;
+        }
+        .sliding-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        .sliding-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            transition: all 0.4s;
+        }
+        .sliding-card:hover {
+            background: #4ecdc4;
+            transform: translateX(20px);
+        }
+        .sliding-card:hover * {
+            color: #1e1e2f;
+        }
+        .sliding-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(78,205,196,0.2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: #4ecdc4;
+        }
+
+        /* SECTION 9: WAVE ACCORDION - KEPT */
+        .wave-accordion {
+            background: white;
+            border-radius: 50px;
+            padding: 80px;
+        }
+        .wave-item {
+            background: #f8fafc;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            border-left: 5px solid #4ecdc4;
+            transition: all 0.4s;
+        }
+        .wave-item:hover {
+            transform: translateX(30px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(78,205,196,0.1);
+        }
+        .wave-number {
+            width: 60px;
+            height: 60px;
+            background: #4ecdc4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        /* SECTION 10: COMMUNITY - KEPT */
+        .community-section {
+            background: linear-gradient(135deg, #1e1e2f 0%, #2a3a4a 100%);
+            border-radius: 50px;
+            padding: 80px;
+            color: white;
+        }
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .community-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.4s;
+        }
+        .community-card:hover {
+            background: #4ecdc4;
+            transform: rotate(3deg) scale(1.1);
+        }
+        .community-card:hover * {
+            color: #1e1e2f;
+        }
+        .community-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 3px solid #4ecdc4;
+        }
+
+        /* ===== FULLY RESPONSIVE - NO HORIZONTAL SCROLL ===== */
+        @media (max-width: 1200px) {
+            .mid-section { padding: 0 25px; }
+            .book-grid, .community-grid, .mosaic-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .filmstrip-grid, .magazine-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .magazine-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .magazine-feature {
+                grid-column: span 2;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .mid-section { padding: 0 20px; }
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .hero-left h1 { font-size: 48px; }
+            
+            .book-grid, .community-grid, .mosaic-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .filmstrip-grid {
+                grid-template-columns: 1fr;
+            }
+            .sliding-grid {
+                grid-template-columns: 1fr;
+            }
+            .orbit-container {
+                gap: 20px;
+            }
+            .orbit-item {
+                width: 160px;
+                height: 160px;
+                padding: 20px;
+            }
+            .orbit-item:nth-child(2), .orbit-item:nth-child(4) {
+                transform: scale(1);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mid-section { padding: 0 15px; }
+            section { margin: 80px 0; }
+            
+            .hero-left h1 { font-size: 36px; }
+            .stat-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .book-grid, .community-grid, .mosaic-grid,
+            .filmstrip-grid, .magazine-grid {
+                grid-template-columns: 1fr;
+            }
+            .magazine-feature {
+                grid-column: span 1;
+            }
+            
+            .orbit-item {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .step-item {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+            .step-item:hover {
+                transform: translateX(15px) scale(1.02);
+            }
+            
+            .sliding-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .wave-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .community-card {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .mid-section { padding: 0 12px; }
+            .hero-left h1 { font-size: 32px; }
+            .section-header h2 { font-size: 32px; }
+            
+            .hero-tags {
+                flex-direction: column;
+            }
+            .hero-tag {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .orbit-container {
+                flex-direction: column;
+            }
+            .orbit-item {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .step-item {
+                padding: 25px 15px;
+            }
+            .step-number {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+        }
+
+        /* Ensure no horizontal scroll */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+        img, video, svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #4ecdc4;  /* You can change this color */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    border: 2px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #3ab7ad;  /* Darker shade on hover */
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(78,205,196,0.4);
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Back to Top Button -->
+<div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+    <!-- HEADER PLACEHOLDER - Header will load here -->
+    <div id="header-placeholder"></div>
+
+    <div class="mid-section">
+
+        <!-- SECTION 1: HERO - KEPT -->
+        <section class="hero-resources" data-aos="fade-up">
+            <div class="hero-backdrop"></div>
+            <div class="hero-grid">
+                <div class="hero-left" data-aos="fade-right" data-aos-delay="100">
+                    <h1>Knowledge <span>Library</span> for Your Career</h1>
+                    <p style="font-size: 18px; opacity: 0.9;">Expert guides, tools, and insights to help you succeed</p>
+                    <div class="hero-tags">
+                        <span class="hero-tag">📚 150+ Guides</span>
+                        <span class="hero-tag">🎥 80+ Webinars</span>
+                        <span class="hero-tag">📊 50+ Templates</span>
+                    </div>
+                </div>
+                <div class="hero-right" data-aos="fade-left" data-aos-delay="200">
+                    <div class="stat-row">
+                        <div class="stat-block">
+                            <div class="stat-number">45K+</div>
+                            <div>Monthly Readers</div>
+                        </div>
+                        <div class="stat-block">
+                            <div class="stat-number">4.8★</div>
+                            <div>Resource Rating</div>
+                        </div>
+                        <div class="stat-block">
+                            <div class="stat-number">Free</div>
+                            <div>Access</div>
+                        </div>
+                    </div>
+                    <p style="text-align: center;">Join thousands of professionals advancing their careers</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: BOOK-STYLE GUIDES - KEPT -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Essential Guides</h2>
+                <p>Your career library</p>
+            </div>
+            <div class="book-grid">
+                <div class="book-card" data-aos="flip-left" data-aos-delay="50">
+                    <div class="book-image"><img src="Jp1.webp" alt="Guide"></div>
+                    <div class="book-content">
+                        <h3>Resume Mastery</h3>
+                        <p>Create winning resumes</p>
+                        <button class="card-btn" onclick="window.location.href='404.html'">Read</button>
+                    </div>
+                </div>
+                <div class="book-card" data-aos="flip-left" data-aos-delay="70">
+                    <div class="book-image"><img src="Jp2.webp" alt="Guide"></div>
+                    <div class="book-content">
+                        <h3>Interview Bible</h3>
+                        <p>100+ questions answered</p>
+                        <button class="card-btn" onclick="window.location.href='404.html'">Read</button>
+                    </div>
+                </div>
+                <div class="book-card" data-aos="flip-left" data-aos-delay="90">
+                    <div class="book-image"><img src="Jp3.webp" alt="Guide"></div>
+                    <div class="book-content">
+                        <h3>Salary Secrets</h3>
+                        <p>Negotiate with confidence</p>
+                        <button class="card-btn" onclick="window.location.href='404.html'">Read</button>
+                    </div>
+                </div>
+                <div class="book-card" data-aos="flip-left" data-aos-delay="110">
+                    <div class="book-image"><img src="Jp4.webp" alt="Guide"></div>
+                    <div class="book-content">
+                        <h3>Career Compass</h3>
+                        <p>Plan your path</p>
+                        <button class="card-btn" onclick="window.location.href='404.html'">Read</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: FILM STRIP - KEPT (BUTTONS FIXED) -->
+        <section class="filmstrip-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2 style="color: white;">Video Learning</h2>
+                <p style="color: rgba(255,255,255,0.8);">Watch and learn at your pace</p>
+            </div>
+            <div class="filmstrip-grid">
+                <div class="film-card" data-aos="zoom-in" data-aos-delay="50">
+                    <div class="film-icon"><i class="fas fa-play-circle"></i></div>
+                    <h3>Interview Masterclass</h3>
+                    <p>12 videos · 3 hours</p>
+                    <button class="dark-card-btn" onclick="window.location.href='404.html'">Watch Series</button>
+                </div>
+                <div class="film-card" data-aos="zoom-in" data-aos-delay="70">
+                    <div class="film-icon"><i class="fas fa-video"></i></div>
+                    <h3>Resume Workshop</h3>
+                    <p>8 videos · 2 hours</p>
+                    <button class="dark-card-btn" onclick="window.location.href='404.html'">Watch Series</button>
+                </div>
+                <div class="film-card" data-aos="zoom-in" data-aos-delay="90">
+                    <div class="film-icon"><i class="fas fa-microphone"></i></div>
+                    <h3>Leadership Talks</h3>
+                    <p>15 videos · 4 hours</p>
+                    <button class="dark-card-btn" onclick="window.location.href='404.html'">Watch Series</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: MAGAZINE LAYOUT - KEPT -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Featured Stories</h2>
+                <p>In-depth articles</p>
+            </div>
+            <div class="magazine-grid">
+                <div class="magazine-feature" data-aos="fade-right" data-aos-delay="50">
+                    <img src="Jp5.webp" alt="Feature">
+                    <div class="magazine-feature-content">
+                        <h3>How to Land a Remote Job in 2026</h3>
+                        <p>Complete guide with tips from 50+ hiring managers</p>
+                        <button class="card-btn" onclick="window.location.href='404.html'">Read</button>
+                    </div>
+                </div>
+                <div class="magazine-card" data-aos="fade-up" data-aos-delay="70">
+                    <img src="Jp6.webp" alt="Story">
+                    <div class="magazine-card-content">
+                        <h4>Portfolio Tips</h4>
+                        <button class="card-btn" onclick="window.location.href='404.html'">Read</button>
+                    </div>
+                </div>
+                <div class="magazine-card" data-aos="fade-up" data-aos-delay="90">
+                    <img src="Jp7.webp" alt="Story">
+                    <div class="magazine-card-content">
+                        <h4>LinkedIn Optimization</h4>
+                        <button class="card-btn" onclick="window.location.href='404.html'">Read</button>
+                    </div>
+                </div>
+                <div class="magazine-card" data-aos="fade-left" data-aos-delay="110">
+                    <img src="Jp8.webp" alt="Story">
+                    <div class="magazine-card-content">
+                        <h4>Networking 101</h4>
+                        <button class="card-btn" onclick="window.location.href='404.html'">Read</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: ORBIT - KEPT -->
+        <section class="orbit-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Core Skills</h2>
+                <p>Master the essentials</p>
+            </div>
+            <div class="orbit-container">
+                <div class="orbit-item" data-aos="zoom-in" data-aos-delay="50">
+                    <i class="fas fa-code"></i>
+                    <h4>Technical</h4>
+                    <button class="light-card-btn" onclick="window.location.href='404.html'">Learn</button>
+                </div>
+                <div class="orbit-item" data-aos="zoom-in" data-aos-delay="70">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Analytical</h4>
+                    <button class="light-card-btn" onclick="window.location.href='404.html'">Learn</button>
+                </div>
+                <div class="orbit-item" data-aos="zoom-in" data-aos-delay="90">
+                    <i class="fas fa-comments"></i>
+                    <h4>Communication</h4>
+                    <button class="light-card-btn" onclick="window.location.href='404.html'">Learn</button>
+                </div>
+                <div class="orbit-item" data-aos="zoom-in" data-aos-delay="110">
+                    <i class="fas fa-users"></i>
+                    <h4>Leadership</h4>
+                    <button class="light-card-btn" onclick="window.location.href='404.html'">Learn</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: NEW - TILED MOSAIC DESIGN -->
+        <section class="mosaic-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2 style="color: white;">Quick Resources</h2>
+                <p style="color: rgba(255,255,255,0.8);">Instant access to tools</p>
+            </div>
+            <div class="mosaic-grid">
+                <div class="mosaic-item" data-aos="zoom-in" data-aos-delay="50">
+                    <i class="fas fa-file-pdf"></i>
+                    <h4>Resume Templates</h4>
+                    <button class="dark-card-btn" onclick="window.location.href='404.html'">Download</button>
+                </div>
+                <div class="mosaic-item" data-aos="zoom-in" data-aos-delay="70">
+                    <i class="fas fa-file-excel"></i>
+                    <h4>Salary Tracker</h4>
+                    <button class="dark-card-btn" onclick="window.location.href='404.html'">Download</button>
+                </div>
+                <div class="mosaic-item" data-aos="zoom-in" data-aos-delay="90">
+                    <i class="fas fa-file-word"></i>
+                    <h4>Cover Letters</h4>
+                    <button class="dark-card-btn" onclick="window.location.href='404.html'">Download</button>
+                </div>
+                <div class="mosaic-item" data-aos="zoom-in" data-aos-delay="110">
+                    <i class="fas fa-file-powerpoint"></i>
+                    <h4>Presentation Deck</h4>
+                    <button class="dark-card-btn" onclick="window.location.href='404.html'">Download</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: NEW - STEPLADDER DESIGN -->
+        <section class="stepladder-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Learning Pathways</h2>
+                <p>Structured programs for every stage</p>
+            </div>
+            <div class="stepladder-container">
+                <div class="step-item" data-aos="fade-right" data-aos-delay="50">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Beginner Track</h3>
+                        <p>5 courses · 20 hours · Career foundations</p>
+                    </div>
+                    <button class="card-btn" onclick="window.location.href='404.html'">Start</button>
+                </div>
+                <div class="step-item" data-aos="fade-right" data-aos-delay="70">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Intermediate Track</h3>
+                        <p>8 courses · 35 hours · Specialized skills</p>
+                    </div>
+                    <button class="card-btn" onclick="window.location.href='404.html'">Start</button>
+                </div>
+                <div class="step-item" data-aos="fade-right" data-aos-delay="90">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Advanced Track</h3>
+                        <p>12 courses · 50 hours · Expert mastery</p>
+                    </div>
+                    <button class="card-btn" onclick="window.location.href='404.html'">Start</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8: SLIDING DOORS - KEPT -->
+        <section class="sliding-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2 style="color: white;">Expert Consultations</h2>
+                <p style="color: rgba(255,255,255,0.8);">One-on-one guidance</p>
+            </div>
+            <div class="sliding-grid">
+                <div class="sliding-card" data-aos="fade-right" data-aos-delay="50">
+                    <div class="sliding-icon"><i class="fas fa-user-tie"></i></div>
+                    <div>
+                        <h3>Resume Review</h3>
+                        <p>45-min session with expert</p>
+                        <button class="dark-card-btn" onclick="window.location.href='404.html'">Book Now</button>
+                    </div>
+                </div>
+                <div class="sliding-card" data-aos="fade-left" data-aos-delay="70">
+                    <div class="sliding-icon"><i class="fas fa-comments"></i></div>
+                    <div>
+                        <h3>Mock Interview</h3>
+                        <p>60-min practice session</p>
+                        <button class="dark-card-btn" onclick="window.location.href='404.html'">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 9: WAVE ACCORDION - KEPT -->
+        <section class="wave-accordion" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Popular Topics</h2>
+                <p>Most accessed resources</p>
+            </div>
+            <div class="wave-item" data-aos="fade-right" data-aos-delay="50">
+                <div class="wave-number">1</div>
+                <div style="flex: 1;">
+                    <h3>Resume Writing Guide</h3>
+                    <p>12,345 reads this month</p>
+                </div>
+                <button class="card-btn" onclick="window.location.href='404.html'">Read</button>
+            </div>
+            <div class="wave-item" data-aos="fade-right" data-aos-delay="70">
+                <div class="wave-number">2</div>
+                <div style="flex: 1;">
+                    <h3>Interview Questions</h3>
+                    <p>10,287 reads this month</p>
+                </div>
+                <button class="card-btn" onclick="window.location.href='404.html'">Read</button>
+            </div>
+            <div class="wave-item" data-aos="fade-right" data-aos-delay="90">
+                <div class="wave-number">3</div>
+                <div style="flex: 1;">
+                    <h3>Salary Negotiation</h3>
+                    <p>8,954 reads this month</p>
+                </div>
+                <button class="card-btn" onclick="window.location.href='404.html'">Read</button>
+            </div>
+        </section>
+
+        <!-- SECTION 10: COMMUNITY - KEPT -->
+        <section class="community-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2 style="color: white;">Community Voices</h2>
+                <p style="color: rgba(255,255,255,0.8);">From our readers</p>
+            </div>
+            <div class="community-grid">
+                <div class="community-card" data-aos="zoom-in" data-aos-delay="50">
+                    <img src="Jp9.webp" alt="User">
+                    <h4>Sarah K.</h4>
+                    <p>"The guides helped me land my dream job!"</p>
+                </div>
+                <div class="community-card" data-aos="zoom-in" data-aos-delay="70">
+                    <img src="Jp10.webp" alt="User">
+                    <h4>Michael R.</h4>
+                    <p>"Invaluable resources for career changers."</p>
+                </div>
+                <div class="community-card" data-aos="zoom-in" data-aos-delay="90">
+                    <img src="Jp11.webp" alt="User">
+                    <h4>Priya M.</h4>
+                    <p>"The templates saved me hours of work."</p>
+                </div>
+                <div class="community-card" data-aos="zoom-in" data-aos-delay="110">
+                    <img src="Jp12.webp" alt="User">
+                    <h4>David L.</h4>
+                    <p>"Best career resource platform out there."</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER - Footer will load here -->
+    <div id="footer-placeholder"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true,
+            offset: 50,
+            easing: 'ease-in-out'
+        });
+        
+        // All buttons redirect to 404.html
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = '404.html';
+            });
+        });
+        // ============================
+        // ===== TAB FUNCTION =====
+    function showTab(event, tabId) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+        event.target.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+    }
+
+    // ===== NEWSLETTER VALIDATION =====
+    function validateNewsletter(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function showNewsletterError(message) {
+        // Remove any existing error message
+        const existingMsg = document.querySelector('.newsletter-error');
+        if (existingMsg) existingMsg.remove();
+        
+        // Create error message element
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'newsletter-error';
+        msgDiv.style.cssText = `
+            margin-top: 10px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+            background: #fee;
+            color: #c00;
+        `;
+        msgDiv.textContent = message;
+        
+        // Find newsletter container
+        const newsletter = document.querySelector('.newsletter-form, .footer-newsletter, [class*="newsletter"]');
+        if (newsletter) {
+            newsletter.appendChild(msgDiv);
+            
+            // Remove error message after 3 seconds
+            setTimeout(() => msgDiv.remove(), 3000);
+        } else {
+            alert(message);
+        }
+    }
+
+    // ===== HEADER & FOOTER LOADER =====
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load header
+        fetch('header1.html') // Make sure this filename is correct
+            .then(response => {
+                if (!response.ok) throw new Error('Header file not found');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                setTimeout(initHeaderInteractions, 100);
+            })
+            .catch(error => {
+                console.warn('Header could not be loaded:', error);
+                document.getElementById('header-placeholder').innerHTML = 
+                    '<header style="background: #6c5ce7; color: white; padding: 20px; text-align: center;">Header Not Found</header>';
+            });
+
+        // Load footer
+        fetch('footer1.html') // Make sure this filename is correct
+            .then(response => {
+                if (!response.ok) throw new Error('Footer file not found');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.warn('Footer could not be loaded:', error);
+                document.getElementById('footer-placeholder').innerHTML = 
+                    '<footer style="background: #1a1a2e; color: white; padding: 40px; text-align: center;">Footer Not Found</footer>';
+            });
+    });
+
+    // ===== HEADER INTERACTIONS =====
+    function initHeaderInteractions() {
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        // Mobile menu toggle
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                
+                if (navMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = 'auto';
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+        }
+        
+        // Dropdown functionality
+        document.querySelectorAll('.dropdown-icon').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const dropdownId = this.getAttribute('data-dropdown');
+                const dropdown = document.getElementById(dropdownId);
+                
+                if (!dropdown) return;
+                
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    if (menu.id !== dropdownId) {
+                        menu.classList.remove('show');
+                    }
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    if (btn !== this) {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                dropdown.classList.toggle('show');
+                this.classList.toggle('active');
+            });
+        });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-item-with-dropdown')) {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+        });
+        
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    if (menuToggle) menuToggle.classList.remove('active');
+                    if (navMenu) navMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                if (menuToggle) menuToggle.classList.remove('active');
+                if (navMenu) navMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+        });
+    }
+
+    // ===== AOS INITIALIZATION =====
+    const aosScript = document.createElement('script');
+    aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+    document.head.appendChild(aosScript);
+    
+    aosScript.onload = function() {
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true,
+            offset: 50,
+            easing: 'ease-in-out'
+        });
+    };
+
+    // ===== ANIMATION OBSERVER =====
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            const animatedElements = document.querySelectorAll('.fade-up, .fade-left, .fade-right, .scale-up, [data-aos]');
+            animatedElements.forEach(el => observer.observe(el));
+        }, 500);
+    });
+
+    // ===== NEWSLETTER HANDLER - VALIDATE THEN REDIRECT TO 404 =====
+    document.addEventListener('click', function(e) {
+        const newsletterBtn = e.target.closest('.newsletter-btn, .subscribe-btn, [class*="newsletter"] button, button[type="submit"]');
+        if (!newsletterBtn) return;
+        
+        const form = newsletterBtn.closest('form');
+        const newsletterInput = form ? form.querySelector('input[type="email"]') : 
+                                document.querySelector('.newsletter-input, input[type="email"][placeholder*="email"]');
+        
+        if (newsletterInput) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const email = newsletterInput.value.trim();
+            
+            // If email is empty or invalid, show error and DON'T redirect
+            if (!email) {
+                showNewsletterError('Please enter your email address');
+                newsletterInput.focus();
+                return false;
+            }
+            
+            if (!validateNewsletter(email)) {
+                showNewsletterError('Please enter a valid email address');
+                newsletterInput.focus();
+                return false;
+            }
+            
+            // Email is valid - redirect to 404.html
+            window.location.href = '404.html';
+            return false;
+        }
+    });
+
+    // ===== BUTTON REDIRECT HANDLER (for all other buttons) =====
+    document.addEventListener('click', function(e) {
+        const button = e.target.closest('button');
+        if (!button) return;
+        
+        // Skip newsletter buttons (already handled above)
+        if (button.closest('.newsletter-form') || 
+            button.classList.contains('newsletter-btn') || 
+            button.classList.contains('subscribe-btn') ||
+            button.closest('[class*="newsletter"]')) {
+            return;
+        }
+        
+        // Skip special buttons
+        if (button.hasAttribute('onclick') || 
+            button.classList.contains('dropdown-icon') || 
+            button.classList.contains('video-btn') ||
+            button.classList.contains('tab-btn')) {
+            return;
+        }
+        
+        // Redirect all other buttons to 404
+        e.preventDefault();
+        window.location.href = '404.html';
+    });
+    // Back to Top Button Functionality
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 500) {  // Show after scrolling 500px
+        backToTop.classList.add('show');
+    } else {
+        backToTop.classList.remove('show');
+    }
+});
+
+backToTop.addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'  // Smooth scroll animation
+    });
+});
+    </script>
+</body>
+</html>

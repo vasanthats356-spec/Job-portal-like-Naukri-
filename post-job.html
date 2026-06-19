@@ -1,0 +1,1904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Post a Job | Job Portal</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f5f5;
+            color: #0f172a;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            width: 100%;
+        }
+
+        /* Section Padding */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        /* Responsive Container */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 25px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .section-padding {
+                padding: 80px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            .section-padding {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            .section-padding {
+                padding: 50px 0;
+            }
+        }
+
+        /* ===== SECTION 1: HERO WITH VIDEO GRAIN EFFECT ===== */
+        .hero-post {
+            background: linear-gradient(rgba(10, 12, 28, 0.85), rgba(20, 22, 42, 0.9)), 
+                        url('Jp6.webp') center/cover fixed;
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .hero-post::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('Jp4.webp')center/cover fixed;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .hero-post-content {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-post-text h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-post-text .highlight {
+            color: #FFD93D;
+        }
+
+        .hero-post-text p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .hero-post-stats {
+            display: flex;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .hero-post-stat {
+            text-align: center;
+            background: rgba(255,255,255,0.05);
+            padding: 15px 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .hero-post-stat .number {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            color: #FFD93D;
+        }
+
+        .hero-post-stat .label {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .hero-post-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-hero-primary {
+            background: #FFD93D;
+            color: #2B32B2;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+        }
+
+        .btn-hero-primary:hover {
+            background: #2B32B2;
+            color: #FFD93D;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(43, 50, 178, 0.3);
+        }
+
+        .btn-hero-secondary {
+            background: transparent;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-hero-secondary:hover {
+            background: white;
+            color: #0a0c1c;
+            border-color: white;
+            transform: translateY(-5px);
+        }
+
+        .hero-post-image img {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* ===== SECTION 2: JOB FORM WITH 3D EFFECT AND VALIDATION ===== */
+        .section-form-3d {
+            background: linear-gradient(135deg, #2B32B2 0%, #1488CC 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-form-3d::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 100%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+            pointer-events: none;
+        }
+
+        .form-3d-container {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            padding: 60px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+            transform: perspective(1000px) rotateX(2deg);
+            transition: all 0.5s;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .form-3d-container:hover {
+            transform: perspective(1000px) rotateX(0deg);
+            box-shadow: 0 50px 100px rgba(43, 50, 178, 0.3);
+        }
+
+        .form-3d-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .form-3d-header h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: #2B32B2;
+            margin-bottom: 15px;
+        }
+
+        .form-3d-header p {
+            color: #334155;
+            font-size: 1.1rem;
+        }
+
+        .form-3d-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .form-3d-field {
+            margin-bottom: 20px;
+        }
+
+        .form-3d-field label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2B32B2;
+        }
+
+        .form-3d-field input,
+        .form-3d-field select,
+        .form-3d-field textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+            background: #f9fcff;
+        }
+
+        .form-3d-field input:focus,
+        .form-3d-field select:focus,
+        .form-3d-field textarea:focus {
+            outline: none;
+            border-color: #2B32B2;
+            box-shadow: 0 0 0 4px rgba(43, 50, 178, 0.1);
+        }
+
+        .form-3d-field input.error,
+        .form-3d-field select.error,
+        .form-3d-field textarea.error {
+            border-color: #ef4444;
+            background-color: #fff2f2;
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .form-3d-field.full-width {
+            grid-column: span 2;
+        }
+
+        .form-3d-btn {
+            background: linear-gradient(135deg, #2B32B2, #1488CC);
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            border: 2px solid transparent;
+        }
+
+        .form-3d-btn:hover {
+            background: #FFD93D;
+            color: #2B32B2;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(43, 50, 178, 0.3);
+        }
+
+        /* ===== SECTION 3: PRICING CARDS WITH GLASSMORPHISM ===== */
+        .section-pricing-glass {
+            background: linear-gradient(rgba(15, 17, 33, 0.9), rgba(25, 27, 47, 0.95)), 
+                        url('tech.webp') center/cover fixed;
+            color: white;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .pricing-header h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .pricing-header p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.1rem;
+        }
+
+        .pricing-glass-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .pricing-glass-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #FFD93D, #FFD93D);
+        }
+
+        .pricing-glass-card:hover {
+            transform: translateY(-15px);
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,217,61,0.3);
+        }
+
+        .pricing-glass-card.popular::after {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: #FFD93D;
+            color: #2B32B2;
+            padding: 5px 40px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            transform: rotate(45deg);
+        }
+
+        .pricing-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,217,61,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2.5rem;
+            color: #FFD93D;
+        }
+
+        .pricing-glass-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #FFD93D;
+            margin-bottom: 20px;
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.6);
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.8);
+        }
+
+        .pricing-glass-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid #FFD93D;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .pricing-glass-btn:hover {
+            background: #FFD93D;
+            color: #2B32B2;
+        }
+
+        /* ===== SECTION 4: BENEFITS WITH CUBE ROTATION ===== */
+        .section-benefits-cube {
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefits-cube-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .benefits-content h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: #2B32B2;
+            margin-bottom: 30px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .benefit-cube-item {
+            background: #f9fcff;
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.5s;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            border: 1px solid #eef2f6;
+        }
+
+        .benefit-cube-item:hover {
+            transform: rotateY(10deg) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(43, 50, 178, 0.2);
+            border-color: #FFD93D;
+        }
+
+        .benefit-cube-item i {
+            font-size: 2.5rem;
+            color: #2B32B2;
+            margin-bottom: 15px;
+        }
+
+        .benefit-cube-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #2B32B2;
+        }
+
+        .benefit-cube-item p {
+            color: #334155;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .cube-image {
+            position: relative;
+            height: 400px;
+        }
+
+        .cube-3d {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            transform-style: preserve-3d;
+            animation: rotateCube 20s infinite linear;
+        }
+
+        @keyframes rotateCube {
+            0% { transform: rotateX(0) rotateY(0); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(43, 50, 178, 0.9);
+            border: 2px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .front { transform: translateZ(150px); }
+        .back { transform: rotateY(180deg) translateZ(150px); }
+        .right { transform: rotateY(90deg) translateZ(150px); }
+        .left { transform: rotateY(-90deg) translateZ(150px); }
+        .top { transform: rotateX(90deg) translateZ(150px); }
+        .bottom { transform: rotateX(-90deg) translateZ(150px); }
+
+        /* ===== SECTION 5: TESTIMONIALS WITH PARALLAX ===== */
+        .section-testimonial-parallax {
+            background: linear-gradient(rgba(8, 10, 24, 0.92), rgba(18, 20, 38, 0.95)), 
+                        url('Jp9.webp') center/cover fixed;
+            color: white;
+        }
+
+        .testimonial-parallax-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-parallax-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+            padding: 40px 30px;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-parallax-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,217,61,0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: all 0.6s;
+        }
+
+        .testimonial-parallax-card:hover::before {
+            opacity: 1;
+        }
+
+        .testimonial-parallax-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #FFD93D;
+        }
+
+        .testimonial-parallax-card i {
+            color: #FFD93D;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .testimonial-parallax-card p {
+            color: rgba(255,255,255,0.9);
+            font-style: italic;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-size: 1rem;
+        }
+
+        .testimonial-parallax-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .parallax-author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #FFD93D;
+        }
+
+        .parallax-author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .parallax-author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .parallax-author-info span {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* ===== SECTION 6: TIPS WITH HORIZONTAL SCROLL ===== */
+        .section-tips-scroll {
+            background: white;
+            overflow: hidden;
+        }
+
+        .tips-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .tips-header h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: #2B32B2;
+        }
+
+        .tips-header p {
+            color: #334155;
+            font-size: 1.1rem;
+        }
+
+        .tips-scroll-btn {
+            background: #2B32B2;
+            color: white;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+        }
+
+        .tips-scroll-btn:hover {
+            background: #FFD93D;
+            color: #2B32B2;
+            transform: translateY(-3px);
+        }
+
+        .tips-horizontal-scroll {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding: 20px 0 40px;
+            scrollbar-width: thin;
+            scrollbar-color: #2B32B2 #f0f0f0;
+        }
+
+        .tips-horizontal-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .tips-horizontal-scroll::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 10px;
+        }
+
+        .tips-horizontal-scroll::-webkit-scrollbar-thumb {
+            background: #2B32B2;
+            border-radius: 10px;
+        }
+
+        .tips-horizontal-card {
+            min-width: 350px;
+            background: #f9fcff;
+            border-radius: 30px;
+            padding: 30px;
+            transition: all 0.4s;
+            border: 1px solid #eef2f6;
+        }
+
+        .tips-horizontal-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(43, 50, 178, 0.2);
+            border-color: #2B32B2;
+        }
+
+        .tips-card-icon {
+            width: 60px;
+            height: 60px;
+            background: #2B32B2;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .tips-horizontal-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #2B32B2;
+        }
+
+        .tips-horizontal-card p {
+            color: #334155;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .tips-card-btn {
+            background: transparent;
+            color: #2B32B2;
+            border: 2px solid #2B32B2;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tips-card-btn:hover {
+            background: #2B32B2;
+            color: white;
+        }
+
+        /* ===== SECTION 7: COMPARISON TABLE ===== */
+        .section-comparison {
+            background: linear-gradient(135deg, #f5f5f5, #ffffff);
+        }
+
+        .comparison-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .comparison-header h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: #2B32B2;
+            margin-bottom: 15px;
+        }
+
+        .comparison-header p {
+            color: #334155;
+            font-size: 1.1rem;
+        }
+
+        .comparison-table-container {
+            overflow-x: auto;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            min-width: 800px;
+        }
+
+        .comparison-table th {
+            background: #2B32B2;
+            color: white;
+            padding: 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #eef2f6;
+        }
+
+        .comparison-table tr:hover td {
+            background: #f9fcff;
+        }
+
+        .comparison-table .feature-name {
+            font-weight: 600;
+            color: #2B32B2;
+            text-align: left;
+        }
+
+        .comparison-table .check {
+            color: #10b981;
+            font-size: 1.2rem;
+        }
+
+        .comparison-table .times {
+            color: #ef4444;
+            font-size: 1.2rem;
+        }
+
+        .comparison-table-btn {
+            background: #2B32B2;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .comparison-table-btn:hover {
+            background: #FFD93D;
+            color: #2B32B2;
+        }
+
+        /* ===== SECTION 8: CTA WITH WAVE ANIMATION ===== */
+        .section-cta-wave {
+            background: linear-gradient(135deg, #2B32B2, #1488CC);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wave-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+
+        .wave-container h2 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .wave-container p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        .wave-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-wave-primary {
+            background: #FFD93D;
+            color: #2B32B2;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .btn-wave-primary:hover {
+            background: transparent;
+            color: #FFD93D;
+            border-color: #FFD93D;
+            transform: translateY(-5px);
+        }
+
+        .btn-wave-secondary {
+            background: transparent;
+            color: white;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid white;
+        }
+
+        .btn-wave-secondary:hover {
+            background: white;
+            color: #2B32B2;
+            transform: translateY(-5px);
+        }
+
+        .wave-animation {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background-size: cover;
+            animation: wave 10s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { background-position: 0 0; }
+            100% { background-position: 1440px 0; }
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #FFD93D;
+            color: #2B32B2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+            border: 2px solid white;
+            box-shadow: 0 5px 15px rgba(43, 50, 178, 0.3);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #2B32B2;
+            color: #FFD93D;
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        /* ===== RESPONSIVE BREAKPOINTS ===== */
+        @media (max-width: 1200px) {
+            .pricing-glass-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .benefits-cube-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .cube-image {
+                display: none;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-post-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            
+            .hero-post-stats {
+                justify-content: center;
+            }
+            
+            .hero-post-buttons {
+                justify-content: center;
+            }
+            
+            .form-3d-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-3d-field.full-width {
+                grid-column: span 1;
+            }
+            
+            .pricing-glass-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .testimonial-parallax-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-parallax-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .tips-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .tips-horizontal-card {
+                min-width: 280px;
+            }
+            
+            .wave-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-wave-primary, .btn-wave-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-post-stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-post-stat {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .hero-post-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-hero-primary, .btn-hero-secondary {
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .form-3d-container {
+                padding: 30px 20px;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .back-to-top {
+                bottom: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .pricing-glass-card {
+                padding: 30px 20px;
+            }
+            
+            .pricing-price {
+                font-size: 2rem;
+            }
+        }
+
+        /* Additional Hover Effects */
+        .btn-hero-primary:hover {
+            background: #2B32B2;
+            color: #FFD93D;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(43, 50, 178, 0.3);
+        }
+
+        .btn-hero-secondary:hover {
+            background: white;
+            color: #0a0c1c;
+            border-color: white;
+            transform: translateY(-5px);
+        }
+
+        .back-to-top:hover {
+            background: #2B32B2;
+            color: #FFD93D;
+            transform: translateY(-5px) scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder"></div>
+
+    <!-- SECTION 1: HERO WITH VIDEO GRAIN EFFECT -->
+    <section class="hero-post">
+        <div class="container">
+            <div class="hero-post-content">
+                <div class="hero-post-text" data-aos="fade-right">
+                    <h1>Post a Job & <span class="highlight">Find Your Perfect Candidate</span> Today</h1>
+                    <p>Reach thousands of qualified candidates instantly. Our smart matching algorithm connects you with the best talent in your industry.</p>
+                    
+                    <div class="hero-post-stats">
+                        <div class="hero-post-stat">
+                            <div class="number">50K+</div>
+                            <div class="label">Active Candidates</div>
+                        </div>
+                        <div class="hero-post-stat">
+                            <div class="number">24h</div>
+                            <div class="label">Avg. First Match</div>
+                        </div>
+                        <div class="hero-post-stat">
+                            <div class="number">95%</div>
+                            <div class="label">Success Rate</div>
+                        </div>
+                    </div>
+
+                    <div class="hero-post-buttons">
+                        <a href="4042.html" class="btn-hero-primary">Post a Job Now <i class="fas fa-arrow-right"></i></a>
+                        <a href="4042.html" class="btn-hero-secondary">See Pricing <i class="fas fa-tag"></i></a>
+                    </div>
+                </div>
+                <div class="hero-post-image" data-aos="fade-left">
+                    <img src="Jp11.webp" alt="Post Job">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: JOB FORM WITH 3D EFFECT AND VALIDATION -->
+    <section class="section-form-3d section-padding">
+        <div class="container">
+            <div class="form-3d-container" data-aos="fade-up">
+                <div class="form-3d-header">
+                    <h2>Post a New Job</h2>
+                    <p>Fill in the details below to reach thousands of qualified candidates</p>
+                </div>
+                <form id="jobPostForm">
+                    <div class="form-3d-grid">
+                        <div class="form-3d-field">
+                            <label for="jobTitle">Job Title *</label>
+                            <input type="text" id="jobTitle" name="jobTitle" placeholder="e.g. Senior Frontend Developer">
+                            <div class="error-message" id="jobTitleError">Job title is required</div>
+                        </div>
+                        <div class="form-3d-field">
+                            <label for="companyName">Company Name *</label>
+                            <input type="text" id="companyName" name="companyName" placeholder="Your company name">
+                            <div class="error-message" id="companyNameError">Company name is required</div>
+                        </div>
+                        <div class="form-3d-field">
+                            <label for="location">Location *</label>
+                            <input type="text" id="location" name="location" placeholder="e.g. New York, Remote">
+                            <div class="error-message" id="locationError">Location is required</div>
+                        </div>
+                        <div class="form-3d-field">
+                            <label for="employmentType">Employment Type *</label>
+                            <select id="employmentType" name="employmentType">
+                                <option value="">Select employment type</option>
+                                <option value="Full Time">Full Time</option>
+                                <option value="Part Time">Part Time</option>
+                                <option value="Contract">Contract</option>
+                                <option value="Remote">Remote</option>
+                                <option value="Hybrid">Hybrid</option>
+                            </select>
+                            <div class="error-message" id="employmentTypeError">Please select employment type</div>
+                        </div>
+                        <div class="form-3d-field">
+                            <label for="salary">Salary Range *</label>
+                            <input type="text" id="salary" name="salary" placeholder="e.g. $80k - $120k">
+                            <div class="error-message" id="salaryError">Salary range is required</div>
+                        </div>
+                        <div class="form-3d-field">
+                            <label for="experienceLevel">Experience Level *</label>
+                            <select id="experienceLevel" name="experienceLevel">
+                                <option value="">Select experience level</option>
+                                <option value="Entry Level">Entry Level</option>
+                                <option value="Mid Level">Mid Level</option>
+                                <option value="Senior Level">Senior Level</option>
+                                <option value="Lead/Manager">Lead/Manager</option>
+                                <option value="Executive">Executive</option>
+                            </select>
+                            <div class="error-message" id="experienceLevelError">Please select experience level</div>
+                        </div>
+                        <div class="form-3d-field full-width">
+                            <label for="jobDescription">Job Description *</label>
+                            <textarea id="jobDescription" name="jobDescription" placeholder="Describe the role, responsibilities, and requirements..."></textarea>
+                            <div class="error-message" id="jobDescriptionError">Job description is required</div>
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="submit" class="form-3d-btn" id="submitBtn">
+                            Post Job Now <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: PRICING CARDS WITH GLASSMORPHISM -->
+    <section class="section-pricing-glass section-padding">
+        <div class="container">
+            <div class="pricing-header" data-aos="fade-down">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Choose the perfect plan for your hiring needs</p>
+            </div>
+            <div class="pricing-glass-grid">
+                <div class="pricing-glass-card" data-aos="flip-left">
+                    <div class="pricing-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Basic</h3>
+                    <div class="pricing-price">$99<span>/job</span></div>
+                    <ul class="pricing-features">
+                        <li>Single job posting</li>
+                        <li>30 days visibility</li>
+                        <li>Basic candidate matching</li>
+                        <li>Email support</li>
+                    </ul>
+                    <button class="pricing-glass-btn" onclick="window.location.href='4042.html'">Choose Plan</button>
+                </div>
+                <div class="pricing-glass-card popular" data-aos="flip-left" data-aos-delay="100">
+                    <div class="pricing-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Professional</h3>
+                    <div class="pricing-price">$249<span>/job</span></div>
+                    <ul class="pricing-features">
+                        <li>5 job postings</li>
+                        <li>60 days visibility</li>
+                        <li>Advanced AI matching</li>
+                        <li>Priority support</li>
+                        <li>Featured listing</li>
+                    </ul>
+                    <button class="pricing-glass-btn" onclick="window.location.href='4042.html'">Choose Plan</button>
+                </div>
+                <div class="pricing-glass-card" data-aos="flip-left" data-aos-delay="200">
+                    <div class="pricing-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Enterprise</h3>
+                    <div class="pricing-price">Custom</div>
+                    <ul class="pricing-features">
+                        <li>Unlimited job postings</li>
+                        <li>Year-round visibility</li>
+                        <li>Dedicated account manager</li>
+                        <li>API access</li>
+                        <li>Custom solutions</li>
+                    </ul>
+                    <button class="pricing-glass-btn" onclick="window.location.href='4042.html'">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: BENEFITS WITH CUBE ROTATION -->
+    <section class="section-benefits-cube section-padding">
+        <div class="container">
+            <div class="benefits-cube-container">
+                <div class="benefits-content" data-aos="fade-right">
+                    <h2>Why Post Jobs With Us?</h2>
+                    <div class="benefits-grid">
+                        <div class="benefit-cube-item" data-aos="zoom-in">
+                            <i class="fas fa-bolt"></i>
+                            <h4>Fast Matching</h4>
+                            <p>Get qualified candidates within 24 hours</p>
+                        </div>
+                        <div class="benefit-cube-item" data-aos="zoom-in" data-aos-delay="50">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Smart Algorithm</h4>
+                            <p>AI-powered candidate recommendations</p>
+                        </div>
+                        <div class="benefit-cube-item" data-aos="zoom-in" data-aos-delay="100">
+                            <i class="fas fa-users"></i>
+                            <h4>Large Talent Pool</h4>
+                            <p>Access to 50,000+ pre-screened candidates</p>
+                        </div>
+                        <div class="benefit-cube-item" data-aos="zoom-in" data-aos-delay="150">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Quality Guaranteed</h4>
+                            <p>All candidates are verified and screened</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="cube-image" data-aos="fade-left">
+                    <div class="cube-3d">
+                        <div class="cube-face front"><i class="fas fa-briefcase"></i></div>
+                        <div class="cube-face back"><i class="fas fa-chart-pie"></i></div>
+                        <div class="cube-face right"><i class="fas fa-users"></i></div>
+                        <div class="cube-face left"><i class="fas fa-rocket"></i></div>
+                        <div class="cube-face top"><i class="fas fa-crown"></i></div>
+                        <div class="cube-face bottom"><i class="fas fa-shield-alt"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: TESTIMONIALS WITH PARALLAX -->
+    <section class="section-testimonial-parallax section-padding">
+        <div class="container">
+            <div class="pricing-header" data-aos="fade-down">
+                <h2>Success Stories</h2>
+                <p>Hear from companies who found their perfect candidates</p>
+            </div>
+            <div class="testimonial-parallax-grid">
+                <div class="testimonial-parallax-card" data-aos="fade-right">
+                    <i class="fas fa-quote-left"></i>
+                    <p>"Found our lead developer within 48 hours. The quality of candidates was exceptional."</p>
+                    <div class="testimonial-parallax-author">
+                        <div class="parallax-author-img">
+                            <img src="Jp9.webp" alt="Author">
+                        </div>
+                        <div class="parallax-author-info">
+                            <h4>David Chen</h4>
+                            <span>CTO, TechFlow</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-parallax-card" data-aos="fade-up">
+                    <i class="fas fa-quote-left"></i>
+                    <p>"The platform helped us scale our engineering team from 5 to 20 in just 3 months."</p>
+                    <div class="testimonial-parallax-author">
+                        <div class="parallax-author-img">
+                            <img src="Jp11.webp" alt="Author">
+                        </div>
+                        <div class="parallax-author-info">
+                            <h4>Sarah Williams</h4>
+                            <span>HR Director, InnovateLabs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-parallax-card" data-aos="fade-left">
+                    <i class="fas fa-quote-left"></i>
+                    <p>"Best investment we made for recruitment. Saved us thousands in agency fees."</p>
+                    <div class="testimonial-parallax-author">
+                        <div class="parallax-author-img">
+                            <img src="Jp12.webp" alt="Author">
+                        </div>
+                        <div class="parallax-author-info">
+                            <h4>James Rodriguez</h4>
+                            <span>Founder, StartupHub</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: TIPS WITH HORIZONTAL SCROLL -->
+    <section class="section-tips-scroll section-padding">
+        <div class="container">
+            <div class="tips-header" data-aos="fade-down">
+                <div>
+                    <h2>Job Posting Tips</h2>
+                    <p>Expert advice to attract the best talent</p>
+                </div>
+                <a href="4042.html" class="tips-scroll-btn">View All Tips <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="tips-horizontal-scroll" data-aos="fade-up">
+                <div class="tips-horizontal-card">
+                    <div class="tips-card-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h4>Write Clear Job Titles</h4>
+                    <p>Use specific titles like "Senior React Developer" instead of "Tech Guru" to attract qualified candidates.</p>
+                    <button class="tips-card-btn" onclick="window.location.href='4042.html'">Read More</button>
+                </div>
+                <div class="tips-horizontal-card">
+                    <div class="tips-card-icon">
+                        <i class="fas fa-list-ul"></i>
+                    </div>
+                    <h4>Detailed Descriptions</h4>
+                    <p>Include responsibilities, requirements, and growth opportunities to set clear expectations.</p>
+                    <button class="tips-card-btn" onclick="window.location.href='4042.html'">Read More</button>
+                </div>
+                <div class="tips-horizontal-card">
+                    <div class="tips-card-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h4>Include Salary Range</h4>
+                    <p>Jobs with salary ranges get 30% more applications from qualified candidates.</p>
+                    <button class="tips-card-btn" onclick="window.location.href='4042.html'">Read More</button>
+                </div>
+                <div class="tips-horizontal-card">
+                    <div class="tips-card-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h4>Showcase Company Culture</h4>
+                    <p>Include information about your team, values, and perks to attract the right fit.</p>
+                    <button class="tips-card-btn" onclick="window.location.href='4042.html'">Read More</button>
+                </div>
+                <div class="tips-horizontal-card">
+                    <div class="tips-card-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4>Optimize for Mobile</h4>
+                    <p>Most candidates browse jobs on mobile. Keep descriptions concise and scannable.</p>
+                    <button class="tips-card-btn" onclick="window.location.href='4042.html'">Read More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: COMPARISON TABLE -->
+    <section class="section-comparison section-padding">
+        <div class="container">
+            <div class="comparison-header" data-aos="fade-down">
+                <h2>Why Choose Us?</h2>
+                <p>Compare our platform with traditional recruitment</p>
+            </div>
+            <div class="comparison-table-container" data-aos="fade-up">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Features</th>
+                            <th>Our Platform</th>
+                            <th>Traditional Agencies</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="feature-name">Time to First Match</td>
+                            <td><span class="check"><i class="fas fa-check-circle"></i> 24 hours</span></td>
+                            <td><span class="times"><i class="fas fa-times-circle"></i> 2-3 weeks</span></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Cost per Hire</td>
+                            <td><span class="check"><i class="fas fa-check-circle"></i> $99 - $249</span></td>
+                            <td><span class="times"><i class="fas fa-times-circle"></i> 15-20% of salary</span></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Candidate Pool</td>
+                            <td><span class="check"><i class="fas fa-check-circle"></i> 50,000+ pre-screened</span></td>
+                            <td><span class="times"><i class="fas fa-times-circle"></i> Limited to network</span></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">AI Matching</td>
+                            <td><span class="check"><i class="fas fa-check-circle"></i> Yes</span></td>
+                            <td><span class="times"><i class="fas fa-times-circle"></i> No</span></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Satisfaction Guarantee</td>
+                            <td><span class="check"><i class="fas fa-check-circle"></i> 30-day guarantee</span></td>
+                            <td><span class="times"><i class="fas fa-times-circle"></i> Varies</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="form-3d-btn" onclick="window.location.href='4042.html'">Post a Job & See the Difference</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: CTA WITH WAVE ANIMATION -->
+    <section class="section-cta-wave section-padding">
+        <div class="wave-animation"></div>
+        <div class="container">
+            <div class="wave-container" data-aos="zoom-in">
+                <h2>Ready to Find Your Perfect Candidate?</h2>
+                <p>Join thousands of companies who've found exceptional talent through our platform</p>
+                <div class="wave-buttons">
+                    <a href="4042.html" class="btn-wave-primary">Post a Job Now</a>
+                    <a href="4042.html" class="btn-wave-secondary">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true,
+            offset: 50,
+            easing: 'ease-in-out'
+        });
+
+        // ===== FORM VALIDATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('jobPostForm');
+            if (!form) return;
+            
+            const jobTitle = document.getElementById('jobTitle');
+            const companyName = document.getElementById('companyName');
+            const location = document.getElementById('location');
+            const employmentType = document.getElementById('employmentType');
+            const salary = document.getElementById('salary');
+            const experienceLevel = document.getElementById('experienceLevel');
+            const jobDescription = document.getElementById('jobDescription');
+
+            // Error elements
+            const jobTitleError = document.getElementById('jobTitleError');
+            const companyNameError = document.getElementById('companyNameError');
+            const locationError = document.getElementById('locationError');
+            const employmentTypeError = document.getElementById('employmentTypeError');
+            const salaryError = document.getElementById('salaryError');
+            const experienceLevelError = document.getElementById('experienceLevelError');
+            const jobDescriptionError = document.getElementById('jobDescriptionError');
+
+            // Hide all errors function
+            function hideAllErrors() {
+                document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
+                document.querySelectorAll('.form-3d-field input, .form-3d-field select, .form-3d-field textarea').forEach(el => {
+                    el.classList.remove('error');
+                });
+            }
+
+            // Validation functions
+            function validateJobTitle() {
+                if (!jobTitle.value.trim()) {
+                    jobTitle.classList.add('error');
+                    jobTitleError.classList.add('show');
+                    return false;
+                } else {
+                    jobTitle.classList.remove('error');
+                    jobTitleError.classList.remove('show');
+                    return true;
+                }
+            }
+
+            function validateCompanyName() {
+                if (!companyName.value.trim()) {
+                    companyName.classList.add('error');
+                    companyNameError.classList.add('show');
+                    return false;
+                } else {
+                    companyName.classList.remove('error');
+                    companyNameError.classList.remove('show');
+                    return true;
+                }
+            }
+
+            function validateLocation() {
+                if (!location.value.trim()) {
+                    location.classList.add('error');
+                    locationError.classList.add('show');
+                    return false;
+                } else {
+                    location.classList.remove('error');
+                    locationError.classList.remove('show');
+                    return true;
+                }
+            }
+
+            function validateEmploymentType() {
+                if (!employmentType.value) {
+                    employmentType.classList.add('error');
+                    employmentTypeError.classList.add('show');
+                    return false;
+                } else {
+                    employmentType.classList.remove('error');
+                    employmentTypeError.classList.remove('show');
+                    return true;
+                }
+            }
+
+            function validateSalary() {
+                if (!salary.value.trim()) {
+                    salary.classList.add('error');
+                    salaryError.classList.add('show');
+                    return false;
+                } else {
+                    salary.classList.remove('error');
+                    salaryError.classList.remove('show');
+                    return true;
+                }
+            }
+
+            function validateExperienceLevel() {
+                if (!experienceLevel.value) {
+                    experienceLevel.classList.add('error');
+                    experienceLevelError.classList.add('show');
+                    return false;
+                } else {
+                    experienceLevel.classList.remove('error');
+                    experienceLevelError.classList.remove('show');
+                    return true;
+                }
+            }
+
+            function validateJobDescription() {
+                if (!jobDescription.value.trim()) {
+                    jobDescription.classList.add('error');
+                    jobDescriptionError.classList.add('show');
+                    return false;
+                } else {
+                    jobDescription.classList.remove('error');
+                    jobDescriptionError.classList.remove('show');
+                    return true;
+                }
+            }
+
+            // Live validation on input
+            if (jobTitle) jobTitle.addEventListener('input', validateJobTitle);
+            if (companyName) companyName.addEventListener('input', validateCompanyName);
+            if (location) location.addEventListener('input', validateLocation);
+            if (employmentType) employmentType.addEventListener('change', validateEmploymentType);
+            if (salary) salary.addEventListener('input', validateSalary);
+            if (experienceLevel) experienceLevel.addEventListener('change', validateExperienceLevel);
+            if (jobDescription) jobDescription.addEventListener('input', validateJobDescription);
+
+            // Form submit handler
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const isJobTitleValid = validateJobTitle();
+                const isCompanyNameValid = validateCompanyName();
+                const isLocationValid = validateLocation();
+                const isEmploymentTypeValid = validateEmploymentType();
+                const isSalaryValid = validateSalary();
+                const isExperienceLevelValid = validateExperienceLevel();
+                const isJobDescriptionValid = validateJobDescription();
+
+                if (isJobTitleValid && isCompanyNameValid && isLocationValid && isEmploymentTypeValid && 
+                    isSalaryValid && isExperienceLevelValid && isJobDescriptionValid) {
+                    window.location.href = '4042.html';
+                }
+            });
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Header and Footer Loader
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header
+            fetch('header2.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Header file not found');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                    setTimeout(initHeaderInteractions, 100);
+                })
+                .catch(error => {
+                    console.warn('Header could not be loaded:', error);
+                    document.getElementById('header-placeholder').innerHTML = 
+                        '<header style="background: linear-gradient(135deg, #2B32B2, #1488CC); color: white; padding: 20px; text-align: center;">Header Not Found</header>';
+                });
+
+            // Load footer
+            fetch('footer2.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Footer file not found');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                })
+                .catch(error => {
+                    console.warn('Footer could not be loaded:', error);
+                    document.getElementById('footer-placeholder').innerHTML = 
+                        '<footer style="background: linear-gradient(135deg, #2B32B2, #1488CC); color: white; padding: 40px; text-align: center;">Footer Not Found</footer>';
+                });
+        });
+
+        // Header interactions
+        function initHeaderInteractions() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    
+                    if (navMenu.classList.contains('active')) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+            
+            document.querySelectorAll('.dropdown-icon').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const dropdownId = this.getAttribute('data-dropdown');
+                    const dropdown = document.getElementById(dropdownId);
+                    
+                    if (!dropdown) return;
+                    
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        if (menu.id !== dropdownId) {
+                            menu.classList.remove('show');
+                        }
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        if (btn !== this) {
+                            btn.classList.remove('active');
+                        }
+                    });
+                    
+                    dropdown.classList.toggle('show');
+                    this.classList.toggle('active');
+                });
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav-item-with-dropdown')) {
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+        }
+
+        // Refresh AOS on load
+        window.addEventListener('load', () => AOS.refresh());
+        window.addEventListener('resize', () => AOS.refresh());
+
+        // ===== NEWSLETTER VALIDATION WITH MESSAGE UNDER BOX =====
+    document.addEventListener('DOMContentLoaded', function() {
+        // Wait a moment for footer to load
+        setTimeout(function() {
+            // Get the newsletter button and input from footer
+            const footerBtn = document.querySelector('.footer .newsletter-input button');
+            const footerInput = document.querySelector('.footer .newsletter-input input');
+            const newsletterForm = document.querySelector('.footer .newsletter-form');
+            
+            if (!footerBtn || !footerInput || !newsletterForm) {
+                console.log('Newsletter elements not found in footer');
+                return;
+            }
+            
+            // Remove any existing onclick attribute
+            footerBtn.removeAttribute('onclick');
+            
+            // Function to show message under the box
+            function showMessage(message, isError) {
+                // Remove any existing message
+                const existingMsg = document.querySelector('.footer .newsletter-message');
+                if (existingMsg) existingMsg.remove();
+                
+                // Create message element
+                const msgDiv = document.createElement('div');
+                msgDiv.className = 'newsletter-message';
+                msgDiv.style.cssText = `
+                    margin-top: 10px;
+                    padding: 8px 15px;
+                    border-radius: 50px;
+                    font-size: 14px;
+                    text-align: center;
+                    background: ${isError ? '#fee' : '#e8f5e9'};
+                    color: ${isError ? '#c00' : '#2e7d32'};
+                `;
+                msgDiv.textContent = message;
+                
+                // Add to newsletter form
+                newsletterForm.appendChild(msgDiv);
+                
+                // Remove after 3 seconds
+                setTimeout(() => {
+                    if (msgDiv.parentNode) msgDiv.remove();
+                }, 3000);
+            }
+            
+            // Add click event
+            footerBtn.addEventListener('click', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                
+                const email = footerInput.value.trim();
+                
+                // Check if empty
+                if (email === '') {
+                    showMessage('Please enter your email address', true);
+                    footerInput.focus();
+                    return false;
+                }
+                
+                // Check if valid email format (simple check)
+                if (!email.includes('@') || !email.includes('.')) {
+                    showMessage('Please enter a valid email address', true);
+                    footerInput.focus();
+                    return false;
+                }
+                
+                // Valid email - show success message
+                showMessage('Thank you for subscribing!', false);
+                
+                // Redirect after delay
+                setTimeout(() => {
+                    window.location.href = '4042.html';
+                }, 1500);
+                
+                return false;
+            });
+            
+            // Enter key support
+            footerInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    footerBtn.click();
+                }
+            });
+            
+            console.log('Newsletter validation with message working');
+        }, 500);
+    });
+
+    </script>
+</body>
+</html>

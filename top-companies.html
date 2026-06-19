@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>JobPortal — Top Companies · All New Designs</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* ----- RESET & BASE ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .mid-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        section {
+            margin: 120px 0;
+            position: relative;
+            width: 100%;
+            clear: both;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1e1e2f;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #4ecdc4;
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ----- AOS ANIMATIONS ----- */
+        [data-aos="fade-left"] { transform: translateX(-100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="fade-right"] { transform: translateX(100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="fade-up"] { transform: translateY(100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="fade-down"] { transform: translateY(-100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="zoom-in"] { transform: scale(0.7); opacity: 0; transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="zoom-out"] { transform: scale(1.3); opacity: 0; transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="flip-left"] { transform: perspective(2500px) rotateY(-120deg); opacity: 0; transition: all 1.2s ease; }
+        [data-aos="flip-right"] { transform: perspective(2500px) rotateY(120deg); opacity: 0; transition: all 1.2s ease; }
+        [data-aos].aos-animate { transform: translate(0) scale(1) rotateY(0); opacity: 1; }
+
+        /* ----- BUTTON STYLES ----- */
+        .primary-btn, .outline-btn, .prestige-btn, .leader-btn, .metric-btn, .globe-btn, .insight-btn {
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 8px;
+            padding: 12px 24px;
+            background: #4ecdc4;
+            color: #1e1e2f;
+        }
+
+        .primary-btn:hover, .prestige-btn:hover, .leader-btn:hover, .metric-btn:hover, .globe-btn:hover, .insight-btn:hover {
+            background: #1e1e2f;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .outline-btn {
+            background: transparent;
+            border: 2px solid #4ecdc4;
+            color: #1e1e2f;
+        }
+        .outline-btn:hover {
+            background: #4ecdc4;
+            color: #1e1e2f;
+        }
+
+        /* ===== SECTION 1: HERO (Top Companies) with bg image ===== */
+        .top-companies-hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            margin-top: 20px;
+            background: linear-gradient(135deg, rgba(30,30,47,0.9), rgba(78,205,196,0.8)), url('Jp11.webp');
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 900px;
+            padding: 60px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .hero-badge {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(5px);
+            padding: 10px 25px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .hero-content h1 { font-size: 60px; font-weight: 700; margin-bottom: 20px; }
+        .hero-content h1 span { color: #4ecdc4; }
+        .hero-stats {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .hero-stats strong { font-size: 32px; color: #4ecdc4; display: block; }
+
+        /* ===== SECTION 2: DESIGN 1 - PRESTIGE AWARDS (unique) ===== */
+        .awards-showcase {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        .award-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            transition: all 0.4s;
+            display: flex;
+            border: 1px solid #eef2f6;
+        }
+        .award-card:hover {
+            transform: translateY(-12px) scale(1.01);
+            box-shadow: 0 30px 60px rgba(78,205,196,0.2);
+            border-color: #4ecdc4;
+        }
+        .award-medal {
+            width: 120px;
+            background: linear-gradient(145deg, #4ecdc4, #1e1e2f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+        }
+        .award-content {
+            flex: 1;
+            padding: 30px;
+        }
+        .award-content h3 {
+            font-size: 28px;
+            color: #1e1e2f;
+            margin-bottom: 10px;
+        }
+        .award-trophy {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ffb800;
+            margin: 15px 0;
+        }
+        .award-trophy i {
+            font-size: 24px;
+        }
+
+        /* ===== SECTION 3: DESIGN 2 - QUADRANT GRID (unique) ===== */
+         /* Quadrant Section with Background Images */
+        .quadrant-section {
+            background: #f1f5f9;
+            border-radius: 50px;
+            padding: 60px;
+        }
+        
+        .quadrant-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .quadrant-card {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            position: relative;
+            min-height: 380px;
+            display: flex;
+            align-items: flex-end;
+        }
+        
+        .quadrant-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            transition: transform 0.5s;
+        }
+        
+        .quadrant-card:hover .quadrant-bg {
+            transform: scale(1.1);
+        }
+        
+        .quadrant-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(30,30,47,0.9) 0%, rgba(78,205,196,0.6) 100%);
+            z-index: 2;
+            transition: opacity 0.3s;
+        }
+        
+        .quadrant-card:hover::before {
+            background: linear-gradient(0deg, rgba(30,30,47,0.95) 0%, rgba(78,205,196,0.7) 100%);
+        }
+        
+        .quadrant-content {
+            position: relative;
+            z-index: 3;
+            padding: 35px;
+            color: white;
+            width: 100%;
+        }
+        
+        .quadrant-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .quadrant-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .quadrant-icon i {
+            font-size: 30px;
+            color: white;
+        }
+        
+        .quadrant-header h3 {
+            font-size: 28px;
+            color: white;
+            margin-bottom: 0;
+        }
+        
+        .company-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .company-badge {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(5px);
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .company-badge img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+        }
+        
+        .leader-btn {
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 8px;
+            padding: 10px 20px;
+            background: #4ecdc4;
+            color: #1e1e2f;
+        }
+        
+        .leader-btn:hover {
+            background: white;
+            color: #1e1e2f;
+            transform: translateY(-3px);
+        }
+        
+        .quadrant-content p {
+            color: rgba(255,255,255,0.9) !important;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .quadrant-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .quadrant-section {
+                padding: 30px 15px;
+            }
+            .quadrant-card {
+                min-height: 350px;
+            }
+            .quadrant-content {
+                padding: 25px;
+            }
+        }
+        /* ===== SECTION 4: DESIGN 3 - METRIC CIRCLES (unique) ===== */
+        .metric-showcase {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .metric-circle-card {
+            background: white;
+            border-radius: 40px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            transition: all 0.4s;
+            border: 1px solid #eef2f6;
+        }
+        .metric-circle-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #4ecdc4;
+        }
+        .circular-progress {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: conic-gradient(#4ecdc4 0deg, #eef2f6 0deg);
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .circular-progress::before {
+            content: '';
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            background: white;
+            border-radius: 50%;
+        }
+        .progress-value {
+            position: relative;
+            z-index: 2;
+            font-size: 28px;
+            font-weight: 700;
+            color: #4ecdc4;
+        }
+        .company-logos {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+        }
+        .company-logos img {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid white;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+        }
+
+        /* ===== SECTION 5: DESIGN 4 - GLOBE NETWORK (unique) ===== */
+        .network-section {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            border-radius: 50px;
+            padding: 60px;
+        }
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .network-card {
+            background: white;
+            border-radius: 30px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s;
+            border: 1px solid #eef2f6;
+            position: relative;
+            overflow: hidden;
+        }
+        .network-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4ecdc4, #1e1e2f);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+        .network-card:hover::before {
+            transform: scaleX(1);
+        }
+        .network-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 50px rgba(78,205,196,0.2);
+        }
+        .network-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(78,205,196,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            color: #4ecdc4;
+        }
+        .hub-count {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1e1e2f;
+            margin: 10px 0;
+        }
+
+        /* ===== SECTION 6: DESIGN 5 - INSIGHT CARDS (unique) ===== */
+        .insight-section {
+            background: #1e1e2f;
+            border-radius: 50px;
+            padding: 80px;
+            color: white;
+        }
+        .insight-section .section-header h2 {
+            color: white;
+        }
+        .insight-section .section-header p {
+            color: rgba(255,255,255,0.8);
+        }
+        .insight-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .insight-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+            padding: 35px;
+            transition: all 0.4s;
+        }
+        .insight-card:hover {
+            background: #4ecdc4;
+            transform: translateY(-12px) rotate(1deg);
+        }
+        .insight-card:hover * {
+            color: #1e1e2f;
+        }
+        .insight-quote {
+            font-size: 48px;
+            color: #4ecdc4;
+            margin-bottom: 20px;
+        }
+        .insight-text {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        .insight-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .insight-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #4ecdc4;
+        }
+
+        /* ----- RESPONSIVE (no horizontal scroll) ----- */
+        @media (max-width: 1200px) {
+            .metric-showcase, .insight-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .network-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 992px) {
+            .mid-section { padding: 0 20px; }
+            .hero-content h1 { font-size: 42px; }
+            .awards-showcase, .quadrant-grid, .metric-showcase, .insight-grid {
+                grid-template-columns: 1fr;
+            }
+            .network-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .award-card {
+                flex-direction: column;
+            }
+            .award-medal {
+                width: 100%;
+                height: 100px;
+            }
+            .quadrant-section, .network-section, .insight-section {
+                padding: 40px 20px;
+            }
+        }
+        @media (max-width: 768px) {
+            .mid-section { padding: 0 15px; }
+            .hero-content h1 { font-size: 32px; }
+            .hero-stats { flex-direction: column; gap: 15px; }
+            .network-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        html, body { max-width: 100%; overflow-x: hidden; }
+        img, video, svg { max-width: 100%; height: auto; }
+
+        /* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #4ecdc4;  /* You can change this color */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    border: 2px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #3ab7ad;  /* Darker shade on hover */
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(78,205,196,0.4);
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Back to Top Button -->
+<div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+    <!-- HEADER PLACEHOLDER - Header will load here -->
+    <div id="header-placeholder"></div>
+
+    <div class="mid-section">
+
+        <!-- ===== SECTION 1: HERO (Top Companies) with bg image ===== -->
+        <section class="top-companies-hero" data-aos="fade-up">
+            <div class="hero-content">
+                <div class="hero-badge" data-aos="fade-down" data-aos-delay="100">
+                    <i class="fas fa-crown"></i> 2026 ELITE · TOP 100
+                </div>
+                <h1 data-aos="fade-right" data-aos-delay="200">
+                    World's <span>Finest Companies</span>
+                </h1>
+                <p data-aos="fade-left" data-aos-delay="300" style="font-size: 18px; max-width: 600px; margin: 0 auto 30px;">
+                    Discover the most prestigious employers of 2026, recognized for excellence, innovation, and culture.
+                </p>
+                <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
+                    <div><strong>100</strong> Elite Companies</div>
+                    <div><strong>52</strong> Countries</div>
+                    <div><strong>98%</strong> Excellence Rate</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 2: DESIGN 1 - PRESTIGE AWARDS (unique) ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Prestige Award Winners</h2>
+                <p>Top companies recognized for excellence in 2026</p>
+            </div>
+            <div class="awards-showcase">
+                <!-- Google -->
+                <div class="award-card" data-aos="flip-left" data-aos-delay="50">
+                    <div class="award-medal">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="award-content">
+                        <h3>Google</h3>
+                        <p class="award-trophy">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>5.0</span>
+                        </p>
+                        <p style="color: #64748b; margin: 15px 0;">Winner: Best Workplace Culture · Innovation Leader · Global Impact Award</p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span style="background: #f1f5f9; padding: 5px 15px; border-radius: 30px;">#1 in Technology</span>
+                            <span style="background: #f1f5f9; padding: 5px 15px; border-radius: 30px;">4.9 ★</span>
+                        </div>
+                        <button class="prestige-btn" style="margin-top: 20px;" onclick="window.location.href='404.html'">View Profile</button>
+                    </div>
+                </div>
+                <!-- Microsoft -->
+                <div class="award-card" data-aos="flip-right" data-aos-delay="70">
+                    <div class="award-medal">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="award-content">
+                        <h3>Microsoft</h3>
+                        <p class="award-trophy">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            <span>4.8</span>
+                        </p>
+                        <p style="color: #64748b; margin: 15px 0;">Winner: Diversity & Inclusion · Sustainability Leader · Global Impact</p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span style="background: #f1f5f9; padding: 5px 15px; border-radius: 30px;">#2 in Technology</span>
+                            <span style="background: #f1f5f9; padding: 5px 15px; border-radius: 30px;">180k employees</span>
+                        </div>
+                        <button class="prestige-btn" style="margin-top: 20px;" onclick="window.location.href='404.html'">View Profile</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 3: DESIGN 2 - QUADRANT GRID (unique) with BG IMAGES ===== -->
+<section class="quadrant-section" data-aos="fade-up">
+    <div class="section-header">
+        <h2>Industry Quadrants</h2>
+        <p>Leading companies by sector dominance</p>
+    </div>
+    <div class="quadrant-grid">
+        <!-- Tech Leaders -->
+        <div class="quadrant-card" data-aos="fade-right" data-aos-delay="50">
+            <div class="quadrant-bg" style="background-image: url('tech.webp');"></div>
+            <div class="quadrant-content">
+                <div class="quadrant-header">
+                    <div class="quadrant-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>Technology</h3>
+                </div>
+                <div class="company-badges">
+                    <div class="company-badge"><img src="Jp1.webp" alt=""> Google</div>
+                    <div class="company-badge"><img src="Jp2.webp" alt=""> Microsoft</div>
+                    <div class="company-badge"><img src="Jp3.webp" alt=""> Apple</div>
+                </div>
+                <p style="color: #64748b;">Market cap: $7.2T combined</p>
+                <button class="leader-btn" style="margin-top: 15px;" onclick="window.location.href='404.html'">View All</button>
+            </div>
+        </div>
+        
+        <!-- Finance Leaders -->
+        <div class="quadrant-card" data-aos="fade-left" data-aos-delay="50">
+            <div class="quadrant-bg" style="background-image: url('fin.webp');"></div>
+            <div class="quadrant-content">
+                <div class="quadrant-header">
+                    <div class="quadrant-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Finance</h3>
+                </div>
+                <div class="company-badges">
+                    <div class="company-badge"><img src="Jp4.webp" alt=""> JPMorgan</div>
+                    <div class="company-badge"><img src="Jp5.webp" alt=""> Goldman</div>
+                    <div class="company-badge"><img src="Jp6.webp" alt=""> BlackRock</div>
+                </div>
+                <p style="color: #64748b;">Assets under management: $12T</p>
+                <button class="leader-btn" style="margin-top: 15px;" onclick="window.location.href='404.html'">View All</button>
+            </div>
+        </div>
+        
+        <!-- Healthcare Leaders -->
+        <div class="quadrant-card" data-aos="fade-right" data-aos-delay="70">
+            <div class="quadrant-bg" style="background-image: url('healthcare.webp');"></div>
+            <div class="quadrant-content">
+                <div class="quadrant-header">
+                    <div class="quadrant-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Healthcare</h3>
+                </div>
+                <div class="company-badges">
+                    <div class="company-badge"><img src="Jp7.webp" alt=""> J&J</div>
+                    <div class="company-badge"><img src="Jp8.webp" alt=""> Pfizer</div>
+                    <div class="company-badge"><img src="Jp9.webp" alt=""> UnitedHealth</div>
+                </div>
+                <p style="color: #64748b;">R&D investment: $45B</p>
+                <button class="leader-btn" style="margin-top: 15px;" onclick="window.location.href='404.html'">View All</button>
+            </div>
+        </div>
+        
+        <!-- Retail Leaders -->
+        <div class="quadrant-card" data-aos="fade-left" data-aos-delay="70">
+            <div class="quadrant-bg" style="background-image: url('fast.webp');"></div>
+            <div class="quadrant-content">
+                <div class="quadrant-header">
+                    <div class="quadrant-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <h3>Retail</h3>
+                </div>
+                <div class="company-badges">
+                    <div class="company-badge"><img src="Jp10.webp" alt=""> Amazon</div>
+                    <div class="company-badge"><img src="Jp11.webp" alt=""> Walmart</div>
+                    <div class="company-badge"><img src="Jp12.webp" alt=""> Target</div>
+                </div>
+                <p style="color: #64748b;">Annual revenue: $1.2T</p>
+                <button class="leader-btn" style="margin-top: 15px;" onclick="window.location.href='404.html'">View All</button>
+            </div>
+        </div>
+    </div>
+
+
+        <!-- ===== SECTION 4: DESIGN 3 - METRIC CIRCLES (unique) ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Performance Metrics</h2>
+                <p>Key indicators of corporate excellence</p>
+            </div>
+            <div class="metric-showcase">
+                <!-- Employee Satisfaction -->
+                <div class="metric-circle-card" data-aos="zoom-in" data-aos-delay="50">
+                    <div class="circular-progress" style="background: conic-gradient(#4ecdc4 324deg, #eef2f6 0deg);">
+                        <div class="progress-value">92%</div>
+                    </div>
+                    <h3>Employee Satisfaction</h3>
+                    <div class="company-logos">
+                        <img src="Jp1.webp" alt="Google">
+                        <img src="Jp2.webp" alt="Microsoft">
+                        <img src="Jp3.webp" alt="Apple">
+                    </div>
+                    <p style="color: #64748b;">Top quartile companies</p>
+                    <button class="metric-btn" style="margin-top: 20px;" onclick="window.location.href='404.html'">View Details</button>
+                </div>
+                <!-- Revenue Growth -->
+                <div class="metric-circle-card" data-aos="zoom-in" data-aos-delay="70">
+                    <div class="circular-progress" style="background: conic-gradient(#4ecdc4 288deg, #eef2f6 0deg);">
+                        <div class="progress-value">156%</div>
+                    </div>
+                    <h3>Revenue Growth</h3>
+                    <div class="company-logos">
+                        <img src="Jp4.webp" alt="Stripe">
+                        <img src="Jp5.webp" alt="Datadog">
+                        <img src="Jp6.webp" alt="Snowflake">
+                    </div>
+                    <p style="color: #64748b;">Fastest growing companies</p>
+                    <button class="metric-btn" style="margin-top: 20px;" onclick="window.location.href='404.html'">View Details</button>
+                </div>
+                <!-- Global Reach -->
+                <div class="metric-circle-card" data-aos="zoom-in" data-aos-delay="90">
+                    <div class="circular-progress" style="background: conic-gradient(#4ecdc4 252deg, #eef2f6 0deg);">
+                        <div class="progress-value">156</div>
+                    </div>
+                    <h3>Countries Present</h3>
+                    <div class="company-logos">
+                        <img src="Jp7.webp" alt="Google">
+                        <img src="Jp8.webp" alt="Microsoft">
+                        <img src="Jp9.webp" alt="Amazon">
+                    </div>
+                    <p style="color: #64748b;">Global footprint leaders</p>
+                    <button class="metric-btn" style="margin-top: 20px;" onclick="window.location.href='404.html'">View Details</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 5: DESIGN 4 - GLOBE NETWORK (unique) ===== -->
+        <section class="network-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Global Network Hubs</h2>
+                <p>Major company presence worldwide</p>
+            </div>
+            <div class="network-grid">
+                <!-- North America -->
+                <div class="network-card" data-aos="flip-up" data-aos-delay="50">
+                    <div class="network-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h4>North America</h4>
+                    <div class="hub-count">2,345</div>
+                    <p>Companies</p>
+                    <div style="margin: 15px 0;">
+                        <span style="background: #f1f5f9; padding: 3px 10px; border-radius: 30px; margin: 0 3px;">USA</span>
+                        <span style="background: #f1f5f9; padding: 3px 10px; border-radius: 30px; margin: 0 3px;">Canada</span>
+                    </div>
+                    <button class="globe-btn" style="margin-top: 15px;" onclick="window.location.href='404.html'">Explore</button>
+                </div>
+                <!-- Europe -->
+                <div class="network-card" data-aos="flip-up" data-aos-delay="70">
+                    <div class="network-icon">
+                        <i class="fas fa-globe-europe"></i>
+                    </div>
+                    <h4>Europe</h4>
+                    <div class="hub-count">1,876</div>
+                    <p>Companies</p>
+                    <div style="margin: 15px 0;">
+                        <span style="background: #f1f5f9; padding: 3px 10px; border-radius: 30px; margin: 0 3px;">UK</span>
+                        <span style="background: #f1f5f9; padding: 3px 10px; border-radius: 30px; margin: 0 3px;">Germany</span>
+                    </div>
+                    <button class="globe-btn" style="margin-top: 15px;" onclick="window.location.href='404.html'">Explore</button>
+                </div>
+                <!-- Asia -->
+                <div class="network-card" data-aos="flip-up" data-aos-delay="90">
+                    <div class="network-icon">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <h4>Asia Pacific</h4>
+                    <div class="hub-count">1,543</div>
+                    <p>Companies</p>
+                    <div style="margin: 15px 0;">
+                        <span style="background: #f1f5f9; padding: 3px 10px; border-radius: 30px; margin: 0 3px;">Singapore</span>
+                        <span style="background: #f1f5f9; padding: 3px 10px; border-radius: 30px; margin: 0 3px;">Japan</span>
+                    </div>
+                    <button class="globe-btn" style="margin-top: 15px;" onclick="window.location.href='404.html'">Explore</button>
+                </div>
+                <!-- Middle East -->
+                <div class="network-card" data-aos="flip-up" data-aos-delay="110">
+                    <div class="network-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h4>Middle East</h4>
+                    <div class="hub-count">876</div>
+                    <p>Companies</p>
+                    <div style="margin: 15px 0;">
+                        <span style="background: #f1f5f9; padding: 3px 10px; border-radius: 30px; margin: 0 3px;">UAE</span>
+                        <span style="background: #f1f5f9; padding: 3px 10px; border-radius: 30px; margin: 0 3px;">KSA</span>
+                    </div>
+                    <button class="globe-btn" style="margin-top: 15px;" onclick="window.location.href='404.html'">Explore</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 6: DESIGN 5 - INSIGHT CARDS (unique) ===== -->
+        <section class="insight-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Leadership Insights</h2>
+                <p>What industry leaders say about these companies</p>
+            </div>
+            <div class="insight-grid">
+                <!-- Insight 1 -->
+                <div class="insight-card" data-aos="zoom-in" data-aos-delay="50">
+                    <div class="insight-quote">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <p class="insight-text">"Google's culture of innovation is unparalleled. They've set the standard for how technology companies should operate."</p>
+                    <div class="insight-author">
+                        <img src="Jp10.webp" alt="Satya Nadella">
+                        <div>
+                            <h4>Satya Nadella</h4>
+                            <p>CEO, Microsoft</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Insight 2 -->
+                <div class="insight-card" data-aos="zoom-in" data-aos-delay="70">
+                    <div class="insight-quote">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <p class="insight-text">"Amazon's customer obsession and operational excellence make them one of the most admired companies globally."</p>
+                    <div class="insight-author">
+                        <img src="Jp11.webp" alt="Andy Jassy">
+                        <div>
+                            <h4>Andy Jassy</h4>
+                            <p>CEO, Amazon</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Insight 3 -->
+                <div class="insight-card" data-aos="zoom-in" data-aos-delay="90">
+                    <div class="insight-quote">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <p class="insight-text">"Microsoft's transformation under Satya has been remarkable. They're now a leader in cloud and AI."</p>
+                    <div class="insight-author">
+                        <img src="Jp12.webp" alt="Tim Cook">
+                        <div>
+                            <h4>Tim Cook</h4>
+                            <p>CEO, Apple</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER - Footer will load here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true,
+            offset: 50,
+            easing: 'ease-in-out'
+        });
+
+        // All buttons redirect to 404.html
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                window.location.href = '404.html';
+            });
+        });
+        // ================================================
+
+        // ===== TAB FUNCTION =====
+    function showTab(event, tabId) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+        event.target.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+    }
+
+    // ===== NEWSLETTER VALIDATION =====
+    function validateNewsletter(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function showNewsletterError(message) {
+        // Remove any existing error message
+        const existingMsg = document.querySelector('.newsletter-error');
+        if (existingMsg) existingMsg.remove();
+        
+        // Create error message element
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'newsletter-error';
+        msgDiv.style.cssText = `
+            margin-top: 10px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+            background: #fee;
+            color: #c00;
+        `;
+        msgDiv.textContent = message;
+        
+        // Find newsletter container
+        const newsletter = document.querySelector('.newsletter-form, .footer-newsletter, [class*="newsletter"]');
+        if (newsletter) {
+            newsletter.appendChild(msgDiv);
+            
+            // Remove error message after 3 seconds
+            setTimeout(() => msgDiv.remove(), 3000);
+        } else {
+            alert(message);
+        }
+    }
+
+    // ===== HEADER & FOOTER LOADER =====
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load header
+        fetch('header1.html') // Make sure this filename is correct
+            .then(response => {
+                if (!response.ok) throw new Error('Header file not found');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                setTimeout(initHeaderInteractions, 100);
+            })
+            .catch(error => {
+                console.warn('Header could not be loaded:', error);
+                document.getElementById('header-placeholder').innerHTML = 
+                    '<header style="background: #6c5ce7; color: white; padding: 20px; text-align: center;">Header Not Found</header>';
+            });
+
+        // Load footer
+        fetch('footer1.html') // Make sure this filename is correct
+            .then(response => {
+                if (!response.ok) throw new Error('Footer file not found');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.warn('Footer could not be loaded:', error);
+                document.getElementById('footer-placeholder').innerHTML = 
+                    '<footer style="background: #1a1a2e; color: white; padding: 40px; text-align: center;">Footer Not Found</footer>';
+            });
+    });
+
+    // ===== HEADER INTERACTIONS =====
+    function initHeaderInteractions() {
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        // Mobile menu toggle
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                
+                if (navMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = 'auto';
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+        }
+        
+        // Dropdown functionality
+        document.querySelectorAll('.dropdown-icon').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const dropdownId = this.getAttribute('data-dropdown');
+                const dropdown = document.getElementById(dropdownId);
+                
+                if (!dropdown) return;
+                
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    if (menu.id !== dropdownId) {
+                        menu.classList.remove('show');
+                    }
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    if (btn !== this) {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                dropdown.classList.toggle('show');
+                this.classList.toggle('active');
+            });
+        });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-item-with-dropdown')) {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+        });
+        
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    if (menuToggle) menuToggle.classList.remove('active');
+                    if (navMenu) navMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                if (menuToggle) menuToggle.classList.remove('active');
+                if (navMenu) navMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+        });
+    }
+
+    // ===== AOS INITIALIZATION =====
+    const aosScript = document.createElement('script');
+    aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+    document.head.appendChild(aosScript);
+    
+    aosScript.onload = function() {
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true,
+            offset: 50,
+            easing: 'ease-in-out'
+        });
+    };
+
+    // ===== ANIMATION OBSERVER =====
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            const animatedElements = document.querySelectorAll('.fade-up, .fade-left, .fade-right, .scale-up, [data-aos]');
+            animatedElements.forEach(el => observer.observe(el));
+        }, 500);
+    });
+
+    // ===== NEWSLETTER HANDLER - VALIDATE THEN REDIRECT TO 404 =====
+    document.addEventListener('click', function(e) {
+        const newsletterBtn = e.target.closest('.newsletter-btn, .subscribe-btn, [class*="newsletter"] button, button[type="submit"]');
+        if (!newsletterBtn) return;
+        
+        const form = newsletterBtn.closest('form');
+        const newsletterInput = form ? form.querySelector('input[type="email"]') : 
+                                document.querySelector('.newsletter-input, input[type="email"][placeholder*="email"]');
+        
+        if (newsletterInput) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const email = newsletterInput.value.trim();
+            
+            // If email is empty or invalid, show error and DON'T redirect
+            if (!email) {
+                showNewsletterError('Please enter your email address');
+                newsletterInput.focus();
+                return false;
+            }
+            
+            if (!validateNewsletter(email)) {
+                showNewsletterError('Please enter a valid email address');
+                newsletterInput.focus();
+                return false;
+            }
+            
+            // Email is valid - redirect to 404.html
+            window.location.href = '404.html';
+            return false;
+        }
+    });
+
+    // ===== BUTTON REDIRECT HANDLER (for all other buttons) =====
+    document.addEventListener('click', function(e) {
+        const button = e.target.closest('button');
+        if (!button) return;
+        
+        // Skip newsletter buttons (already handled above)
+        if (button.closest('.newsletter-form') || 
+            button.classList.contains('newsletter-btn') || 
+            button.classList.contains('subscribe-btn') ||
+            button.closest('[class*="newsletter"]')) {
+            return;
+        }
+        
+        // Skip special buttons
+        if (button.hasAttribute('onclick') || 
+            button.classList.contains('dropdown-icon') || 
+            button.classList.contains('video-btn') ||
+            button.classList.contains('tab-btn')) {
+            return;
+        }
+        
+        // Redirect all other buttons to 404
+        e.preventDefault();
+        window.location.href = '404.html';
+    });
+
+    // Back to Top Button Functionality
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 500) {  // Show after scrolling 500px
+        backToTop.classList.add('show');
+    } else {
+        backToTop.classList.remove('show');
+    }
+});
+
+backToTop.addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'  // Smooth scroll animation
+    });
+});
+    </script>
+</body>
+</html>

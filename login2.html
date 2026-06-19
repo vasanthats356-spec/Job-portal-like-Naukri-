@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Login | Stackly</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #2B32B2, #1488CC); /* Blue gradient from header */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            width: 100%;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 440px;
+            margin: 0 auto;
+        }
+
+        /* Login card - white with yellow accents */
+        .login-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 32px;
+            box-shadow: 0 20px 40px rgba(43, 50, 178, 0.3);
+            border: 1px solid rgba(255, 217, 61, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .login-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 50px rgba(255, 217, 61, 0.2);
+        }
+
+        /* Header with clickable logo */
+        .job-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .job-logo {
+            display: inline-block;
+            margin-bottom: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .job-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .job-logo img {
+            height: 120px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            cursor: pointer;
+            /* REMOVED: filter: brightness(0) invert(1); */
+        }
+
+        .job-header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2B32B2; /* Blue */
+            letter-spacing: -0.5px;
+        }
+
+        .job-header p {
+            color: #64748b;
+            font-size: 14px;
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        .divider {
+            height: 3px;
+            width: 60px;
+            background: linear-gradient(90deg, #2B32B2, #FFD93D); /* Blue to Yellow */
+            margin: 16px auto 0;
+            border-radius: 3px;
+        }
+
+        /* Demo credentials box - yellow accent */
+        .demo-box {
+            background: rgba(255, 217, 61, 0.05); /* Yellow with low opacity */
+            border: 2px dashed #FFD93D; /* Yellow */
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .demo-box p {
+            color: #2B32B2; /* Blue */
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .demo-box .credentials {
+            background: white;
+            padding: 12px;
+            border-radius: 12px;
+            font-family: monospace;
+            color: #2B32B2; /* Blue */
+            font-size: 14px;
+            border: 1px solid rgba(255, 217, 61, 0.3);
+            margin-bottom: 12px;
+        }
+
+        .demo-box .credentials i {
+            color: #FFD93D; /* Yellow */
+            margin-right: 8px;
+        }
+
+        .demo-btn {
+            background: #FFD93D; /* Yellow */
+            color: #2B32B2; /* Blue */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .demo-btn:hover {
+            background: #FFE566; /* Lighter yellow */
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 217, 61, 0.4);
+        }
+
+        /* Form elements - blue and yellow accents */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #2B32B2; /* Blue */
+            margin-bottom: 6px;
+        }
+
+        .form-group label i {
+            color: #FFD93D; /* Yellow */
+            margin-right: 6px;
+            width: 18px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 14px;
+            color: #FFD93D; /* Yellow */
+            font-size: 16px;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 14px 16px 14px 45px;
+            border: 2px solid rgba(255, 217, 61, 0.3); /* Yellow border */
+            border-radius: 16px;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            background: white;
+            color: #2B32B2; /* Blue */
+        }
+
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: #2B32B2; /* Blue */
+            box-shadow: 0 0 0 4px rgba(43, 50, 178, 0.1);
+        }
+
+        .input-wrapper input.error {
+            border-color: #dc2626;
+            background-color: #fff5f5;
+        }
+
+        .input-wrapper input::placeholder {
+            color: #a0b3c9;
+            font-weight: 400;
+        }
+
+        /* Error message under field */
+        .error-message {
+            color: #dc2626;
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 6px;
+            margin-left: 12px;
+            display: none;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .error-message.show {
+            display: flex;
+        }
+
+        .error-message i {
+            font-size: 12px;
+        }
+
+        /* Forgot password and remember me */
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0 28px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .remember input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #FFD93D; /* Yellow */
+        }
+
+        .remember span {
+            color: #2d4b6e;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .forgot-link {
+            color: #FFD93D; /* Yellow */
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .forgot-link:hover {
+            color: #2B32B2; /* Blue */
+            text-decoration: underline;
+        }
+
+        /* Login button - yellow with blue text */
+        .login-btn {
+            width: 100%;
+            background: #FFD93D; /* Yellow */
+            color: #2B32B2; /* Blue */
+            border: none;
+            padding: 16px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            letter-spacing: 0.5px;
+            border: 2px solid transparent;
+        }
+
+        .login-btn:hover {
+            background: transparent;
+            color: #FFD93D; /* Yellow */
+            border-color: #FFD93D;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 217, 61, 0.3);
+        }
+
+        .login-btn i {
+            font-size: 16px;
+            transition: transform 0.2s;
+            color: #2B32B2; /* Blue */
+        }
+
+        .login-btn:hover i {
+            transform: translateX(4px);
+            color: #FFD93D; /* Yellow */
+        }
+
+        /* Signup link */
+        .signup-text {
+            text-align: center;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 2px solid rgba(255, 217, 61, 0.2);
+            color: #64748b;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .signup-text a {
+            color: #2B32B2; /* Blue */
+            text-decoration: none;
+            font-weight: 700;
+            margin-left: 6px;
+            transition: color 0.2s;
+        }
+
+        .signup-text a:hover {
+            color: #FFD93D; /* Yellow */
+            text-decoration: underline;
+        }
+
+        /* Back to Top Button - yellow */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #FFD93D; /* Yellow */
+            color: #4cd2ea; /* Blue */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            border: 2px solid white;
+            box-shadow: 0 5px 15px rgba(255, 217, 61, 0.3);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #4cd2ea; /* Blue */
+            color: #FFD93D; /* Yellow */
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(43, 50, 178, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 30px 20px;
+            }
+
+            .job-header h1 {
+                font-size: 22px;
+            }
+
+            .form-options {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .input-wrapper input {
+                padding: 12px 14px 12px 42px;
+                font-size: 14px;
+            }
+
+            .login-btn {
+                padding: 14px;
+            }
+
+            .job-logo img {
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .login-card {
+                padding: 24px 16px;
+            }
+
+            .job-logo img {
+                height: 80px;
+            }
+
+            .job-header h1 {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Ensure no horizontal scroll */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder"></div>
+
+    <!-- Login Form -->
+    <div class="login-container">
+        <div class="login-card">
+            <!-- Header with Stacklylogo that redirects to home2.html -->
+            <div class="job-header">
+                <a href="home2.html" class="job-logo">
+                    <img src="Stackly.webp" alt="Stackly" onerror="this.src='https://via.placeholder.com/200x60?text=Stackly';">
+                </a>
+                <h1>Welcome Back</h1>
+                <p>Log in to your account</p>
+                <div class="divider"></div>
+            </div>
+
+            <!-- Demo Credentials Box -->
+            <div class="demo-box">
+                <p><i class="fas fa-info-circle"></i> Demo Credentials</p>
+                <div class="credentials">
+                    <i class="fas fa-envelope"></i> jobseeker@demo.com<br>
+                    <i class="fas fa-lock"></i> Password@123
+                </div>
+                <button class="demo-btn" onclick="fillDemoCredentials()">
+                    <i class="fas fa-magic"></i> Fill Demo Credentials
+                </button>
+            </div>
+
+            <!-- Login form -->
+            <form id="loginForm" novalidate>
+                <div class="form-group">
+                    <label for="email">
+                        <i class="fas fa-envelope"></i> Email Address <span style="color: #dc2626;">*</span>
+                    </label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="error-message" id="emailError">
+                        <i class="fas fa-exclamation-circle"></i> Valid email required (e.g., name@domain.com)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fas fa-lock"></i> Password <span style="color: #dc2626;">*</span>
+                    </label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                    </div>
+                    <div class="error-message" id="passwordError">
+                        <i class="fas fa-exclamation-circle"></i> Must be 8+ chars, 1 uppercase, 1 number, 1 special (@$!%*?&)
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="remember">
+                        <input type="checkbox" id="rememberCheck" checked>
+                        <span>Remember me</span>
+                    </label>
+                    <a href="4042.html" class="forgot-link" id="forgotLink">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+
+            <!-- Signup link -->
+            <div class="signup-text">
+                Don't have an account?
+                <a href="signup2.html">Sign up now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // ===== LOGIN FORM VALIDATION =====
+        
+        // Get elements
+        const form = document.getElementById('loginForm');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+
+        // Hide all errors function
+        window.hideAllErrors = function() {
+            if (emailError && passwordError && emailInput && passwordInput) {
+                emailError.classList.remove('show');
+                passwordError.classList.remove('show');
+                emailInput.classList.remove('error');
+                passwordInput.classList.remove('error');
+            }
+        }
+
+        // Validate email format
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Validate password strength
+        function isValidPassword(password) {
+            const hasLength = password.length >= 8;
+            const hasUpper = /[A-Z]/.test(password);
+            const hasNumber = /[0-9]/.test(password);
+            const hasSpecial = /[@$!%*?&]/.test(password);
+            return hasLength && hasUpper && hasNumber && hasSpecial;
+        }
+
+        // Real-time validation for email
+        emailInput.addEventListener('input', function() {
+            const email = this.value.trim();
+            if (email && !isValidEmail(email)) {
+                emailError.classList.add('show');
+                this.classList.add('error');
+            } else {
+                emailError.classList.remove('show');
+                this.classList.remove('error');
+            }
+        });
+
+        // Real-time validation for password
+        passwordInput.addEventListener('input', function() {
+            const password = this.value;
+            if (password && !isValidPassword(password)) {
+                passwordError.classList.add('show');
+                this.classList.add('error');
+            } else {
+                passwordError.classList.remove('show');
+                this.classList.remove('error');
+            }
+        });
+
+        // Form submit handler
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+
+            let isValid = true;
+
+            // Validate email
+            if (!email) {
+                emailError.textContent = '⚠️ Email address is required';
+                emailError.classList.add('show');
+                emailInput.classList.add('error');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                emailError.textContent = '⚠️ Valid email required (e.g., name@domain.com)';
+                emailError.classList.add('show');
+                emailInput.classList.add('error');
+                isValid = false;
+            } else {
+                emailError.classList.remove('show');
+                emailInput.classList.remove('error');
+            }
+
+            // Validate password
+            if (!password) {
+                passwordError.textContent = '⚠️ Password is required';
+                passwordError.classList.add('show');
+                passwordInput.classList.add('error');
+                isValid = false;
+            } else if (!isValidPassword(password)) {
+                passwordError.textContent = '⚠️ Must be 8+ chars, 1 uppercase, 1 number, 1 special (@$!%*?&)';
+                passwordError.classList.add('show');
+                passwordInput.classList.add('error');
+                isValid = false;
+            } else {
+                passwordError.classList.remove('show');
+                passwordInput.classList.remove('error');
+            }
+
+            // If valid, redirect to 404.html
+            if (isValid) {
+                // Store remember me preference
+                if (document.getElementById('rememberCheck').checked) {
+                    localStorage.setItem('rememberedEmail', email);
+                } else {
+                    localStorage.removeItem('rememberedEmail');
+                }
+                window.location.href = '4042.html';
+            }
+        });
+
+        // Fill demo credentials
+        function fillDemoCredentials() {
+            emailInput.value = 'jobseeker@demo.com';
+            passwordInput.value = 'Password@123';
+            hideAllErrors();
+            
+            // Show success message
+            const alert = document.createElement('div');
+            alert.style.cssText = 'background: #FFD93D; color: #2B32B2; padding: 10px; border-radius: 8px; margin-bottom: 15px; text-align: center; font-size: 14px; font-weight: 600;';
+            alert.innerHTML = '<i class="fas fa-check-circle"></i> Demo credentials filled! Click login.';
+            document.querySelector('.login-card').insertBefore(alert, document.querySelector('.demo-box').nextSibling);
+            setTimeout(() => alert.remove(), 3000);
+        }
+
+        // Check for remembered email
+        window.addEventListener('load', function() {
+            const rememberedEmail = localStorage.getItem('rememberedEmail');
+            if (rememberedEmail) {
+                emailInput.value = rememberedEmail;
+                document.getElementById('rememberCheck').checked = true;
+            }
+        });
+
+        // Hide errors when user starts typing correctly
+        emailInput.addEventListener('focus', function() {
+            if (this.value.trim() && isValidEmail(this.value.trim())) {
+                emailError.classList.remove('show');
+                this.classList.remove('error');
+            }
+        });
+
+        passwordInput.addEventListener('focus', function() {
+            if (this.value && isValidPassword(this.value)) {
+                passwordError.classList.remove('show');
+                this.classList.remove('error');
+            }
+        });
+
+        // Forgot password link - clears fields and redirects
+        document.getElementById('forgotLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Clear input fields
+            emailInput.value = '';
+            passwordInput.value = '';
+            
+            // Remove error classes
+            emailInput.classList.remove('error');
+            passwordInput.classList.remove('error');
+            
+            // Hide error messages
+            emailError.classList.remove('show');
+            passwordError.classList.remove('show');
+            
+            // Redirect to 404.html
+            window.location.href = '4042.html';
+            
+            return false;
+        });
+
+        // Create account link
+        document.querySelector('.signup-text a').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'signup2.html';
+        });
+
+        // ===== HEADER & FOOTER LOADER =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header
+            fetch('header2.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Header file not found');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                    setTimeout(initHeaderInteractions, 100);
+                })
+                .catch(error => {
+                    console.warn('Header could not be loaded:', error);
+                    document.getElementById('header-placeholder').innerHTML = 
+                        '<header style="background: linear-gradient(135deg, #2B32B2, #1488CC); color: white; padding: 20px; text-align: center;">Header Not Found</header>';
+                });
+
+            // Load footer
+            fetch('footer2.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Footer file not found');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                })
+                .catch(error => {
+                    console.warn('Footer could not be loaded:', error);
+                    document.getElementById('footer-placeholder').innerHTML = 
+                        '<footer style="background: linear-gradient(135deg, #2B32B2, #1488CC); color: white; padding: 40px; text-align: center;">Footer Not Found</footer>';
+                });
+        });
+
+        // ===== HEADER INTERACTIONS =====
+        function initHeaderInteractions() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    
+                    if (navMenu.classList.contains('active')) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = 'auto';
+                        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                            menu.classList.remove('show');
+                        });
+                        document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                            btn.classList.remove('active');
+                        });
+                    }
+                });
+            }
+            
+            document.querySelectorAll('.dropdown-icon').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const dropdownId = this.getAttribute('data-dropdown');
+                    const dropdown = document.getElementById(dropdownId);
+                    
+                    if (!dropdown) return;
+                    
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        if (menu.id !== dropdownId) {
+                            menu.classList.remove('show');
+                        }
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        if (btn !== this) {
+                            btn.classList.remove('active');
+                        }
+                    });
+                    
+                    dropdown.classList.toggle('show');
+                    this.classList.toggle('active');
+                });
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav-item-with-dropdown')) {
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+        }
+
+        // Back to Top Button Functionality
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // ===== NEWSLETTER VALIDATION WITH MESSAGE UNDER BOX =====
+    document.addEventListener('DOMContentLoaded', function() {
+        // Wait a moment for footer to load
+        setTimeout(function() {
+            // Get the newsletter button and input from footer
+            const footerBtn = document.querySelector('.footer .newsletter-input button');
+            const footerInput = document.querySelector('.footer .newsletter-input input');
+            const newsletterForm = document.querySelector('.footer .newsletter-form');
+            
+            if (!footerBtn || !footerInput || !newsletterForm) {
+                console.log('Newsletter elements not found in footer');
+                return;
+            }
+            
+            // Remove any existing onclick attribute
+            footerBtn.removeAttribute('onclick');
+            
+            // Function to show message under the box
+            function showMessage(message, isError) {
+                // Remove any existing message
+                const existingMsg = document.querySelector('.footer .newsletter-message');
+                if (existingMsg) existingMsg.remove();
+                
+                // Create message element
+                const msgDiv = document.createElement('div');
+                msgDiv.className = 'newsletter-message';
+                msgDiv.style.cssText = `
+                    margin-top: 10px;
+                    padding: 8px 15px;
+                    border-radius: 50px;
+                    font-size: 14px;
+                    text-align: center;
+                    background: ${isError ? '#fee' : '#e8f5e9'};
+                    color: ${isError ? '#c00' : '#2e7d32'};
+                `;
+                msgDiv.textContent = message;
+                
+                // Add to newsletter form
+                newsletterForm.appendChild(msgDiv);
+                
+                // Remove after 3 seconds
+                setTimeout(() => {
+                    if (msgDiv.parentNode) msgDiv.remove();
+                }, 3000);
+            }
+            
+            // Add click event
+            footerBtn.addEventListener('click', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                
+                const email = footerInput.value.trim();
+                
+                // Check if empty
+                if (email === '') {
+                    showMessage('Please enter your email address', true);
+                    footerInput.focus();
+                    return false;
+                }
+                
+                // Check if valid email format (simple check)
+                if (!email.includes('@') || !email.includes('.')) {
+                    showMessage('Please enter a valid email address', true);
+                    footerInput.focus();
+                    return false;
+                }
+                
+                // Valid email - show success message
+                showMessage('Thank you for subscribing!', false);
+                
+                // Redirect after delay
+                setTimeout(() => {
+                    window.location.href = '4042.html';
+                }, 1500);
+                
+                return false;
+            });
+            
+            // Enter key support
+            footerInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    footerBtn.click();
+                }
+            });
+            
+            console.log('Newsletter validation with message working');
+        }, 500);
+    });
+
+    </script>
+</body>
+</html>

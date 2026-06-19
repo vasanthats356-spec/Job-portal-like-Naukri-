@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>JobPortal — Services · Corporate · 4 Column Grid</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* ----- RESET & BASE ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .mid-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        section {
+            margin: 120px 0;
+            position: relative;
+            width: 100%;
+            clear: both;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1e1e2f;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #4ecdc4;
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ----- AOS ANIMATIONS ----- */
+        [data-aos="fade-left"] { transform: translateX(-100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="fade-right"] { transform: translateX(100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="fade-up"] { transform: translateY(100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="fade-down"] { transform: translateY(-100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="zoom-in"] { transform: scale(0.7); opacity: 0; transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="zoom-out"] { transform: scale(1.3); opacity: 0; transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="flip-left"] { transform: perspective(2500px) rotateY(-120deg); opacity: 0; transition: all 1.2s ease; }
+        [data-aos="flip-right"] { transform: perspective(2500px) rotateY(120deg); opacity: 0; transition: all 1.2s ease; }
+        [data-aos="flip-up"] { transform: perspective(2500px) rotateX(-120deg); opacity: 0; transition: all 1.2s ease; }
+        [data-aos="flip-down"] { transform: perspective(2500px) rotateX(120deg); opacity: 0; transition: all 1.2s ease; }
+        [data-aos].aos-animate { transform: translate(0) scale(1) rotateY(0) rotateX(0); opacity: 1; }
+
+        /* ----- BUTTON STYLES ----- */
+        .primary-btn, .outline-btn, .card-btn, .metric-btn, .industry-btn, .plan-btn, .testimonial-btn, .cta-btn {
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 8px;
+            padding: 12px 24px;
+            background: #4ecdc4;
+            color: #1e1e2f;
+        }
+
+        .primary-btn:hover, .card-btn:hover, .metric-btn:hover, .industry-btn:hover, .plan-btn:hover, .testimonial-btn:hover, .cta-btn:hover {
+            background: #1e1e2f;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .outline-btn {
+            background: transparent;
+            border: 2px solid #4ecdc4;
+            color: #1e1e2f;
+        }
+        .outline-btn:hover {
+            background: #4ecdc4;
+            color: #1e1e2f;
+        }
+
+        /* ===== SECTION 1: HERO - Corporate Design ===== */
+        .services-hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #1e1e2f 0%, #2a3a4a 100%);
+        }
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('Jp4.webp');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 1200px;
+            padding: 60px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        .hero-text {
+            flex: 1;
+        }
+        .hero-badge {
+            background: rgba(78,205,196,0.2);
+            color: #4ecdc4;
+            padding: 8px 20px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-bottom: 30px;
+            font-weight: 600;
+            border: 1px solid rgba(78,205,196,0.3);
+        }
+        .hero-text h1 {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 25px;
+        }
+        .hero-text h1 span {
+            color: #4ecdc4;
+        }
+        .hero-features {
+            margin: 30px 0;
+        }
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .hero-feature i {
+            color: #4ecdc4;
+        }
+        .hero-image {
+            flex: 1;
+        }
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+
+        /* ===== SECTION 2: CORE SERVICES - 4 Column Grid ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px 25px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s;
+            border: 1px solid #eef2f6;
+            text-align: center;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(78,205,196,0.2);
+            border-color: #4ecdc4;
+        }
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(78,205,196,0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 36px;
+            color: #4ecdc4;
+            transition: all 0.4s;
+        }
+        .service-card:hover .service-icon {
+            background: #4ecdc4;
+            color: white;
+            transform: rotateY(360deg);
+        }
+        .service-card h3 {
+            font-size: 22px;
+            color: #1e1e2f;
+            margin-bottom: 15px;
+        }
+        .service-card p {
+            color: #64748b;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        /* ===== SECTION 3: METRICS - Dark with bg image ===== */
+        .metrics-section {
+            background: linear-gradient(135deg, rgba(30,30,47,0.95), rgba(78,205,196,0.85)), url('Jp8.webp');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50px;
+            padding: 80px;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .metric-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 30px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s;
+            color: white;
+        }
+        .metric-card:hover {
+            background: #4ecdc4;
+            transform: translateY(-10px) scale(1.05);
+        }
+        .metric-card:hover * {
+            color: #1e1e2f;
+        }
+        .metric-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: #4ecdc4;
+            margin-bottom: 10px;
+        }
+        .metric-label {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* ===== SECTION 4: INDUSTRY SOLUTIONS - Light 4 Column ===== */
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .industry-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: all 0.4s;
+            border: 1px solid #eef2f6;
+        }
+        .industry-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 50px rgba(78,205,196,0.2);
+        }
+        .industry-image {
+            height: 160px;
+            overflow: hidden;
+        }
+        .industry-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .industry-card:hover .industry-image img {
+            transform: scale(1.1);
+        }
+        .industry-content {
+            padding: 25px;
+            text-align: center;
+        }
+        .industry-content h4 {
+            font-size: 20px;
+            color: #1e1e2f;
+            margin-bottom: 10px;
+        }
+
+        /* ===== SECTION 5: KEY METRICS - Dark Circles ===== */
+        .circle-section {
+            background: linear-gradient(135deg, rgba(30,30,47,0.95), rgba(78,205,196,0.85)), url('Jp10.webp');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50px;
+            padding: 80px;
+        }
+        .circle-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .circle-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid #4ecdc4;
+            border-radius: 50%;
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+            transition: all 0.4s;
+            color: white;
+        }
+        .circle-card:hover {
+            background: #4ecdc4;
+            transform: scale(1.1) rotate(5deg);
+        }
+        .circle-card:hover * {
+            color: #1e1e2f;
+        }
+        .circle-card i {
+            font-size: 42px;
+            color: #4ecdc4;
+            margin-bottom: 15px;
+        }
+
+        /* ===== SECTION 6: PRICING PLANS - Light 4 Column ===== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .pricing-card {
+            background: white;
+            border-radius: 30px;
+            padding: 40px 25px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            transition: all 0.4s;
+            border: 1px solid #eef2f6;
+        }
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: #4ecdc4;
+            box-shadow: 0 30px 60px rgba(78,205,196,0.15);
+        }
+        /* .pricing-card.popular {
+            background: #4ecdc4;
+            color: #1e1e2f;
+        } */
+        .price {
+            font-size: 42px;
+            font-weight: 800;
+            margin: 20px 0;
+        }
+
+        /* ===== SECTION 7: TESTIMONIALS - Dark with bg image ===== */
+        .testimonial-section {
+            background: linear-gradient(135deg, rgba(30,30,47,0.95), rgba(78,205,196,0.85)), url('Jp7.webp');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50px;
+            padding: 80px;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 30px;
+            padding: 35px;
+            transition: all 0.4s;
+            color: white;
+        }
+        .testimonial-card:hover {
+            background: #4ecdc4;
+            transform: translateY(-10px);
+        }
+        .testimonial-card:hover * {
+            color: #1e1e2f;
+        }
+        .testimonial-card img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 3px solid #4ecdc4;
+        }
+
+        /* ===== SECTION 8: PARTNERS - Light 4 Column ===== */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .partner-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s;
+            border: 1px solid #eef2f6;
+        }
+        .partner-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: #4ecdc4;
+        }
+        .partner-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        /* ===== SECTION 9: FEATURES - Dark with bg image ===== */
+        .features-section {
+            background: linear-gradient(135deg, rgba(30,30,47,0.95), rgba(78,205,196,0.85)), url('Jp5.webp');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50px;
+            padding: 80px;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .feature-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 30px;
+            padding: 35px;
+            text-align: center;
+            transition: all 0.4s;
+            color: white;
+        }
+        .feature-card:hover {
+            background: #4ecdc4;
+            transform: translateY(-10px) rotate(1deg);
+        }
+        .feature-card:hover * {
+            color: #1e1e2f;
+        }
+        .feature-card i {
+            font-size: 42px;
+            color: #4ecdc4;
+            margin-bottom: 20px;
+        }
+
+        /* ===== SECTION 10: CTA - Light Banner ===== */
+        .cta-section {
+            background: white;
+            border-radius: 50px;
+            padding: 80px;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+            border: 1px solid #eef2f6;
+        }
+        .cta-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin: 40px 0;
+        }
+        .cta-stat {
+            text-align: center;
+        }
+        .cta-stat .number {
+            font-size: 42px;
+            font-weight: 800;
+            color: #4ecdc4;
+        }
+
+        /* ----- RESPONSIVE (no horizontal scroll) ----- */
+        @media (max-width: 1200px) {
+            .services-grid, .metrics-grid, .industry-grid, .circle-grid,
+            .pricing-grid, .testimonial-grid, .partners-grid, .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 992px) {
+            .mid-section { padding: 0 20px; }
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-feature {
+                justify-content: center;
+            }
+            .hero-pattern { display: none; }
+        }
+        @media (max-width: 768px) {
+            .mid-section { padding: 0 15px; }
+            .hero-text h1 { font-size: 42px; }
+            .services-grid, .metrics-grid, .industry-grid, .circle-grid,
+            .pricing-grid, .testimonial-grid, .partners-grid, .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+        html, body { max-width: 100%; overflow-x: hidden; }
+        img, video, svg { max-width: 100%; height: auto; }
+
+        /* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #4ecdc4;  /* You can change this color */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    border: 2px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #3ab7ad;  /* Darker shade on hover */
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(78,205,196,0.4);
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Back to Top Button -->
+<div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+    <!-- HEADER PLACEHOLDER - Header will load here -->
+    <div id="header-placeholder"></div>
+
+    <div class="mid-section">
+
+        <!-- ===== SECTION 1: HERO - Corporate Design ===== -->
+        <section class="services-hero" data-aos="fade-up">
+            <div class="hero-pattern"></div>
+            <div class="hero-content">
+                <div class="hero-text" data-aos="fade-right" data-aos-delay="100">
+                    <span class="hero-badge"><i class="fas fa-bolt"></i> ENTERPRISE-GRADE SOLUTIONS</span>
+                    <h1>Transform Your<br><span>Recruitment Strategy</span></h1>
+                    <div class="hero-features">
+                        <div class="hero-feature"><i class="fas fa-check-circle"></i><span>AI-powered candidate matching</span></div>
+                        <div class="hero-feature"><i class="fas fa-check-circle"></i><span>End-to-end recruitment suite</span></div>
+                        <div class="hero-feature"><i class="fas fa-check-circle"></i><span>Dedicated success manager</span></div>
+                    </div>
+                    <button class="primary-btn" onclick="window.location.href='404.html'">Get Started</button>
+                </div>
+                <div class="hero-image" data-aos="fade-left" data-aos-delay="200">
+                    <img src="Jp8.webp" alt="Recruitment">
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 2: CORE SERVICES - 4 Column Grid ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Core Services</h2>
+                <p>Comprehensive solutions for modern hiring</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-aos="flip-left" data-aos-delay="50">
+                    <div class="service-icon"><i class="fas fa-robot"></i></div>
+                    <h3>AI Matching</h3>
+                    <p>Smart algorithms that find the perfect candidates from millions of profiles.</p>
+                    <button class="card-btn" onclick="window.location.href='404.html'">Learn More</button>
+                </div>
+                <div class="service-card" data-aos="flip-left" data-aos-delay="70">
+                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Analytics</h3>
+                    <p>Data-driven insights to optimize your recruitment funnel and reduce costs.</p>
+                    <button class="card-btn" onclick="window.location.href='404.html'">Learn More</button>
+                </div>
+                <div class="service-card" data-aos="flip-left" data-aos-delay="90">
+                    <div class="service-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Global Hiring</h3>
+                    <p>Access talent from 50+ countries with compliance and payroll support.</p>
+                    <button class="card-btn" onclick="window.location.href='404.html'">Learn More</button>
+                </div>
+                <div class="service-card" data-aos="flip-left" data-aos-delay="110">
+                    <div class="service-icon"><i class="fas fa-headset"></i></div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock assistance from our dedicated customer success team.</p>
+                    <button class="card-btn" onclick="window.location.href='404.html'">Learn More</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 3: METRICS - Dark with bg image ===== -->
+        <section class="metrics-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2 style="color: white;">Key Metrics</h2>
+                <p style="color: rgba(255,255,255,0.8);">Numbers that define our success</p>
+            </div>
+            <div class="metrics-grid">
+                <div class="metric-card" data-aos="zoom-in" data-aos-delay="50">
+                    <div class="metric-number">10K+</div>
+                    <div class="metric-label">Companies</div>
+                    <p>Trust our platform</p>
+                </div>
+                <div class="metric-card" data-aos="zoom-in" data-aos-delay="70">
+                    <div class="metric-number">2M+</div>
+                    <div class="metric-label">Candidates</div>
+                    <p>In our database</p>
+                </div>
+                <div class="metric-card" data-aos="zoom-in" data-aos-delay="90">
+                    <div class="metric-number">98%</div>
+                    <div class="metric-label">Satisfaction</div>
+                    <p>Client satisfaction rate</p>
+                </div>
+                <div class="metric-card" data-aos="zoom-in" data-aos-delay="110">
+                    <div class="metric-number">50+</div>
+                    <div class="metric-label">Countries</div>
+                    <p>Global coverage</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 4: INDUSTRY SOLUTIONS - Light 4 Column ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Industry Solutions</h2>
+                <p>Tailored for your sector</p>
+            </div>
+            <div class="industry-grid">
+                <div class="industry-card" data-aos="fade-up" data-aos-delay="50">
+                    <div class="industry-image"><img src="tech.webp" alt="Tech"></div>
+                    <div class="industry-content">
+                        <h4>Technology</h4>
+                        <button class="card-btn" onclick="window.location.href='404.html'">Learn More</button>
+                    </div>
+                </div>
+                <div class="industry-card" data-aos="fade-up" data-aos-delay="70">
+                    <div class="industry-image"><img src="fin.webp" alt="Finance"></div>
+                    <div class="industry-content">
+                        <h4>Finance</h4>
+                        <button class="card-btn" onclick="window.location.href='404.html'">Learn More</button>
+                    </div>
+                </div>
+                <div class="industry-card" data-aos="fade-up" data-aos-delay="90">
+                    <div class="industry-image"><img src="healthcare.webp" alt="Healthcare"></div>
+                    <div class="industry-content">
+                        <h4>Healthcare</h4>
+                        <button class="card-btn" onclick="window.location.href='404.html'">Learn More</button>
+                    </div>
+                </div>
+                <div class="industry-card" data-aos="fade-up" data-aos-delay="110">
+                    <div class="industry-image"><img src="design.webp" alt="Retail"></div>
+                    <div class="industry-content">
+                        <h4>Retail</h4>
+                        <button class="card-btn" onclick="window.location.href='404.html'">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 5: KEY METRICS - Dark Circles ===== -->
+        <section class="circle-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2 style="color: white;">Performance Indicators</h2>
+                <p style="color: rgba(255,255,255,0.8);">Real results from real clients</p>
+            </div>
+            <div class="circle-grid">
+                <div class="circle-card" data-aos="flip-up" data-aos-delay="50">
+                    <i class="fas fa-clock"></i>
+                    <h4>60%</h4>
+                    <p>Faster Hiring</p>
+                </div>
+                <div class="circle-card" data-aos="flip-up" data-aos-delay="70">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h4>40%</h4>
+                    <p>Cost Reduction</p>
+                </div>
+                <div class="circle-card" data-aos="flip-up" data-aos-delay="90">
+                    <i class="fas fa-users"></i>
+                    <h4>2M+</h4>
+                    <p>Candidates</p>
+                </div>
+                <div class="circle-card" data-aos="flip-up" data-aos-delay="110">
+                    <i class="fas fa-star"></i>
+                    <h4>4.9</h4>
+                    <p>Avg Rating</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 6: PRICING PLANS - Light 4 Column ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Pricing Plans</h2>
+                <p>Choose the perfect plan for your needs</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card" data-aos="flip-right" data-aos-delay="50">
+                    <h3>Starter</h3>
+                    <div class="price">$0</div>
+                    <p>Up to 3 jobs</p>
+                    <button class="plan-btn" onclick="window.location.href='404.html'">Get Started</button>
+                </div>
+                <div class="pricing-card popular" data-aos="flip-right" data-aos-delay="70">
+                    <h3>Professional</h3>
+                    <div class="price">$299</div>
+                    <p>Up to 20 jobs</p>
+                    <button class="plan-btn" onclick="window.location.href='404.html'">Get Started</button>
+                </div>
+                <div class="pricing-card" data-aos="flip-right" data-aos-delay="90">
+                    <h3>Business</h3>
+                    <div class="price">$599</div>
+                    <p>Up to 50 jobs</p>
+                    <button class="plan-btn" onclick="window.location.href='404.html'">Get Started</button>
+                </div>
+                <div class="pricing-card" data-aos="flip-right" data-aos-delay="110">
+                    <h3>Enterprise</h3>
+                    <div class="price">Custom</div>
+                    <p>Unlimited jobs</p>
+                    <button class="plan-btn" onclick="window.location.href='404.html'">Contact Us</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 7: TESTIMONIALS - Dark with bg image ===== -->
+        <section class="testimonial-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2 style="color: white;">Client Testimonials</h2>
+                <p style="color: rgba(255,255,255,0.8);">What our customers say</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="50">
+                    <img src="Jp1.webp" alt="Client">
+                    <p>"Reduced our time-to-hire by 60%."</p>
+                    <h4>- Sarah Chen</h4>
+                </div>
+                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="70">
+                    <img src="Jp2.webp" alt="Client">
+                    <p>"The AI matching is incredibly accurate."</p>
+                    <h4>- Michael Kim</h4>
+                </div>
+                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="90">
+                    <img src="Jp3.webp" alt="Client">
+                    <p>"Best platform we've ever used."</p>
+                    <h4>- Priya Patel</h4>
+                </div>
+                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="110">
+                    <img src="Jp4.webp" alt="Client">
+                    <p>"Exceptional support and results."</p>
+                    <h4>- James Wilson</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 8: PARTNERS - Light 4 Column ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Our Partners</h2>
+                <p>Trusted by industry leaders</p>
+            </div>
+            <div class="partners-grid">
+                <div class="partner-card" data-aos="fade-up" data-aos-delay="50">
+                    <img src="Jp5.webp" alt="Partner">
+                    <h4>Google</h4>
+                </div>
+                <div class="partner-card" data-aos="fade-up" data-aos-delay="70">
+                    <img src="Jp6.webp" alt="Partner">
+                    <h4>Microsoft</h4>
+                </div>
+                <div class="partner-card" data-aos="fade-up" data-aos-delay="90">
+                    <img src="Jp7.webp" alt="Partner">
+                    <h4>Apple</h4>
+                </div>
+                <div class="partner-card" data-aos="fade-up" data-aos-delay="110">
+                    <img src="Jp8.webp" alt="Partner">
+                    <h4>Amazon</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 9: FEATURES - Dark with bg image ===== -->
+        <section class="features-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2 style="color: white;">Key Features</h2>
+                <p style="color: rgba(255,255,255,0.8);">What makes us different</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="flip-down" data-aos-delay="50">
+                    <i class="fas fa-bolt"></i>
+                    <h4>Lightning Fast</h4>
+                    <p>AI-powered matching in seconds</p>
+                </div>
+                <div class="feature-card" data-aos="flip-down" data-aos-delay="70">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Enterprise Security</h4>
+                    <p>Bank-level data protection</p>
+                </div>
+                <div class="feature-card" data-aos="flip-down" data-aos-delay="90">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Advanced Analytics</h4>
+                    <p>Real-time hiring insights</p>
+                </div>
+                <div class="feature-card" data-aos="flip-down" data-aos-delay="110">
+                    <i class="fas fa-headset"></i>
+                    <h4>24/7 Support</h4>
+                    <p>Dedicated account managers</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 10: CTA - Light Banner ===== -->
+        <section class="cta-section" data-aos="zoom-out">
+            <h2>Ready to Transform Your Hiring?</h2>
+            <p style="font-size: 18px; margin: 20px 0;">Join 10,000+ companies already using JobPortal</p>
+            <div class="cta-stats">
+                <div class="cta-stat"><span class="number">10K+</span><div>Companies</div></div>
+                <div class="cta-stat"><span class="number">2M+</span><div>Candidates</div></div>
+                <div class="cta-stat"><span class="number">98%</span><div>Satisfaction</div></div>
+            </div>
+            <button class="primary-btn" onclick="window.location.href='404.html'">Get Started Free</button>
+        </section>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER - Footer will load here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true,
+            offset: 50,
+            easing: 'ease-in-out'
+        });
+
+        // All buttons redirect to 404.html
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                window.location.href = '404.html';
+            });
+        });
+        // =========================================
+        // ===== TAB FUNCTION =====
+    function showTab(event, tabId) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+        event.target.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+    }
+
+    // ===== NEWSLETTER VALIDATION =====
+    function validateNewsletter(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function showNewsletterError(message) {
+        // Remove any existing error message
+        const existingMsg = document.querySelector('.newsletter-error');
+        if (existingMsg) existingMsg.remove();
+        
+        // Create error message element
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'newsletter-error';
+        msgDiv.style.cssText = `
+            margin-top: 10px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+            background: #fee;
+            color: #c00;
+        `;
+        msgDiv.textContent = message;
+        
+        // Find newsletter container
+        const newsletter = document.querySelector('.newsletter-form, .footer-newsletter, [class*="newsletter"]');
+        if (newsletter) {
+            newsletter.appendChild(msgDiv);
+            
+            // Remove error message after 3 seconds
+            setTimeout(() => msgDiv.remove(), 3000);
+        } else {
+            alert(message);
+        }
+    }
+
+    // ===== HEADER & FOOTER LOADER =====
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load header
+        fetch('header1.html') // Make sure this filename is correct
+            .then(response => {
+                if (!response.ok) throw new Error('Header file not found');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                setTimeout(initHeaderInteractions, 100);
+            })
+            .catch(error => {
+                console.warn('Header could not be loaded:', error);
+                document.getElementById('header-placeholder').innerHTML = 
+                    '<header style="background: #6c5ce7; color: white; padding: 20px; text-align: center;">Header Not Found</header>';
+            });
+
+        // Load footer
+        fetch('footer1.html') // Make sure this filename is correct
+            .then(response => {
+                if (!response.ok) throw new Error('Footer file not found');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.warn('Footer could not be loaded:', error);
+                document.getElementById('footer-placeholder').innerHTML = 
+                    '<footer style="background: #1a1a2e; color: white; padding: 40px; text-align: center;">Footer Not Found</footer>';
+            });
+    });
+
+    // ===== HEADER INTERACTIONS =====
+    function initHeaderInteractions() {
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        // Mobile menu toggle
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                
+                if (navMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = 'auto';
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+        }
+        
+        // Dropdown functionality
+        document.querySelectorAll('.dropdown-icon').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const dropdownId = this.getAttribute('data-dropdown');
+                const dropdown = document.getElementById(dropdownId);
+                
+                if (!dropdown) return;
+                
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    if (menu.id !== dropdownId) {
+                        menu.classList.remove('show');
+                    }
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    if (btn !== this) {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                dropdown.classList.toggle('show');
+                this.classList.toggle('active');
+            });
+        });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-item-with-dropdown')) {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+        });
+        
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    if (menuToggle) menuToggle.classList.remove('active');
+                    if (navMenu) navMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                if (menuToggle) menuToggle.classList.remove('active');
+                if (navMenu) navMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+        });
+    }
+
+    // ===== AOS INITIALIZATION =====
+    const aosScript = document.createElement('script');
+    aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+    document.head.appendChild(aosScript);
+    
+    aosScript.onload = function() {
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true,
+            offset: 50,
+            easing: 'ease-in-out'
+        });
+    };
+
+    // ===== ANIMATION OBSERVER =====
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            const animatedElements = document.querySelectorAll('.fade-up, .fade-left, .fade-right, .scale-up, [data-aos]');
+            animatedElements.forEach(el => observer.observe(el));
+        }, 500);
+    });
+
+    // ===== NEWSLETTER HANDLER - VALIDATE THEN REDIRECT TO 404 =====
+    document.addEventListener('click', function(e) {
+        const newsletterBtn = e.target.closest('.newsletter-btn, .subscribe-btn, [class*="newsletter"] button, button[type="submit"]');
+        if (!newsletterBtn) return;
+        
+        const form = newsletterBtn.closest('form');
+        const newsletterInput = form ? form.querySelector('input[type="email"]') : 
+                                document.querySelector('.newsletter-input, input[type="email"][placeholder*="email"]');
+        
+        if (newsletterInput) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const email = newsletterInput.value.trim();
+            
+            // If email is empty or invalid, show error and DON'T redirect
+            if (!email) {
+                showNewsletterError('Please enter your email address');
+                newsletterInput.focus();
+                return false;
+            }
+            
+            if (!validateNewsletter(email)) {
+                showNewsletterError('Please enter a valid email address');
+                newsletterInput.focus();
+                return false;
+            }
+            
+            // Email is valid - redirect to 404.html
+            window.location.href = '404.html';
+            return false;
+        }
+    });
+
+    // ===== BUTTON REDIRECT HANDLER (for all other buttons) =====
+    document.addEventListener('click', function(e) {
+        const button = e.target.closest('button');
+        if (!button) return;
+        
+        // Skip newsletter buttons (already handled above)
+        if (button.closest('.newsletter-form') || 
+            button.classList.contains('newsletter-btn') || 
+            button.classList.contains('subscribe-btn') ||
+            button.closest('[class*="newsletter"]')) {
+            return;
+        }
+        
+        // Skip special buttons
+        if (button.hasAttribute('onclick') || 
+            button.classList.contains('dropdown-icon') || 
+            button.classList.contains('video-btn') ||
+            button.classList.contains('tab-btn')) {
+            return;
+        }
+        
+        // Redirect all other buttons to 404
+        e.preventDefault();
+        window.location.href = '404.html';
+    });
+
+    // Back to Top Button Functionality
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 500) {  // Show after scrolling 500px
+        backToTop.classList.add('show');
+    } else {
+        backToTop.classList.remove('show');
+    }
+});
+
+backToTop.addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'  // Smooth scroll animation
+    });
+});
+    </script>
+</body>
+</html>

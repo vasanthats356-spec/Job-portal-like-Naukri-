@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>JobPortal — Find Jobs · 4‑Column Grid</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            overflow-x: hidden;
+            width: 100%;
+        }
+        .mid-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        section {
+            margin: 120px 0;
+            position: relative;
+            width: 100%;
+            clear: both;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1e1e2f;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #4ecdc4;
+            border-radius: 2px;
+        }
+        .section-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* AOS */
+        [data-aos="fade-left"] {
+            transform: translateX(-100px);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        [data-aos="fade-right"] {
+            transform: translateX(100px);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        [data-aos="fade-up"] {
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        [data-aos="fade-down"] {
+            transform: translateY(-100px);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        [data-aos="zoom-in"] {
+            transform: scale(0.7);
+            opacity: 0;
+            transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        [data-aos="zoom-out"] {
+            transform: scale(1.3);
+            opacity: 0;
+            transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        [data-aos="flip-left"] {
+            transform: perspective(2500px) rotateY(-120deg);
+            opacity: 0;
+            transition: all 1.2s ease;
+        }
+        [data-aos="flip-right"] {
+            transform: perspective(2500px) rotateY(120deg);
+            opacity: 0;
+            transition: all 1.2s ease;
+        }
+        [data-aos="flip-up"] {
+            transform: perspective(2500px) rotateX(-120deg);
+            opacity: 0;
+            transition: all 1.2s ease;
+        }
+        [data-aos="flip-down"] {
+            transform: perspective(2500px) rotateX(120deg);
+            opacity: 0;
+            transition: all 1.2s ease;
+        }
+        [data-aos].aos-animate {
+            transform: translate(0) scale(1) rotateY(0) rotateX(0);
+            opacity: 1;
+        }
+
+        /* Buttons - all with responsive sizing */
+        .primary-btn,
+        .outline-btn,
+        .card-btn,
+        .metric-btn,
+        .industry-btn,
+        .plan-btn,
+        .testimonial-btn,
+        .cta-btn,
+        .filter-btn,
+        .job-btn,
+        .company-btn,
+        .category-btn {
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 8px;
+            padding: 12px 24px;
+            background: #4ecdc4;
+            color: #1e1e2f;
+            min-width: 44px;
+            min-height: 44px;
+            white-space: nowrap;
+        }
+        .primary-btn:hover,
+        .card-btn:hover,
+        .metric-btn:hover,
+        .industry-btn:hover,
+        .plan-btn:hover,
+        .testimonial-btn:hover,
+        .cta-btn:hover,
+        .job-btn:hover,
+        .company-btn:hover,
+        .category-btn:hover {
+            background: #1e1e2f;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .outline-btn {
+            background: transparent;
+            border: 2px solid #4ecdc4;
+            color: #1e1e2f;
+        }
+        .outline-btn:hover {
+            background: #4ecdc4;
+            color: #1e1e2f;
+        }
+
+        /* ===== SECTION 1: HERO - Find Jobs ===== */
+.find-hero {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+    margin-top: 20px;
+    background: linear-gradient(135deg, #1e1e2f 0%, #2a3a4a 100%);
+}
+.hero-pattern {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: url('Jp4.webp');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    max-width: 1200px;
+    padding: 60px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+.hero-text {
+    flex: 1;
+}
+.hero-badge {
+    background: rgba(78, 205, 196, 0.2);
+    color: #4ecdc4;
+    padding: 8px 20px;
+    border-radius: 40px;
+    display: inline-block;
+    margin-bottom: 30px;
+    font-weight: 600;
+    border: 1px solid rgba(78, 205, 196, 0.3);
+}
+.hero-text h1 {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+.hero-text h1 span {
+    color: #4ecdc4;
+}
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+.primary-btn {
+    background: #4ecdc4;
+    color: #1e1e2f;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.primary-btn:hover {
+    background: #ff6b6b;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+}
+.outline-btn {
+    background: transparent;
+    color: white;
+    border: 2px solid #4ecdc4;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.outline-btn:hover {
+    background: #4ecdc4;
+    color: #1e1e2f;
+    transform: translateY(-3px);
+}
+.hero-image {
+    flex: 1;
+}
+.hero-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== SECTION 2: JOB LISTINGS - 4 Column Grid ===== */
+.job-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+.job-card {
+    background: white;
+    border-radius: 20px;
+    padding: 28px 22px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.04);
+    transition: all 0.4s;
+    border: 1px solid #eef2f6;
+    display: flex;
+    flex-direction: column;
+}
+.job-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(78, 205, 196, 0.15);
+    border-color: #4ecdc4;
+}
+.job-card .company {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+.job-card .company img {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+.job-card .company h4 {
+    font-size: 16px;
+    color: #1e1e2f;
+}
+.job-card .company span {
+    font-size: 13px;
+    color: #64748b;
+}
+.job-card h3 {
+    font-size: 20px;
+    color: #1e1e2f;
+    margin: 10px 0 8px;
+}
+.job-card .meta {
+    display: flex;
+    gap: 12px;
+    font-size: 14px;
+    color: #64748b;
+    flex-wrap: wrap;
+    margin: 12px 0;
+}
+.job-card .meta i {
+    color: #4ecdc4;
+    width: 18px;
+}
+.job-card .tag {
+    display: inline-block;
+    background: rgba(78, 205, 196, 0.12);
+    color: #4ecdc4;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 40px;
+    margin-right: 6px;
+}
+.job-card .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+    padding-top: 12px;
+}
+.job-card .salary {
+    font-weight: 700;
+    color: #1e1e2f;
+    font-size: 18px;
+}
+.job-card .apply-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #eef2f6;
+}
+.job-card .job-btn {
+    background: #4ecdc4;
+    color: #1e1e2f;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    width: 100%;
+    text-align: center;
+}
+.job-card .job-btn:hover {
+    background: #1e1e2f;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .job-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 992px) {
+    .mid-section {
+        padding: 0 20px;
+    }
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-pattern {
+        display: none;
+    }
+    .hero-buttons {
+        justify-content: center;
+    }
+}
+@media (max-width: 768px) {
+    .mid-section {
+        padding: 0 15px;
+    }
+    .hero-text h1 {
+        font-size: 36px;
+    }
+    .job-grid {
+        grid-template-columns: 1fr;
+    }
+    .section-header h2 {
+        font-size: 30px;
+    }
+    .hero-content {
+        padding: 30px 20px;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .hero-buttons button {
+        width: 100%;
+        justify-content: center;
+    }
+    .job-card .job-btn {
+        padding: 14px;
+        font-size: 16px;
+    }
+}
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 28px;
+    }
+    .hero-badge {
+        font-size: 12px;
+        padding: 6px 14px;
+    }
+}
+
+        /* ===== SECTION 3: FILTER / METRICS ===== */
+        .filter-section {
+            background: linear-gradient(135deg, rgba(30, 30, 47, 0.95), rgba(78, 205, 196, 0.85)), url('Jp8.webp');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50px;
+            padding: 60px 40px;
+        }
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .filter-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            padding: 30px 25px;
+            text-align: center;
+            transition: all 0.4s;
+            color: white;
+        }
+        .filter-card:hover {
+            background: #4ecdc4;
+            transform: translateY(-10px) scale(1.02);
+        }
+        .filter-card:hover * {
+            color: #1e1e2f;
+        }
+        .filter-card i {
+            font-size: 36px;
+            color: #4ecdc4;
+            margin-bottom: 15px;
+        }
+        .filter-card h4 {
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+
+        /* ===== SECTION 4: JOB CATEGORIES ===== */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .category-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s;
+            border: 1px solid #eef2f6;
+        }
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 30px 50px rgba(78, 205, 196, 0.15);
+        }
+        .category-card i {
+            font-size: 40px;
+            color: #4ecdc4;
+            margin-bottom: 15px;
+            background: rgba(78, 205, 196, 0.08);
+            padding: 16px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .category-card h4 {
+            font-size: 20px;
+            color: #1e1e2f;
+        }
+        .category-card p {
+            color: #64748b;
+            font-size: 14px;
+            margin-top: 6px;
+        }
+        .category-card .category-btn {
+            margin-top: 16px;
+            font-size: 14px;
+            padding: 10px 20px;
+        }
+
+        /* ===== SECTION 5: TOP COMPANIES ===== */
+        .company-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .company-card {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s;
+            border: 1px solid #eef2f6;
+        }
+        .company-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 50px rgba(78, 205, 196, 0.15);
+        }
+        .company-card img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            background: #f8fafc;
+        }
+        .company-card h4 {
+            font-size: 18px;
+            color: #1e1e2f;
+        }
+        .company-card .jobs {
+            color: #4ecdc4;
+            font-weight: 600;
+        }
+        .company-card .company-btn {
+            margin-top: 12px;
+            font-size: 14px;
+            padding: 8px 20px;
+        }
+
+        /* ===== SECTION 6: JOB ALERTS ===== */
+        .alert-section {
+            background: linear-gradient(135deg, rgba(30, 30, 47, 0.95), rgba(78, 205, 196, 0.85)), url('Jp10.webp');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50px;
+            padding: 70px 40px;
+            text-align: center;
+            color: white;
+        }
+        .alert-form {
+            display: flex;
+            gap: 15px;
+            max-width: 600px;
+            margin: 30px auto 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .alert-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 16px 24px;
+            border: none;
+            border-radius: 60px;
+            font-size: 16px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .alert-form input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .alert-form button {
+            min-width: 140px;
+        }
+
+        /* ===== SECTION 7: TESTIMONIALS ===== */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .testimonial-card {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s;
+            border: 1px solid #eef2f6;
+            text-align: center;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(78, 205, 196, 0.12);
+        }
+        .testimonial-card img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 3px solid #4ecdc4;
+            object-fit: cover;
+        }
+        .testimonial-card p {
+            color: #1e1e2f;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .testimonial-card h4 {
+            margin-top: 12px;
+            color: #4ecdc4;
+        }
+
+        /* ===== SECTION 8: PARTNERS ===== */
+        .partner-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .partner-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s;
+            border: 1px solid #eef2f6;
+        }
+        .partner-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #4ecdc4;
+        }
+        .partner-card img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 12px;
+        }
+
+        /* ===== SECTION 9: RESOURCES ===== */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .resource-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s;
+            border: 1px solid #eef2f6;
+        }
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 50px rgba(78, 205, 196, 0.12);
+        }
+        .resource-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+        }
+        .resource-card .body {
+            padding: 22px;
+            text-align: center;
+        }
+        .resource-card .body h4 {
+            font-size: 18px;
+            color: #1e1e2f;
+            margin-bottom: 6px;
+        }
+        .resource-card .body p {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 14px;
+        }
+        .resource-card .body .card-btn {
+            font-size: 14px;
+            padding: 10px 24px;
+        }
+
+        /* ===== SECTION 10: CTA ===== */
+        .cta-banner {
+            background: white;
+            border-radius: 50px;
+            padding: 70px 40px;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.04);
+            border: 1px solid #eef2f6;
+        }
+        .cta-banner .stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin: 30px 0;
+        }
+        .cta-banner .stats .num {
+            font-size: 42px;
+            font-weight: 800;
+            color: #4ecdc4;
+        }
+        .cta-banner .primary-btn {
+            font-size: 18px;
+            padding: 16px 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .job-grid,
+            .filter-grid,
+            .category-grid,
+            .company-grid,
+            .testimonial-grid,
+            .partner-grid,
+            .resource-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 992px) {
+            .mid-section {
+                padding: 0 20px;
+            }
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-pattern {
+                display: none;
+            }
+            .search-box {
+                flex-direction: column;
+                align-items: stretch;
+                background: transparent;
+                padding: 0;
+                border: none;
+                border-radius: 0;
+            }
+            .search-box input {
+                border-radius: 40px;
+                min-width: unset;
+            }
+            .search-box button {
+                width: 100%;
+            }
+        }
+        @media (max-width: 768px) {
+            .mid-section {
+                padding: 0 15px;
+            }
+            .hero-text h1 {
+                font-size: 36px;
+            }
+            .job-grid,
+            .filter-grid,
+            .category-grid,
+            .company-grid,
+            .testimonial-grid,
+            .partner-grid,
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-banner .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .filter-section {
+                padding: 40px 20px;
+            }
+            .alert-section {
+                padding: 40px 20px;
+            }
+            .cta-banner {
+                padding: 40px 20px;
+            }
+            .section-header h2 {
+                font-size: 30px;
+            }
+            /* All buttons become block on small screens for better touch */
+            .primary-btn,
+            .outline-btn,
+            .card-btn,
+            .job-btn,
+            .company-btn,
+            .category-btn {
+                width: 100%;
+                justify-content: center;
+                font-size: 14px;
+                padding: 12px 16px;
+            }
+            .job-card .footer {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .job-card .salary {
+                text-align: center;
+            }
+            .hero-content {
+                padding: 30px 20px;
+            }
+            .search-box button {
+                min-width: unset;
+            }
+            .alert-form button {
+                width: 100%;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 28px;
+            }
+            .hero-badge {
+                font-size: 12px;
+                padding: 6px 14px;
+            }
+            .filter-card {
+                padding: 20px 15px;
+            }
+            .filter-card i {
+                font-size: 28px;
+            }
+            .filter-card h4 {
+                font-size: 16px;
+            }
+        }
+
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        img,
+        video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #4ecdc4;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            border: 2px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            background: #3ab7ad;
+            transform: translateY(-5px) scale(1.1);
+        }
+        @media (max-width: 768px) {
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
+    <div id="header-placeholder"></div>
+
+    <div class="mid-section">
+
+        <!-- ===== SECTION 1: HERO - Find Jobs ===== -->
+<section class="find-hero" data-aos="fade-up">
+    <div class="hero-pattern"></div>
+    <div class="hero-content">
+        <div class="hero-text" data-aos="fade-right" data-aos-delay="100">
+            <span class="hero-badge"><i class="fas fa-bolt"></i> 12,000+ LIVE JOBS</span>
+            <h1>Find Your <span>Next Role</span> Today</h1>
+            <p style="font-size:18px; opacity:0.9; margin-bottom:10px;">Search thousands of opportunities from top companies.</p>
+            <div class="hero-buttons">
+                <button class="primary-btn" onclick="window.location.href='404.html'">
+                    <i class="fas fa-search"></i> Browse Jobs
+                </button>
+                <button class="outline-btn" onclick="window.location.href='404.html'">
+                    <i class="fas fa-file-alt"></i> Post a Job
+                </button>
+            </div>
+        </div>
+        <div class="hero-image" data-aos="fade-left" data-aos-delay="200">
+            <img src="Jp8.webp" alt="Find Jobs">
+        </div>
+    </div>
+</section>
+
+<!-- ===== SECTION 2: JOB LISTINGS - 4 Column ===== -->
+<section>
+    <div class="section-header" data-aos="fade-down">
+        <h2>Featured Jobs</h2>
+        <p>Hand-picked roles from our partner companies</p>
+    </div>
+    <div class="job-grid">
+        <div class="job-card" data-aos="flip-left" data-aos-delay="50">
+            <div class="company"><img src="Googlelogo.webp" alt="Google"><div><h4>Google</h4><span>Technology</span></div></div>
+            <h3>Frontend Developer</h3>
+            <div class="meta"><span><i class="fas fa-map-pin"></i> Remote</span><span><i class="fas fa-clock"></i> 2d ago</span></div>
+            <div><span class="tag">React</span><span class="tag">TypeScript</span></div>
+            <div class="footer">
+                <span class="salary">$120k – $160k</span>
+            </div>
+            <div class="apply-wrapper">
+                <button class="job-btn" onclick="window.location.href='404.html'">Apply Now</button>
+            </div>
+        </div>
+        <div class="job-card" data-aos="flip-left" data-aos-delay="70">
+            <div class="company"><img src="Microsoftlogo.webp" alt="Microsoft"><div><h4>Microsoft</h4><span>Cloud</span></div></div>
+            <h3>Cloud Architect</h3>
+            <div class="meta"><span><i class="fas fa-map-pin"></i> Hybrid</span><span><i class="fas fa-clock"></i> 1d ago</span></div>
+            <div><span class="tag">Azure</span><span class="tag">DevOps</span></div>
+            <div class="footer">
+                <span class="salary">$140k – $190k</span>
+            </div>
+            <div class="apply-wrapper">
+                <button class="job-btn" onclick="window.location.href='404.html'">Apply Now</button>
+            </div>
+        </div>
+        <div class="job-card" data-aos="flip-left" data-aos-delay="90">
+            <div class="company"><img src="Amazonlogo.webp" alt="Amazon"><div><h4>Amazon</h4><span>E-commerce</span></div></div>
+            <h3>Data Scientist</h3>
+            <div class="meta"><span><i class="fas fa-map-pin"></i> Remote</span><span><i class="fas fa-clock"></i> 5h ago</span></div>
+            <div><span class="tag">Python</span><span class="tag">ML</span></div>
+            <div class="footer">
+                <span class="salary">$130k – $175k</span>
+            </div>
+            <div class="apply-wrapper">
+                <button class="job-btn" onclick="window.location.href='404.html'">Apply Now</button>
+            </div>
+        </div>
+        <div class="job-card" data-aos="flip-left" data-aos-delay="110">
+            <div class="company"><img src="SAPlogo.webp" alt="SAP"><div><h4>SAP</h4><span>Enterprise</span></div></div>
+            <h3>Product Manager</h3>
+            <div class="meta"><span><i class="fas fa-map-pin"></i> On-site</span><span><i class="fas fa-clock"></i> 3d ago</span></div>
+            <div><span class="tag">SAP</span><span class="tag">Agile</span></div>
+            <div class="footer">
+                <span class="salary">$125k – $165k</span>
+            </div>
+            <div class="apply-wrapper">
+                <button class="job-btn" onclick="window.location.href='404.html'">Apply Now</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- ===== SECTION 3: FILTER / METRICS ===== -->
+        <section class="filter-section" data-aos="fade-up">
+            <div class="section-header"><h2 style="color:white;">Quick Filters</h2><p style="color:rgba(255,255,255,0.8);">Narrow your search by category</p></div>
+            <div class="filter-grid">
+                <div class="filter-card" data-aos="zoom-in" data-aos-delay="50"><i class="fas fa-laptop-code"></i><h4>Tech</h4><p>4,200+ jobs</p></div>
+                <div class="filter-card" data-aos="zoom-in" data-aos-delay="70"><i class="fas fa-chart-line"></i><h4>Finance</h4><p>2,800+ jobs</p></div>
+                <div class="filter-card" data-aos="zoom-in" data-aos-delay="90"><i class="fas fa-heartbeat"></i><h4>Healthcare</h4><p>3,100+ jobs</p></div>
+                <div class="filter-card" data-aos="zoom-in" data-aos-delay="110"><i class="fas fa-tshirt"></i><h4>Retail</h4><p>1,900+ jobs</p></div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 4: JOB CATEGORIES ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down"><h2>Browse by Category</h2><p>Find jobs in your field</p></div>
+            <div class="category-grid">
+                <div class="category-card" data-aos="flip-up" data-aos-delay="50"><i class="fas fa-code"></i><h4>Development</h4><p>1,234 open roles</p><button class="category-btn" onclick="window.location.href='404.html'">Explore</button></div>
+                <div class="category-card" data-aos="flip-up" data-aos-delay="70"><i class="fas fa-paint-brush"></i><h4>Design</h4><p>876 open roles</p><button class="category-btn" onclick="window.location.href='404.html'">Explore</button></div>
+                <div class="category-card" data-aos="flip-up" data-aos-delay="90"><i class="fas fa-chart-bar"></i><h4>Analytics</h4><p>654 open roles</p><button class="category-btn" onclick="window.location.href='404.html'">Explore</button></div>
+                <div class="category-card" data-aos="flip-up" data-aos-delay="110"><i class="fas fa-headset"></i><h4>Support</h4><p>432 open roles</p><button class="category-btn" onclick="window.location.href='404.html'">Explore</button></div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 5: TOP COMPANIES ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down"><h2>Top Employers</h2><p>Companies hiring the most</p></div>
+            <div class="company-grid">
+                <div class="company-card" data-aos="fade-up" data-aos-delay="50"><img src="Googlelogo.webp" alt="Google"><h4>Google</h4><div class="jobs">124 jobs</div><button class="company-btn" onclick="window.location.href='404.html'">View</button></div>
+                <div class="company-card" data-aos="fade-up" data-aos-delay="70"><img src="Microsoftlogo.webp" alt="MS"><h4>Microsoft</h4><div class="jobs">98 jobs</div><button class="company-btn" onclick="window.location.href='404.html'">View</button></div>
+                <div class="company-card" data-aos="fade-up" data-aos-delay="90"><img src="Amazonlogo.webp" alt="Amazon"><h4>Amazon</h4><div class="jobs">156 jobs</div><button class="company-btn" onclick="window.location.href='404.html'">View</button></div>
+                <div class="company-card" data-aos="fade-up" data-aos-delay="110"><img src="IBMlogo.webp" alt="IBM"><h4>IBM</h4><div class="jobs">112 jobs</div><button class="company-btn" onclick="window.location.href='404.html'">View</button></div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 6: JOB ALERTS ===== -->
+        <section class="alert-section" data-aos="zoom-out">
+            <h2>Get Job Alerts</h2>
+            <p style="opacity:0.9;">Never miss a role — we'll send you matched jobs</p>
+            <div class="alert-form">
+                <input type="email" id="alertEmail" placeholder="Enter your email">
+                <button class="primary-btn" onclick="validateAndRedirect()">Subscribe</button>
+            </div>
+            <div id="emailError" style="color:#ff6b6b; margin-top:12px; display:none;">Please enter a valid email</div>
+        </section>
+
+        <!-- ===== SECTION 7: TESTIMONIALS ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down"><h2>What People Say</h2><p>Real experiences from job seekers</p></div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="50"><img src="Jp1.webp" alt="User"><p>"Found my dream job in just 2 weeks!"</p><h4>— Sarah K.</h4></div>
+                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="70"><img src="Jp2.webp" alt="User"><p>"The best job platform I've ever used."</p><h4>— Michael R.</h4></div>
+                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="90"><img src="Jp3.webp" alt="User"><p>"Applied to 5 jobs and got 3 interviews."</p><h4>— Priya S.</h4></div>
+                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="110"><img src="Jp4.webp" alt="User"><p>"Hiring process was seamless and fast."</p><h4>— James W.</h4></div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 8: PARTNERS ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down"><h2>Our Partners</h2><p>Trusted by leading companies</p></div>
+            <div class="partner-grid">
+                <div class="partner-card" data-aos="fade-up" data-aos-delay="50"><img src="Jp5.webp" alt="Partner"><h4>Google</h4></div>
+                <div class="partner-card" data-aos="fade-up" data-aos-delay="70"><img src="Jp6.webp" alt="Partner"><h4>Microsoft</h4></div>
+                <div class="partner-card" data-aos="fade-up" data-aos-delay="90"><img src="Jp7.webp" alt="Partner"><h4>Apple</h4></div>
+                <div class="partner-card" data-aos="fade-up" data-aos-delay="110"><img src="Jp8.webp" alt="Partner"><h4>Amazon</h4></div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 9: RESOURCES ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down"><h2>Career Resources</h2><p>Tips to boost your job search</p></div>
+            <div class="resource-grid">
+                <div class="resource-card" data-aos="fade-right" data-aos-delay="50"><img src="Jp4.webp" alt="Resume"><div class="body"><h4>Resume Guide</h4><p>Stand out to recruiters</p><button class="card-btn" onclick="window.location.href='404.html'">Read</button></div></div>
+                <div class="resource-card" data-aos="fade-up" data-aos-delay="70"><img src="Jp17.webp" alt="Interview"><div class="body"><h4>Interview Prep</h4><p>Top 50 questions</p><button class="card-btn" onclick="window.location.href='404.html'">Read</button></div></div>
+                <div class="resource-card" data-aos="fade-up" data-aos-delay="90"><img src="Jp5.webp" alt="Growth"><div class="body"><h4>Career Growth</h4><p>Accelerate your path</p><button class="card-btn" onclick="window.location.href='404.html'">Read</button></div></div>
+                <div class="resource-card" data-aos="fade-left" data-aos-delay="110"><img src="Jp10.webp" alt="Salary"><div class="body"><h4>Salary Guide</h4><p>Know your worth</p><button class="card-btn" onclick="window.location.href='404.html'">Read</button></div></div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 10: CTA ===== -->
+        <section class="cta-banner" data-aos="zoom-out">
+            <h2>Ready to Find Your Next Job?</h2>
+            <p style="font-size:18px; margin:20px 0;">Join thousands of job seekers already using JobPortal</p>
+            <div class="stats">
+                <div><span class="num">12K+</span><div>Jobs</div></div>
+                <div><span class="num">8K+</span><div>Companies</div></div>
+                <div><span class="num">98%</span><div>Satisfaction</div></div>
+            </div>
+            <button class="primary-btn" onclick="window.location.href='404.html'">Start Searching</button>
+        </section>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
+    </script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true,
+            offset: 50,
+            easing: 'ease-in-out'
+        });
+
+        // Search function - works without entering anything
+        function handleSearch() {
+            window.location.href = '404.html';
+        }
+
+        // Email validation for alerts
+        function validateAndRedirect() {
+            const email = document.getElementById('alertEmail').value.trim();
+            const err = document.getElementById('emailError');
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email === '' || !re.test(email)) {
+                err.style.display = 'block';
+            } else {
+                err.style.display = 'none';
+                window.location.href = '404.html';
+            }
+        }
+
+        // Back to Top
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', function() {
+            backToTop.classList.toggle('show', window.scrollY > 500);
+        });
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // All buttons redirect to 404 (except those with explicit onclick)
+        document.querySelectorAll('button').forEach(btn => {
+            if (!btn.hasAttribute('onclick') && !btn.closest('.search-box')) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.location.href = '404.html';
+                });
+            }
+        });
+
+        // Header & Footer loader
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('header1.html').then(r => r.ok ? r.text() : '').then(d => {
+                document.getElementById('header-placeholder').innerHTML = d ||
+                    '<header style="background:#6c5ce7;color:#fff;padding:20px;text-align:center;">Header</header>';
+                setTimeout(initHeaderInteractions, 100);
+            }).catch(() => {});
+            fetch('footer1.html').then(r => r.ok ? r.text() : '').then(d => {
+                document.getElementById('footer-placeholder').innerHTML = d ||
+                    '<footer style="background:#1a1a2e;color:#fff;padding:40px;text-align:center;">Footer</footer>';
+            }).catch(() => {});
+        });
+
+        function initHeaderInteractions() {
+            const toggle = document.getElementById('menuToggle');
+            const menu = document.getElementById('navMenu');
+            if (toggle && menu) {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.classList.toggle('active');
+                    menu.classList.toggle('active');
+                    document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
+                    if (!menu.classList.contains('active')) {
+                        document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('show'));
+                        document.querySelectorAll('.dropdown-icon').forEach(b => b.classList.remove('active'));
+                    }
+                });
+            }
+            document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const id = this.getAttribute('data-dropdown');
+                    const dd = document.getElementById(id);
+                    if (!dd) return;
+                    document.querySelectorAll('.dropdown-menu').forEach(m => { if (m.id !== id) m.classList.remove(
+                            'show'); });
+                    document.querySelectorAll('.dropdown-icon').forEach(b => { if (b !== this) b.classList.remove(
+                            'active'); });
+                    dd.classList.toggle('show');
+                    this.classList.toggle('active');
+                });
+            });
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav-item-with-dropdown')) {
+                    document.querySelectorAll('.dropdown-menu').forEach(m => m.classList.remove('show'));
+                    document.querySelectorAll('.dropdown-icon').forEach(b => b.classList.remove('active'));
+                }
+            });
+        }
+
+        // Handle alert form submission
+        document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.alert-form button');
+            if (!btn) return;
+            const form = btn.closest('.alert-form');
+            const input = form ? form.querySelector('input[type="email"]') : document.querySelector('.alert-form input[type="email"]');
+            if (input) {
+                e.preventDefault();
+                const email = input.value.trim();
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!email || !re.test(email)) {
+                    const err = document.getElementById('emailError');
+                    if (err) { err.style.display = 'block';
+                        input.style.border = '1px solid #ff6b6b'; }
+                    return;
+                }
+                window.location.href = '404.html';
+            }
+        });
+    </script>
+</body>
+</html>

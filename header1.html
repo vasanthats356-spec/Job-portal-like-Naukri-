@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Job Portal - Find Your Dream Job</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            min-height: 100vh;
+        }
+
+        /* Fixed Header Container */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        /* ----- TOP BAR (Dark Color - #1e1e2f) ----- */
+        .top-bar {
+            background: #1e1e2f;
+            color: white;
+            padding: 10px 0;
+            font-size: 14px;
+            font-weight: 500;
+            border-bottom: 1px solid #333344;
+        }
+
+        .top-bar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            overflow: hidden;
+            white-space: nowrap;
+            flex: 1;
+        }
+
+        .top-bar-left i {
+            color: #4ecdc4;
+            font-size: 14px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        .moving-text {
+            display: inline-block;
+            animation: moveText 25s linear infinite;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .moving-text i {
+            margin: 0 10px;
+            color: #4ecdc4;
+        }
+
+        @keyframes moveText {
+            0% {
+                transform: translateX(0%);
+            }
+            50% {
+                transform: translateX(-100%);
+            }
+            50.01% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(0%);
+            }
+        }
+
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .top-bar-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+        }
+
+        .top-bar-contact-item i {
+            font-size: 14px;
+            color: #4ecdc4;
+            transition: transform 0.3s ease;
+        }
+
+        .top-bar-contact-item:hover i {
+            transform: scale(1.2);
+        }
+
+        .top-bar-contact-item span,
+        .top-bar-contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-weight: 500;
+        }
+
+        .top-bar-contact-item a:hover {
+            color: #4ecdc4;
+        }
+
+        .top-bar-separator {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 16px;
+            font-weight: 300;
+        }
+
+        /* ----- MAIN NAVIGATION (Light color - #ffffff) ----- */
+        .main-nav {
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid #eef2f6;
+        }
+
+        .navbar {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 8px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            height: 90px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            z-index: 1001;
+            transition: transform 0.3s ease;
+            line-height: 0;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo img {
+            height: 100px; 
+            width: auto;
+            max-width: 180px;
+            display: block;
+            border: none;
+            outline: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu li a {
+            color: #2d3748;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-menu li a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #1e1e2f;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu li a:hover:after {
+            width: 80%;
+        }
+
+        .nav-menu li a:hover {
+            color: #1e1e2f;
+        }
+
+        /* Dropdown Container - Only for items with dropdown */
+        .nav-item-with-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-link {
+            color: #2d3748;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 8px 0;
+        }
+
+        .dropdown-icon {
+            background: none;
+            border: none;
+            font-size: 14px;
+            color: #666666;
+            cursor: pointer;
+            padding: 8px 5px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-icon:hover {
+            color: #1e1e2f;
+        }
+
+        .dropdown-icon.active i {
+            transform: rotate(180deg);
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 240px;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            padding: 12px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid #edf2f7;
+        }
+
+        .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(10px);
+        }
+
+        .dropdown-menu li {
+            list-style: none;
+        }
+
+        .dropdown-menu li a {
+            padding: 12px 20px;
+            display: block;
+            color: #2d3748 !important;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-menu li a i {
+            width: 20px;
+            color: #1e1e2f;
+            margin-right: 10px;
+        }
+
+        .dropdown-menu li a:hover {
+            background: #f7fafc;
+            color: #1e1e2f !important;
+            padding-left: 25px;
+        }
+
+        .dropdown-menu li a:hover:after {
+            display: none;
+        }
+
+        /* Login Button Only */
+        .login-btn {
+            background: #1e1e2f !important;
+            color: white !important;
+            padding: 8px 25px !important;
+            border-radius: 30px;
+            font-weight: 600 !important;
+            transition: all 0.3s ease;
+            border: none;
+            margin-left: 10px;
+        }
+
+        .login-btn:hover {
+            background: #2d2d44 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(30, 30, 47, 0.3);
+            color: white !important;
+        }
+
+        .login-btn:hover:after {
+            display: none !important;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: #1e1e2f;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .nav-menu {
+                gap: 12px;
+            }
+            
+            .nav-menu li a {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar-container {
+                padding: 0 20px;
+                flex-direction: column;
+                gap: 8px;
+                align-items: center;
+                text-align: center;
+            }
+
+            .top-bar-left {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .top-bar-right {
+                width: 100%;
+                justify-content: center;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+
+            .navbar {
+                padding: 10px 20px;
+                height: 80px;
+            }
+
+            .logo {
+                transition: opacity 0.3s ease, visibility 0.3s ease;
+            }
+
+            .logo img {
+                height: 50px; 
+                max-width: 150px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                transition: left 0.4s ease;
+                z-index: 999;
+                padding: 80px 20px 40px;
+                overflow-y: auto;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            /* Hide logo when mobile menu is active */
+            .nav-menu.active ~ .logo,
+            .nav-menu.active + .logo,
+            body:has(.nav-menu.active) .logo {
+                opacity: 0 !important;
+                visibility: hidden !important;
+                pointer-events: none !important;
+            }
+
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-menu li a {
+                font-size: 18px;
+                padding: 12px;
+                display: inline-block;
+                color: #2d3748;
+            }
+
+            .nav-item-with-dropdown {
+                justify-content: center;
+            }
+
+            .dropdown-icon {
+                font-size: 16px;
+                padding: 12px 10px;
+                color: #666666;
+            }
+
+            .dropdown-menu {
+                position: static;
+                background: #f7fafc;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+                margin: 10px auto 0;
+                width: 90%;
+                border-radius: 15px;
+                display: none;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                border: 1px solid #e2e8f0;
+            }
+
+            .dropdown-menu.show {
+                display: block;
+            }
+
+            .dropdown-menu li a {
+                font-size: 16px !important;
+                color: #2d3748 !important;
+            }
+
+            .dropdown-menu li a i {
+                color: #1e1e2f;
+            }
+
+            .dropdown-menu li a:hover {
+                background: #edf2f7;
+                color: #1e1e2f !important;
+            }
+
+            .login-btn {
+                display: inline-block !important;
+                width: auto;
+                margin: 10px auto 0 !important;
+                text-align: center !important;
+                padding: 12px 40px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .top-bar-contact-item {
+                font-size: 12px;
+            }
+            
+            .top-bar-right {
+                gap: 8px;
+            }
+            
+            .top-bar-separator {
+                display: none;
+            }
+            
+            .logo img {
+                height: 95px; 
+                max-width: 130px;
+            }
+        }
+        
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section Only -->
+    <header class="header">
+        <!-- Top Bar with Dark Color -->
+        <div class="top-bar">
+            <div class="top-bar-container">
+                <div class="top-bar-left">
+                    <i class="fas fa-briefcase"></i>
+                    <div class="moving-text">
+                        <i class="fas fa-star"></i> Job Portal - 10,000+ Jobs Available - Top Companies Hiring Now - Upload Resume & Apply Today - Your Career Starts Here 
+                        <i class="fas fa-star"></i> Job Portal - 10,000+ Jobs Available - Top Companies Hiring Now - Upload Resume & Apply Today - Your Career Starts Here
+                    </div>
+                </div>
+                <div class="top-bar-right">
+                    <div class="top-bar-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="404.html">careers@jobportal.com</a>
+                    </div>
+                    <span class="top-bar-separator">|</span>
+                    <div class="top-bar-contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>2228-123-4567</span>
+                    </div>
+                    <span class="top-bar-separator">|</span>
+                    <div class="top-bar-contact-item">
+                        <i class="fas fa-download"></i>
+                        <a href="404.html">Download App</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation with Light Color -->
+        <div class="main-nav">
+            <nav class="navbar">
+                <!-- Logo - Redirects to index.html -->
+                <a href="index.html" class="logo">
+                    <img src="Stackly.webp" alt="Job Portal">
+                </a>
+
+                <!-- Mobile Menu Toggle -->
+                <div class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <!-- Navigation Menu -->
+                <ul class="nav-menu" id="navMenu">
+                    <li>
+                        <div class="nav-item-with-dropdown">
+                            <a href="index.html" class="nav-link">Home</a>
+                            <button class="dropdown-icon" data-dropdown="homeDropdown">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <ul class="dropdown-menu" id="homeDropdown">
+                            <li><a href="home2.html"><i class="fas fa-home"></i> Homepage 2</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="nav-item-with-dropdown">
+                            <a href="findjobs.html" class="nav-link">Find Jobs</a>
+                            <button class="dropdown-icon" data-dropdown="jobsDropdown">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <ul class="dropdown-menu" id="jobsDropdown">
+                            <li><a href="jobs-by-category.html"><i class="fas fa-tags"></i> Jobs by Category</a></li>
+                            <li><a href="jobs-by-location.html"><i class="fas fa-map-marker-alt"></i> Jobs by Location</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="nav-item-with-dropdown">
+                            <a href="companies.html" class="nav-link">Companies</a>
+                            <button class="dropdown-icon" data-dropdown="companiesDropdown">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <ul class="dropdown-menu" id="companiesDropdown">
+                            <li><a href="top-companies.html"><i class="fas fa-star"></i> Top Companies</a></li>
+                            <li><a href="company-reviews.html"><i class="fas fa-building"></i> Company Reviews</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="services.html" class="nav-link">Services</a>
+                    </li>
+                    <li>
+                        <a href="resources.html" class="nav-link">Resources</a>
+                    </li>
+                    <li>
+                        <a href="dashboard.html" class="nav-link">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="login1.html" class="nav-link login-btn">Login</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Minimal spacer for fixed header - No content -->
+    <div style="height: 140px;"></div>
+
+    <!-- JavaScript for Functionality -->
+    <script>
+        // Get elements
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const logo = document.querySelector('.logo');
+        
+        // Mobile menu toggle
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            
+            // Toggle logo visibility
+            if (navMenu.classList.contains('active')) {
+                // Force hide logo
+                logo.style.setProperty('opacity', '0', 'important');
+                logo.style.setProperty('visibility', 'hidden', 'important');
+                logo.style.setProperty('pointer-events', 'none', 'important');
+                document.body.style.overflow = 'hidden';
+            } else {
+                // Restore logo
+                logo.style.removeProperty('opacity');
+                logo.style.removeProperty('visibility');
+                logo.style.removeProperty('pointer-events');
+                document.body.style.overflow = 'auto';
+                
+                // Close all dropdowns when closing menu
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+        });
+
+        // Dropdown functionality - For all dropdown icons
+        document.querySelectorAll('.dropdown-icon').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const dropdownId = this.getAttribute('data-dropdown');
+                const dropdown = document.getElementById(dropdownId);
+                
+                // Close other dropdowns
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    if (menu.id !== dropdownId) {
+                        menu.classList.remove('show');
+                    }
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    if (btn !== this) {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current dropdown
+                dropdown.classList.toggle('show');
+                this.classList.toggle('active');
+            });
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-item-with-dropdown')) {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    
+                    // Restore logo
+                    logo.style.removeProperty('opacity');
+                    logo.style.removeProperty('visibility');
+                    logo.style.removeProperty('pointer-events');
+                    
+                    document.body.style.overflow = 'auto';
+                    
+                    // Close all dropdowns
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                
+                // Restore logo
+                logo.style.removeProperty('opacity');
+                logo.style.removeProperty('visibility');
+                logo.style.removeProperty('pointer-events');
+                
+                document.body.style.overflow = 'auto';
+                
+                // Close all dropdowns
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+        });
+
+        // Escape key handler
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                if (navMenu.classList.contains('active')) {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    
+                    // Restore logo
+                    logo.style.removeProperty('opacity');
+                    logo.style.removeProperty('visibility');
+                    logo.style.removeProperty('pointer-events');
+                    
+                    document.body.style.overflow = 'auto';
+                }
+                
+                // Close all dropdowns
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

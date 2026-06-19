@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Job Portal - Contact with Map</title>
+    <!-- Font Awesome, Google Fonts, AOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f5f5;
+            color: #0f172a;
+            line-height: 1.5;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* ----- SECTION 1: HERO WITH ATTRACTIVE BACKGROUND IMAGE ----- */
+        .hero-section {
+            background: linear-gradient(rgba(169, 170, 188, 0.8), rgba(20, 136, 204, 0.8)), 
+                        url('london.webp') center/cover no-repeat fixed;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 80px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            width: 100%;
+            padding: 0 15px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            word-wrap: break-word;
+        }
+
+        .hero-content .breadcrumb {
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.8);
+            flex-wrap: wrap;
+        }
+
+        .hero-content .breadcrumb a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+            white-space: nowrap;
+        }
+        .hero-content .breadcrumb a:hover {
+            color: #FFD93D;
+        }
+        .hero-content .breadcrumb i {
+            color: #FFD93D;
+            font-size: 12px;
+        }
+        .hero-content .breadcrumb span {
+            color: #FFD93D;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .hero-divider {
+            width: 100px;
+            height: 4px;
+            background: #FFD93D;
+            margin: 25px auto 0;
+            border-radius: 4px;
+        }
+
+        /* ----- SECTION 2: GET IN TOUCH + FORM (side by side) ----- */
+        .contact-grid-section {
+            max-width: 1280px;
+            margin: 80px auto;
+            padding: 0 24px;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+            width: 100%;
+        }
+
+        /* left card */
+        .info-card {
+            background: #ffffff;
+            padding: 40px 32px;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -8px rgba(43, 50, 178, 0.15);
+            border: 1px solid rgba(255, 217, 61, 0.2);
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .info-card h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #2B32B2;
+            margin-bottom: 12px;
+            word-wrap: break-word;
+        }
+
+        .info-card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #1e2b3a;
+            margin-bottom: 20px;
+            word-wrap: break-word;
+        }
+
+        .info-card p {
+            color: #334155;
+            margin-bottom: 30px;
+            font-size: 1rem;
+            word-wrap: break-word;
+        }
+
+        .contact-details {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .contact-details li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 18px;
+            font-size: 1rem;
+            color: #0f172a;
+            font-weight: 500;
+            word-break: break-word;
+        }
+
+        .contact-details li i {
+            width: 22px;
+            color: #FFD93D;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .follow-title {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            color: #2B32B2;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: #f0f4f9;
+            border-radius: 50%;
+            color: #2B32B2;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .social-icons a:hover {
+            background: #FFD93D;
+            color: #2B32B2;
+            transform: translateY(-5px);
+        }
+
+        /* right card - form */
+        .form-card {
+            background: #ffffff;
+            padding: 40px 32px;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -8px rgba(43, 50, 178, 0.15);
+            border: 1px solid rgba(255, 217, 61, 0.2);
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .form-card h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #2B32B2;
+            margin-bottom: 28px;
+            word-wrap: break-word;
+        }
+
+        .input-group {
+            margin-bottom: 22px;
+            width: 100%;
+        }
+
+        .input-group label {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: #1e293b;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .input-group input,
+        .input-group textarea {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 1rem;
+            border: 1px solid #dbe0e6;
+            border-radius: 18px;
+            background: #f9fcff;
+            transition: 0.2s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+            outline: none;
+            border-color: #2B32B2;
+            box-shadow: 0 0 0 4px rgba(43, 50, 178, 0.1);
+        }
+
+        .input-group input.error,
+        .input-group textarea.error {
+            border-color: #ef4444;
+            background: #fff2f2;
+        }
+
+        .error-message {
+            color: #dc2626;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
+            word-wrap: break-word;
+        }
+
+        .send-btn {
+            background: #FFD93D;
+            color: #2B32B2;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 16px 28px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 18px -8px rgba(255, 217, 61, 0.5);
+            width: 100%;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .send-btn:hover {
+            background: #2B32B2;
+            color: #FFD93D;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 18px -8px rgba(43, 50, 178, 0.5);
+        }
+
+        .send-btn i {
+            transition: transform 0.3s;
+        }
+
+        .send-btn:hover i {
+            transform: translateX(5px);
+            color: #FFD93D;
+        }
+
+        /* ----- SECTION 3: GOOGLE MAPS EMBED ----- */
+        .map-section {
+            max-width: 1280px;
+            margin: 0 auto 80px;
+            padding: 0 24px;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .map-container {
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 25px 40px -12px rgba(43, 50, 178, 0.2);
+            border: 1px solid rgba(255, 217, 61, 0.2);
+            height: 450px;
+            width: 100%;
+            position: relative;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* responsive fixes */
+        @media (max-width: 900px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 400px;
+                padding: 60px 15px;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .contact-grid-section {
+                margin: 60px auto;
+                padding: 0 15px;
+            }
+            .info-card, .form-card {
+                padding: 30px 20px;
+            }
+            .info-card h2 {
+                font-size: 2rem;
+            }
+            .info-card h3 {
+                font-size: 1.2rem;
+            }
+            .form-card h2 {
+                font-size: 1.8rem;
+            }
+            .contact-details li {
+                font-size: 0.95rem;
+                gap: 12px;
+            }
+            .map-section {
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .hero-content .breadcrumb {
+                font-size: 1rem;
+            }
+            .map-container {
+                height: 300px;
+            }
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .info-card, .form-card {
+                padding: 25px 15px;
+            }
+            .info-card h2 {
+                font-size: 1.8rem;
+            }
+            .form-card h2 {
+                font-size: 1.6rem;
+            }
+            .input-group input,
+            .input-group textarea {
+                padding: 14px 16px;
+            }
+            .send-btn {
+                padding: 14px 20px;
+                font-size: 1rem;
+            }
+            .contact-details li {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* AOS tweaks */
+        [data-aos] {
+            transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Ensure all images and iframes are responsive */
+        img, iframe, video {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background:yellow;  /* You can change this color */
+    color:#4cd2ea;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    border: 2px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #4cd2ea;  /* Darker shade on hover */
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(78,205,196,0.4);
+    color: yellow;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Back to Top Button -->
+<div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+    <!-- HEADER PLACEHOLDER - Header will load here -->
+    <div id="header-placeholder"></div>
+
+    <!-- SECTION 1: Hero with attractive background image -->
+    <section class="hero-section" data-aos="fade-down" data-aos-duration="1000">
+        <div class="hero-content">
+            <h1>Contact Job Portal</h1>
+            <div class="breadcrumb">
+                <a href="home2.html">Home</a> <i class="fas fa-chevron-right"></i> <span>Contact</span>
+            </div>
+            <div class="hero-divider"></div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: Get in Touch + Form side by side -->
+    <section class="contact-grid-section">
+        <div class="contact-grid">
+            <!-- LEFT: Get in touch -->
+            <div class="info-card" data-aos="fade-right" data-aos-duration="800">
+                <h2>Get in Touch</h2>
+                <h3>We're Here to Help You</h3>
+                <p>Have questions about finding your dream job or hiring the best talent? Our team is ready to assist you with any inquiries.</p>
+
+                <ul class="contact-details">
+                    <li><i class="fas fa-map-marker-alt"></i> <span>Koppa Rd, in front of SNN Raj Serenity, Suraksha Nagar, Yelenahalli, Begur, Bengaluru, Karnataka - 560068</span></li>
+                    <li><i class="fas fa-phone-alt"></i> <span>+91 70107 92745</span></li>
+                    <li><i class="fas fa-envelope"></i> <span>support@jobportal.com</span></li>
+                    <li><i class="fas fa-clock"></i> <span>Mon - Fri: 9:30 AM - 6:30 PM<br>Sat - Sun: Closed</span></li>
+                </ul>
+
+                <div class="follow-title">Follow Job Portal</div>
+                <div class="social-icons">
+                    <a href="4042.html" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="4042.html" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="4042.html" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="4042.html" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="4042.html" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <!-- RIGHT: Form with strict validation -->
+            <div class="form-card" data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
+                <h2>Send a Message</h2>
+                <form id="contactForm" novalidate>
+                    <div class="input-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required
+                               onkeydown="return /[a-zA-Z\s]|Backspace|Delete|ArrowLeft|ArrowRight|Tab|Home|End|Space/i.test(event.key)"
+                               oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')">
+                        <div class="error-message" id="nameError">Only letters and spaces allowed</div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">Your Email *</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        <div class="error-message" id="emailError">Valid email required (e.g., name@domain.com)</div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="subject">Subject *</label>
+                        <input type="text" id="subject" name="subject" placeholder="Job inquiry or support request" required>
+                        <div class="error-message" id="subjectError">Subject is required</div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="message">Your Message Here *</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your job search or hiring needs..." required></textarea>
+                        <div class="error-message" id="messageError">Message is required</div>
+                    </div>
+
+                    <button type="submit" class="send-btn" id="submitBtn">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Google Maps Embed -->
+    <section class="map-section" data-aos="zoom-in-up" data-aos-duration="900">
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.372956843392!2d77.6174273!3d12.874509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae14f6b8b8b8b9%3A0x8b8b8b8b8b8b8b8b!2sSNN%20Raj%20Serenity!5e0!3m2!1sen!2sin!4v1234567890!5m2!1sen!2sin" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- FOOTER PLACEHOLDER - Footer will load here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // ===== AOS INITIALIZATION =====
+        AOS.init({
+            once: false,
+            mirror: true,
+            duration: 900,
+            offset: 20,
+            easing: 'ease-out-cubic'
+        });
+
+        // ===== HEADER & FOOTER LOADER =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header
+            fetch('header2.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Header file not found');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                    setTimeout(initHeaderInteractions, 100);
+                })
+                .catch(error => {
+                    console.warn('Header could not be loaded:', error);
+                    document.getElementById('header-placeholder').innerHTML = 
+                        '<header style="background: linear-gradient(135deg, #2B32B2, #1488CC); color: white; padding: 20px; text-align: center;">Header Not Found</header>';
+                });
+
+            // Load footer
+            fetch('footer2.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Footer file not found');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                })
+                .catch(error => {
+                    console.warn('Footer could not be loaded:', error);
+                    document.getElementById('footer-placeholder').innerHTML = 
+                        '<footer style="background: linear-gradient(135deg, #2B32B2, #1488CC); color: white; padding: 40px; text-align: center;">Footer Not Found</footer>';
+                });
+        });
+
+        // ===== HEADER INTERACTIONS =====
+        function initHeaderInteractions() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    
+                    if (navMenu.classList.contains('active')) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = 'auto';
+                        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                            menu.classList.remove('show');
+                        });
+                        document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                            btn.classList.remove('active');
+                        });
+                    }
+                });
+            }
+            
+            document.querySelectorAll('.dropdown-icon').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const dropdownId = this.getAttribute('data-dropdown');
+                    const dropdown = document.getElementById(dropdownId);
+                    
+                    if (!dropdown) return;
+                    
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        if (menu.id !== dropdownId) {
+                            menu.classList.remove('show');
+                        }
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        if (btn !== this) {
+                            btn.classList.remove('active');
+                        }
+                    });
+                    
+                    dropdown.classList.toggle('show');
+                    this.classList.toggle('active');
+                });
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav-item-with-dropdown')) {
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+            
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        if (menuToggle) menuToggle.classList.remove('active');
+                        if (navMenu) navMenu.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                        
+                        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                            menu.classList.remove('show');
+                        });
+                        document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                            btn.classList.remove('active');
+                        });
+                    }
+                });
+            });
+            
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    if (menuToggle) menuToggle.classList.remove('active');
+                    if (navMenu) navMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+        }
+
+        // ===== CONTACT FORM VALIDATION =====
+        const form = document.getElementById('contactForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const subjectInput = document.getElementById('subject');
+        const messageInput = document.getElementById('message');
+
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const subjectError = document.getElementById('subjectError');
+        const messageError = document.getElementById('messageError');
+
+        // Validation functions
+        function validateName() {
+            const value = nameInput.value.trim();
+            const nameRegex = /^[A-Za-z\s]+$/;
+            
+            if (!value) {
+                nameInput.classList.add('error');
+                nameError.style.display = 'block';
+                nameError.textContent = 'Name is required';
+                return false;
+            } else if (!nameRegex.test(value)) {
+                nameInput.classList.add('error');
+                nameError.style.display = 'block';
+                nameError.textContent = 'Only letters and spaces allowed';
+                return false;
+            } else {
+                nameInput.classList.remove('error');
+                nameError.style.display = 'none';
+                return true;
+            }
+        }
+
+        function validateEmail() {
+            const value = emailInput.value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!value) {
+                emailInput.classList.add('error');
+                emailError.style.display = 'block';
+                emailError.textContent = 'Email is required';
+                return false;
+            } else if (!emailRegex.test(value)) {
+                emailInput.classList.add('error');
+                emailError.style.display = 'block';
+                emailError.textContent = 'Enter a valid email address';
+                return false;
+            } else {
+                emailInput.classList.remove('error');
+                emailError.style.display = 'none';
+                return true;
+            }
+        }
+
+        function validateSubject() {
+            const value = subjectInput.value.trim();
+            
+            if (!value) {
+                subjectInput.classList.add('error');
+                subjectError.style.display = 'block';
+                return false;
+            } else {
+                subjectInput.classList.remove('error');
+                subjectError.style.display = 'none';
+                return true;
+            }
+        }
+
+        function validateMessage() {
+            const value = messageInput.value.trim();
+            
+            if (!value) {
+                messageInput.classList.add('error');
+                messageError.style.display = 'block';
+                return false;
+            } else {
+                messageInput.classList.remove('error');
+                messageError.style.display = 'none';
+                return true;
+            }
+        }
+
+        // Live validation on input
+        nameInput.addEventListener('input', validateName);
+        emailInput.addEventListener('input', validateEmail);
+        subjectInput.addEventListener('input', validateSubject);
+        messageInput.addEventListener('input', validateMessage);
+
+        // Form submit handler
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const isNameValid = validateName();
+            const isEmailValid = validateEmail();
+            const isSubjectValid = validateSubject();
+            const isMessageValid = validateMessage();
+
+            if (isNameValid && isEmailValid && isSubjectValid && isMessageValid) {
+                window.location.href = '4042.html';
+            }
+        });
+
+        // ===== NEWSLETTER VALIDATION (if needed) =====
+        function validateNewsletter(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function showNewsletterError(message) {
+            const existingMsg = document.querySelector('.newsletter-error');
+            if (existingMsg) existingMsg.remove();
+            
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'newsletter-error';
+            msgDiv.style.cssText = `
+                margin-top: 10px;
+                padding: 8px 15px;
+                border-radius: 5px;
+                font-size: 14px;
+                text-align: center;
+                background: #fee;
+                color: #c00;
+            `;
+            msgDiv.textContent = message;
+            
+            const newsletter = document.querySelector('.newsletter-form, .footer-newsletter, [class*="newsletter"]');
+            if (newsletter) {
+                newsletter.appendChild(msgDiv);
+                setTimeout(() => msgDiv.remove(), 3000);
+            } else {
+                alert(message);
+            }
+        }
+
+        // ===== BACK TO TOP BUTTON =====
+        const backToTop = document.getElementById('backToTop');
+        if (backToTop) {
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 500) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // ===== NEWSLETTER VALIDATION WITH MESSAGE UNDER BOX =====
+    document.addEventListener('DOMContentLoaded', function() {
+        // Wait a moment for footer to load
+        setTimeout(function() {
+            // Get the newsletter button and input from footer
+            const footerBtn = document.querySelector('.footer .newsletter-input button');
+            const footerInput = document.querySelector('.footer .newsletter-input input');
+            const newsletterForm = document.querySelector('.footer .newsletter-form');
+            
+            if (!footerBtn || !footerInput || !newsletterForm) {
+                console.log('Newsletter elements not found in footer');
+                return;
+            }
+            
+            // Remove any existing onclick attribute
+            footerBtn.removeAttribute('onclick');
+            
+            // Function to show message under the box
+            function showMessage(message, isError) {
+                // Remove any existing message
+                const existingMsg = document.querySelector('.footer .newsletter-message');
+                if (existingMsg) existingMsg.remove();
+                
+                // Create message element
+                const msgDiv = document.createElement('div');
+                msgDiv.className = 'newsletter-message';
+                msgDiv.style.cssText = `
+                    margin-top: 10px;
+                    padding: 8px 15px;
+                    border-radius: 50px;
+                    font-size: 14px;
+                    text-align: center;
+                    background: ${isError ? '#fee' : '#e8f5e9'};
+                    color: ${isError ? '#c00' : '#2e7d32'};
+                `;
+                msgDiv.textContent = message;
+                
+                // Add to newsletter form
+                newsletterForm.appendChild(msgDiv);
+                
+                // Remove after 3 seconds
+                setTimeout(() => {
+                    if (msgDiv.parentNode) msgDiv.remove();
+                }, 3000);
+            }
+            
+            // Add click event
+            footerBtn.addEventListener('click', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                
+                const email = footerInput.value.trim();
+                
+                // Check if empty
+                if (email === '') {
+                    showMessage('Please enter your email address', true);
+                    footerInput.focus();
+                    return false;
+                }
+                
+                // Check if valid email format (simple check)
+                if (!email.includes('@') || !email.includes('.')) {
+                    showMessage('Please enter a valid email address', true);
+                    footerInput.focus();
+                    return false;
+                }
+                
+                // Valid email - show success message
+                showMessage('Thank you for subscribing!', false);
+                
+                // Redirect after delay
+                setTimeout(() => {
+                    window.location.href = '4042.html';
+                }, 1500);
+                
+                return false;
+            });
+            
+            // Enter key support
+            footerInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    footerBtn.click();
+                }
+            });
+            
+            console.log('Newsletter validation with message working');
+        }, 500);
+    });
+
+
+        
+    </script>
+</body>
+</html>

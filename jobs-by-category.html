@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>JobPortal — Jobs by Category · Professional Design</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* ----- RESET & BASE ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .mid-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        section {
+            margin: 120px 0;
+            position: relative;
+            width: 100%;
+            clear: both;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1e1e2f;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #4ecdc4;
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ----- AOS ANIMATIONS ----- */
+        [data-aos="fade-left"] { transform: translateX(-100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="fade-right"] { transform: translateX(100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="fade-up"] { transform: translateY(100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="fade-down"] { transform: translateY(-100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="zoom-in"] { transform: scale(0.8); opacity: 0; transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="zoom-out"] { transform: scale(1.2); opacity: 0; transition: all 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="flip-left"] { transform: perspective(2500px) rotateY(-120deg); opacity: 0; transition: all 1.2s ease; }
+        [data-aos="flip-right"] { transform: perspective(2500px) rotateY(120deg); opacity: 0; transition: all 1.2s ease; }
+        [data-aos].aos-animate { transform: translate(0) scale(1) rotateY(0); opacity: 1; }
+
+        /* ----- BUTTON STYLES ----- */
+        .primary-btn, .outline-btn, .card-btn, .trend-btn, .skill-btn, .view-btn {
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 8px;
+            padding: 12px 24px;
+        }
+
+        .primary-btn {
+            background: #4ecdc4;
+            color: #1e1e2f;
+        }
+        .primary-btn:hover {
+            background: #1e1e2f;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .outline-btn {
+            background: transparent;
+            border: 2px solid #4ecdc4;
+            color: #1e1e2f;
+        }
+        .outline-btn:hover {
+            background: #4ecdc4;
+            color: #1e1e2f;
+            transform: translateY(-3px);
+        }
+
+        .card-btn {
+            background: #4ecdc4;
+            color: #1e1e2f;
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 6px;
+        }
+        .card-btn:hover {
+            background: #1e1e2f;
+            color: white;
+        }
+
+        .trend-btn, .skill-btn, .view-btn {
+            background: white;
+            color: #1e1e2f;
+            border: 1px solid #e2e8f0;
+            padding: 6px 14px;
+            font-size: 13px;
+            border-radius: 6px;
+        }
+        .trend-btn:hover, .skill-btn:hover, .view-btn:hover {
+            background: #4ecdc4;
+            color: #1e1e2f;
+            border-color: #4ecdc4;
+        }
+
+        /* ===== SECTION 1: HERO (Professional) ===== */
+        .category-hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            margin-top: 20px;
+            background: linear-gradient(135deg, rgba(30,30,47,0.9), rgba(78,205,196,0.8)), url('singapore.webp');
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 900px;
+            padding: 60px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .hero-badge {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(5px);
+            padding: 10px 25px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-bottom: 30px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .hero-content h1 {
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .hero-content h1 span {
+            color: #4ecdc4;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        /* ===== SECTION 2: MAIN CATEGORIES (Official Website Look) ===== */
+        .categories-showcase {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .category-panel {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border: 1px solid #eef2f6;
+        }
+        .category-panel:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px rgba(78,205,196,0.15);
+            border-color: #4ecdc4;
+        }
+        .panel-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        .panel-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+        .category-panel:hover .panel-image img {
+            transform: scale(1.05);
+        }
+        .panel-content {
+            padding: 30px;
+        }
+        .panel-content h3 {
+            font-size: 24px;
+            color: #1e1e2f;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .panel-stats {
+            display: flex;
+            gap: 20px;
+            color: #64748b;
+            font-size: 14px;
+            margin: 15px 0;
+        }
+        .panel-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .panel-tag {
+            background: #f1f5f9;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #1e1e2f;
+        }
+
+        /* ===== SECTION 3: SUB-CATEGORIES (Grid with Icons & Images) ===== */
+        .subcategories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .subcard {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            transition: all 0.3s;
+            border: 1px solid #eef2f6;
+        }
+        .subcard:hover {
+            transform: translateY(-5px);
+            border-color: #4ecdc4;
+            box-shadow: 0 20px 30px rgba(78,205,196,0.1);
+        }
+        .subcard img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+        .subcard h4 {
+            font-size: 18px;
+            color: #1e1e2f;
+            margin-bottom: 8px;
+        }
+        .subcard p {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        /* ===== SECTION 4: INDUSTRY TRENDS (Professional Cards) ===== */
+        .trends-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .trend-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            transition: all 0.3s;
+        }
+        .trend-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 35px rgba(78,205,196,0.15);
+        }
+        .trend-image {
+            height: 160px;
+            overflow: hidden;
+        }
+        .trend-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .trend-card:hover .trend-image img {
+            transform: scale(1.08);
+        }
+        .trend-content {
+            padding: 20px;
+        }
+        .trend-content h4 {
+            font-size: 18px;
+            color: #1e1e2f;
+            margin-bottom: 8px;
+        }
+        .trend-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #4ecdc4;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        /* ===== SECTION 5: SKILLS & DEMAND (Official Look) ===== */
+        .skills-showcase {
+            background: white;
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .skill-item {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #eef2f6;
+        }
+        .skill-item:hover {
+            background: white;
+            border-color: #4ecdc4;
+            transform: scale(1.02);
+        }
+        .skill-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+        .skill-item h4 {
+            font-size: 16px;
+            color: #1e1e2f;
+            margin-bottom: 10px;
+        }
+        .skill-bar {
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            margin: 15px 0;
+        }
+        .skill-fill {
+            height: 100%;
+            background: #4ecdc4;
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.5s;
+        }
+        .skill-item:hover .skill-fill {
+            width: 100%;
+        }
+
+        /* ----- RESPONSIVE ----- */
+        @media (max-width: 1200px) {
+            .categories-showcase, .subcategories-grid, .trends-container, .skills-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 992px) {
+            .mid-section { padding: 0 20px; }
+            .hero-content h1 { font-size: 42px; }
+            .categories-showcase, .subcategories-grid, .trends-container, .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .mid-section { padding: 0 15px; }
+            .hero-content h1 { font-size: 32px; }
+            .hero-stats { flex-direction: column; gap: 15px; }
+            .categories-showcase, .subcategories-grid, .trends-container, .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            .skills-showcase { padding: 30px; }
+        }
+        html, body { max-width: 100%; overflow-x: hidden; }
+        img, video, svg { max-width: 100%; height: auto; }
+
+        /* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #4ecdc4;  /* You can change this color */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    border: 2px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #3ab7ad;  /* Darker shade on hover */
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(78,205,196,0.4);
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Back to Top Button -->
+<div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+    <!-- HEADER PLACEHOLDER - Header will load here -->
+    <div id="header-placeholder"></div>
+
+    <div class="mid-section">
+
+        <!-- ===== SECTION 1: HERO (Professional) ===== -->
+        <section class="category-hero" data-aos="fade-up">
+            <div class="hero-content">
+                <div class="hero-badge" data-aos="fade-down" data-aos-delay="100">
+                    <i class="fas fa-sitemap"></i> 15 CATEGORIES · 25,000+ JOBS
+                </div>
+                <h1 data-aos="fade-right" data-aos-delay="200">
+                    Browse Jobs by <span>Category</span>
+                </h1>
+                <p data-aos="fade-left" data-aos-delay="300" style="font-size: 18px; max-width: 600px; margin: 0 auto 30px;">
+                    Find your perfect role across technology, marketing, finance, healthcare and more.
+                </p>
+                <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
+                    <div><strong>15+</strong> Categories</div>
+                    <div><strong>8K+</strong> Companies</div>
+                    <div><strong>156</strong> Sub-categories</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 2: MAIN CATEGORIES (Official Website Look with Images) ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Explore by Category</h2>
+                <p>Professional opportunities in leading industries</p>
+            </div>
+            <div class="categories-showcase">
+                <!-- Technology -->
+                <div class="category-panel" data-aos="fade-right" data-aos-delay="50">
+                    <div class="panel-image">
+                        <img src="tech.webp" alt="Technology">
+                    </div>
+                    <div class="panel-content">
+                        <h3>Technology</h3>
+                        <p>Software, DevOps, AI, Cloud & more</p>
+                        <div class="panel-stats">
+                            <span><i class="fas fa-briefcase"></i> 8,456 jobs</span>
+                            <span><i class="fas fa-building"></i> 2,345 co.</span>
+                        </div>
+                        <div class="panel-tags">
+                            <span class="panel-tag">React</span>
+                            <span class="panel-tag">Python</span>
+                            <span class="panel-tag">AWS</span>
+                        </div>
+                        <button class="card-btn" onclick="window.location.href='404.html'">Browse Technology →</button>
+                    </div>
+                </div>
+                <!-- Marketing -->
+                <div class="category-panel" data-aos="fade-up" data-aos-delay="50">
+                    <div class="panel-image">
+                        <img src="mark.webp" alt="Marketing">
+                    </div>
+                    <div class="panel-content">
+                        <h3>Marketing</h3>
+                        <p>Digital, Brand, SEO, Content & Analytics</p>
+                        <div class="panel-stats">
+                            <span><i class="fas fa-briefcase"></i> 5,234 jobs</span>
+                            <span><i class="fas fa-building"></i> 1,567 co.</span>
+                        </div>
+                        <div class="panel-tags">
+                            <span class="panel-tag">SEO</span>
+                            <span class="panel-tag">Content</span>
+                            <span class="panel-tag">Analytics</span>
+                        </div>
+                        <button class="card-btn" onclick="window.location.href='404.html'">Browse Marketing →</button>
+                    </div>
+                </div>
+                <!-- Finance -->
+                <div class="category-panel" data-aos="fade-left" data-aos-delay="50">
+                    <div class="panel-image">
+                        <img src="fin.webp" alt="Finance">
+                    </div>
+                    <div class="panel-content">
+                        <h3>Finance</h3>
+                        <p>Investment, Banking, Analysis & Consulting</p>
+                        <div class="panel-stats">
+                            <span><i class="fas fa-briefcase"></i> 3,876 jobs</span>
+                            <span><i class="fas fa-building"></i> 923 co.</span>
+                        </div>
+                        <div class="panel-tags">
+                            <span class="panel-tag">Investment</span>
+                            <span class="panel-tag">Analysis</span>
+                            <span class="panel-tag">Banking</span>
+                        </div>
+                        <button class="card-btn" onclick="window.location.href='404.html'">Browse Finance →</button>
+                    </div>
+                </div>
+                <!-- Healthcare -->
+                <div class="category-panel" data-aos="fade-right" data-aos-delay="100">
+                    <div class="panel-image">
+                        <img src="healthcare.webp" alt="Healthcare">
+                    </div>
+                    <div class="panel-content">
+                        <h3>Healthcare</h3>
+                        <p>Medical, Pharma, Research & Nursing</p>
+                        <div class="panel-stats">
+                            <span><i class="fas fa-briefcase"></i> 4,567 jobs</span>
+                            <span><i class="fas fa-building"></i> 1,234 co.</span>
+                        </div>
+                        <div class="panel-tags">
+                            <span class="panel-tag">Nursing</span>
+                            <span class="panel-tag">Pharma</span>
+                            <span class="panel-tag">Research</span>
+                        </div>
+                        <button class="card-btn" onclick="window.location.href='404.html'">Browse Healthcare →</button>
+                    </div>
+                </div>
+                <!-- Education -->
+                <div class="category-panel" data-aos="fade-up" data-aos-delay="100">
+                    <div class="panel-image">
+                        <img src="education.webp" alt="Education">
+                    </div>
+                    <div class="panel-content">
+                        <h3>Education</h3>
+                        <p>Teaching, Administration, E-learning</p>
+                        <div class="panel-stats">
+                            <span><i class="fas fa-briefcase"></i> 2,345 jobs</span>
+                            <span><i class="fas fa-building"></i> 678 co.</span>
+                        </div>
+                        <div class="panel-tags">
+                            <span class="panel-tag">Teaching</span>
+                            <span class="panel-tag">Admin</span>
+                            <span class="panel-tag">E-learning</span>
+                        </div>
+                        <button class="card-btn" onclick="window.location.href='404.html'">Browse Education →</button>
+                    </div>
+                </div>
+                <!-- Retail -->
+                <div class="category-panel" data-aos="fade-left" data-aos-delay="100">
+                    <div class="panel-image">
+                        <img src="design.webp" alt="Retail">
+                    </div>
+                    <div class="panel-content">
+                        <h3>Retail</h3>
+                        <p>Management, Sales, Buying, Merchandising</p>
+                        <div class="panel-stats">
+                            <span><i class="fas fa-briefcase"></i> 2,987 jobs</span>
+                            <span><i class="fas fa-building"></i> 892 co.</span>
+                        </div>
+                        <div class="panel-tags">
+                            <span class="panel-tag">Management</span>
+                            <span class="panel-tag">Sales</span>
+                            <span class="panel-tag">Buying</span>
+                        </div>
+                        <button class="card-btn" onclick="window.location.href='404.html'">Browse Retail →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 3: SUB-CATEGORIES (Grid with Icons & Images) ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Popular Sub-Categories</h2>
+                <p>Most in-demand specializations right now</p>
+            </div>
+            <div class="subcategories-grid">
+                <div class="subcard" data-aos="zoom-in" data-aos-delay="50">
+                    <img src="Jp1.webp" alt="React">
+                    <h4>React Development</h4>
+                    <p>2,345 open jobs</p>
+                    <button class="view-btn" onclick="window.location.href='404.html'">View Jobs</button>
+                </div>
+                <div class="subcard" data-aos="zoom-in" data-aos-delay="70">
+                    <img src="Jp2.webp" alt="WordPress">
+                    <h4>WordPress</h4>
+                    <p>1,876 open jobs</p>
+                    <button class="view-btn" onclick="window.location.href='404.html'">View Jobs</button>
+                </div>
+                <div class="subcard" data-aos="zoom-in" data-aos-delay="90">
+                    <img src="Jp3.webp" alt="Figma">
+                    <h4>UX/UI Design</h4>
+                    <p>1,234 open jobs</p>
+                    <button class="view-btn" onclick="window.location.href='404.html'">View Jobs</button>
+                </div>
+                <div class="subcard" data-aos="zoom-in" data-aos-delay="110">
+                    <img src="Jp4.webp" alt="Python">
+                    <h4>Data Science</h4>
+                    <p>2,567 open jobs</p>
+                    <button class="view-btn" onclick="window.location.href='404.html'">View Jobs</button>
+                </div>
+                <div class="subcard" data-aos="zoom-in" data-aos-delay="130">
+                    <img src="Jp5.webp" alt="SQL">
+                    <h4>Database Admin</h4>
+                    <p>987 open jobs</p>
+                    <button class="view-btn" onclick="window.location.href='404.html'">View Jobs</button>
+                </div>
+                <div class="subcard" data-aos="zoom-in" data-aos-delay="150">
+                    <img src="Jp6.webp" alt="PMP">
+                    <h4>Project Management</h4>
+                    <p>1,456 open jobs</p>
+                    <button class="view-btn" onclick="window.location.href='404.html'">View Jobs</button>
+                </div>
+                <div class="subcard" data-aos="zoom-in" data-aos-delay="170">
+                    <img src="Jp7.webp" alt="AWS">
+                    <h4>Cloud Computing</h4>
+                    <p>1,876 open jobs</p>
+                    <button class="view-btn" onclick="window.location.href='404.html'">View Jobs</button>
+                </div>
+                <div class="subcard" data-aos="zoom-in" data-aos-delay="190">
+                    <img src="Jp8.webp" alt="Excel">
+                    <h4>Financial Analysis</h4>
+                    <p>1,123 open jobs</p>
+                    <button class="view-btn" onclick="window.location.href='404.html'">View Jobs</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 4: INDUSTRY TRENDS (Professional Cards with Images) ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Trending Categories</h2>
+                <p>Fastest growing fields this quarter</p>
+            </div>
+            <div class="trends-container">
+                <div class="trend-card" data-aos="flip-left" data-aos-delay="50">
+                    <div class="trend-image">
+                        <img src="AIjob.webp" alt="AI/ML">
+                    </div>
+                    <div class="trend-content">
+                        <h4>AI & Machine Learning</h4>
+                        <div class="trend-meta">
+                            <span>+156% growth</span>
+                            <span>3,245 jobs</span>
+                        </div>
+                        <button class="trend-btn" onclick="window.location.href='404.html'">Explore →</button>
+                    </div>
+                </div>
+                <div class="trend-card" data-aos="flip-left" data-aos-delay="70">
+                    <div class="trend-image">
+                        <img src="Jp9.webp" alt="Cybersecurity">
+                    </div>
+                    <div class="trend-content">
+                        <h4>Cybersecurity</h4>
+                        <div class="trend-meta">
+                            <span>+142% growth</span>
+                            <span>2,876 jobs</span>
+                        </div>
+                        <button class="trend-btn" onclick="window.location.href='404.html'">Explore →</button>
+                    </div>
+                </div>
+                <div class="trend-card" data-aos="flip-left" data-aos-delay="90">
+                    <div class="trend-image">
+                        <img src="Jp10.webp" alt="Cloud Computing">
+                    </div>
+                    <div class="trend-content">
+                        <h4>Cloud Computing</h4>
+                        <div class="trend-meta">
+                            <span>+138% growth</span>
+                            <span>2,567 jobs</span>
+                        </div>
+                        <button class="trend-btn" onclick="window.location.href='404.html'">Explore →</button>
+                    </div>
+                </div>
+                <div class="trend-card" data-aos="flip-left" data-aos-delay="110">
+                    <div class="trend-image">
+                        <img src="Jp11.webp" alt="Data Science">
+                    </div>
+                    <div class="trend-content">
+                        <h4>Data Science</h4>
+                        <div class="trend-meta">
+                            <span>+129% growth</span>
+                            <span>2,234 jobs</span>
+                        </div>
+                        <button class="trend-btn" onclick="window.location.href='404.html'">Explore →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 5: SKILLS & DEMAND (Professional) ===== -->
+        <section class="skills-showcase" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Top Skills by Category</h2>
+                <p>Most demanded skills in each field</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-item" data-aos="fade-right" data-aos-delay="50">
+                    <img src="Jp1.webp" alt="React">
+                    <h4>React.js</h4>
+                    <p>Technology · 8,456 jobs</p>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 95%;"></div>
+                    </div>
+                    <button class="skill-btn" onclick="window.location.href='404.html'" style="margin-top: 12px;">Browse</button>
+                </div>
+                <div class="skill-item" data-aos="fade-up" data-aos-delay="50">
+                    <img src="Jp2.webp" alt="WordPress">
+                    <h4>WordPress</h4>
+                    <p>Marketing · 3,245 jobs</p>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 88%;"></div>
+                    </div>
+                    <button class="skill-btn" onclick="window.location.href='404.html'" style="margin-top: 12px;">Browse</button>
+                </div>
+                <div class="skill-item" data-aos="fade-left" data-aos-delay="50">
+                    <img src="Jp3.webp" alt="Excel">
+                    <h4>Advanced Excel</h4>
+                    <p>Finance · 2,987 jobs</p>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 92%;"></div>
+                    </div>
+                    <button class="skill-btn" onclick="window.location.href='404.html'" style="margin-top: 12px;">Browse</button>
+                </div>
+                <div class="skill-item" data-aos="fade-right" data-aos-delay="100">
+                    <img src="Jp4.webp" alt="Python">
+                    <h4>Python</h4>
+                    <p>Data Science · 4,567 jobs</p>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 97%;"></div>
+                    </div>
+                    <button class="skill-btn" onclick="window.location.href='404.html'" style="margin-top: 12px;">Browse</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER - Footer will load here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true,
+            offset: 50,
+            easing: 'ease-in-out'
+        });
+
+        // All buttons redirect to 404.html
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                window.location.href = '404.html';
+            });
+        });
+        // ==============================
+        // ===== TAB FUNCTION =====
+    function showTab(event, tabId) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+        event.target.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+    }
+
+    // ===== NEWSLETTER VALIDATION =====
+    function validateNewsletter(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function showNewsletterError(message) {
+        // Remove any existing error message
+        const existingMsg = document.querySelector('.newsletter-error');
+        if (existingMsg) existingMsg.remove();
+        
+        // Create error message element
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'newsletter-error';
+        msgDiv.style.cssText = `
+            margin-top: 10px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+            background: #fee;
+            color: #c00;
+        `;
+        msgDiv.textContent = message;
+        
+        // Find newsletter container
+        const newsletter = document.querySelector('.newsletter-form, .footer-newsletter, [class*="newsletter"]');
+        if (newsletter) {
+            newsletter.appendChild(msgDiv);
+            
+            // Remove error message after 3 seconds
+            setTimeout(() => msgDiv.remove(), 3000);
+        } else {
+            alert(message);
+        }
+    }
+
+    // ===== HEADER & FOOTER LOADER =====
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load header
+        fetch('header1.html') // Make sure this filename is correct
+            .then(response => {
+                if (!response.ok) throw new Error('Header file not found');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                setTimeout(initHeaderInteractions, 100);
+            })
+            .catch(error => {
+                console.warn('Header could not be loaded:', error);
+                document.getElementById('header-placeholder').innerHTML = 
+                    '<header style="background: #6c5ce7; color: white; padding: 20px; text-align: center;">Header Not Found</header>';
+            });
+
+        // Load footer
+        fetch('footer1.html') // Make sure this filename is correct
+            .then(response => {
+                if (!response.ok) throw new Error('Footer file not found');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.warn('Footer could not be loaded:', error);
+                document.getElementById('footer-placeholder').innerHTML = 
+                    '<footer style="background: #1a1a2e; color: white; padding: 40px; text-align: center;">Footer Not Found</footer>';
+            });
+    });
+
+    // ===== HEADER INTERACTIONS =====
+    function initHeaderInteractions() {
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        // Mobile menu toggle
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                
+                if (navMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = 'auto';
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+        }
+        
+        // Dropdown functionality
+        document.querySelectorAll('.dropdown-icon').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const dropdownId = this.getAttribute('data-dropdown');
+                const dropdown = document.getElementById(dropdownId);
+                
+                if (!dropdown) return;
+                
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    if (menu.id !== dropdownId) {
+                        menu.classList.remove('show');
+                    }
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    if (btn !== this) {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                dropdown.classList.toggle('show');
+                this.classList.toggle('active');
+            });
+        });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-item-with-dropdown')) {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+        });
+        
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    if (menuToggle) menuToggle.classList.remove('active');
+                    if (navMenu) navMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                if (menuToggle) menuToggle.classList.remove('active');
+                if (navMenu) navMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+        });
+    }
+
+    // ===== AOS INITIALIZATION =====
+    const aosScript = document.createElement('script');
+    aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+    document.head.appendChild(aosScript);
+    
+    aosScript.onload = function() {
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true,
+            offset: 50,
+            easing: 'ease-in-out'
+        });
+    };
+
+    // ===== ANIMATION OBSERVER =====
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            const animatedElements = document.querySelectorAll('.fade-up, .fade-left, .fade-right, .scale-up, [data-aos]');
+            animatedElements.forEach(el => observer.observe(el));
+        }, 500);
+    });
+
+    // ===== NEWSLETTER HANDLER - VALIDATE THEN REDIRECT TO 404 =====
+    document.addEventListener('click', function(e) {
+        const newsletterBtn = e.target.closest('.newsletter-btn, .subscribe-btn, [class*="newsletter"] button, button[type="submit"]');
+        if (!newsletterBtn) return;
+        
+        const form = newsletterBtn.closest('form');
+        const newsletterInput = form ? form.querySelector('input[type="email"]') : 
+                                document.querySelector('.newsletter-input, input[type="email"][placeholder*="email"]');
+        
+        if (newsletterInput) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const email = newsletterInput.value.trim();
+            
+            // If email is empty or invalid, show error and DON'T redirect
+            if (!email) {
+                showNewsletterError('Please enter your email address');
+                newsletterInput.focus();
+                return false;
+            }
+            
+            if (!validateNewsletter(email)) {
+                showNewsletterError('Please enter a valid email address');
+                newsletterInput.focus();
+                return false;
+            }
+            
+            // Email is valid - redirect to 404.html
+            window.location.href = '404.html';
+            return false;
+        }
+    });
+
+    // ===== BUTTON REDIRECT HANDLER (for all other buttons) =====
+    document.addEventListener('click', function(e) {
+        const button = e.target.closest('button');
+        if (!button) return;
+        
+        // Skip newsletter buttons (already handled above)
+        if (button.closest('.newsletter-form') || 
+            button.classList.contains('newsletter-btn') || 
+            button.classList.contains('subscribe-btn') ||
+            button.closest('[class*="newsletter"]')) {
+            return;
+        }
+        
+        // Skip special buttons
+        if (button.hasAttribute('onclick') || 
+            button.classList.contains('dropdown-icon') || 
+            button.classList.contains('video-btn') ||
+            button.classList.contains('tab-btn')) {
+            return;
+        }
+        
+        // Redirect all other buttons to 404
+        e.preventDefault();
+        window.location.href = '404.html';
+    });
+    // Back to Top Button Functionality
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 500) {  // Show after scrolling 500px
+        backToTop.classList.add('show');
+    } else {
+        backToTop.classList.remove('show');
+    }
+});
+
+backToTop.addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'  // Smooth scroll animation
+    });
+});
+    </script>
+</body>
+</html>

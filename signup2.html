@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Sign Up | Stackly</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #2B32B2, #1488CC); /* Blue gradient */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            width: 100%;
+        }
+
+        .signup-container {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* Signup card - white with yellow accents */
+        .signup-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 32px;
+            box-shadow: 0 20px 40px rgba(43, 50, 178, 0.3);
+            border: 1px solid rgba(255, 217, 61, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .signup-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 50px rgba(255, 217, 61, 0.2);
+        }
+
+        /* Header with Stacklylogo - redirects to home2.html */
+        .job-header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .job-logo {
+            margin-bottom: 16px;
+            cursor: pointer;
+            display: inline-block;
+            transition: opacity 0.2s;
+        }
+
+        .job-logo:hover {
+            opacity: 0.9;
+        }
+
+        .job-logo img {
+            height: 120px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .job-header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2B32B2; /* Blue */
+            letter-spacing: -0.5px;
+        }
+
+        .job-header p {
+            color: #64748b;
+            font-size: 14px;
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        .divider {
+            height: 3px;
+            width: 60px;
+            background: linear-gradient(90deg, #2B32B2, #FFD93D); /* Blue to Yellow */
+            margin: 16px auto 0;
+            border-radius: 3px;
+        }
+
+        /* Form elements */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #2B32B2; /* Blue */
+            margin-bottom: 6px;
+        }
+
+        .form-group label i {
+            color: #FFD93D; /* Yellow */
+            margin-right: 6px;
+            width: 18px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 14px;
+            color: #FFD93D; /* Yellow */
+            font-size: 16px;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 12px 16px 12px 45px;
+            border: 2px solid rgba(255, 217, 61, 0.3); /* Yellow border */
+            border-radius: 16px;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            background: white;
+            color: #2B32B2; /* Blue */
+        }
+
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: #2B32B2; /* Blue */
+            box-shadow: 0 0 0 4px rgba(43, 50, 178, 0.1);
+        }
+
+        .input-wrapper input.error {
+            border-color: #dc2626;
+            background-color: #fff5f5;
+        }
+
+        .input-wrapper input::placeholder {
+            color: #a0b3c9;
+            font-weight: 400;
+        }
+
+        /* Password requirements helper */
+        .password-hint {
+            font-size: 11px;
+            color: #64748b;
+            margin-top: 4px;
+            margin-left: 12px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .password-hint i {
+            color: #FFD93D; /* Yellow */
+            font-size: 11px;
+        }
+
+        /* Error message under field */
+        .error-message {
+            color: #dc2626;
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 6px;
+            margin-left: 12px;
+            display: none;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .error-message.show {
+            display: flex;
+        }
+
+        .error-message i {
+            font-size: 12px;
+        }
+
+        /* Terms and conditions */
+        .terms-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 20px 0 24px;
+        }
+
+        .terms-check input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #FFD93D; /* Yellow */
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .terms-check label {
+            color: #2d4b6e;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .terms-check a {
+            color: #2B32B2; /* Blue */
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .terms-check a:hover {
+            color: #FFD93D; /* Yellow */
+            text-decoration: underline;
+        }
+
+        /* Sign Up button - yellow with blue text */
+        .signup-btn {
+            width: 100%;
+            background: #FFD93D; /* Yellow */
+            color: #2B32B2; /* Blue */
+            border: none;
+            padding: 16px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            letter-spacing: 0.5px;
+            border: 2px solid transparent;
+        }
+
+        .signup-btn:hover {
+            background: transparent;
+            color: #FFD93D; /* Yellow */
+            border-color: #FFD93D;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 217, 61, 0.3);
+        }
+
+        .signup-btn i {
+            font-size: 16px;
+            transition: transform 0.2s;
+            color: #2B32B2; /* Blue */
+        }
+
+        .signup-btn:hover i {
+            transform: translateX(4px);
+            color: #FFD93D; /* Yellow */
+        }
+
+        /* Login link */
+        .login-text {
+            text-align: center;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 2px solid rgba(255, 217, 61, 0.2);
+            color: #64748b;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .login-text a {
+            color: #2B32B2; /* Blue */
+            text-decoration: none;
+            font-weight: 700;
+            margin-left: 6px;
+            transition: color 0.2s;
+        }
+
+        .login-text a:hover {
+            color: #FFD93D; /* Yellow */
+            text-decoration: underline;
+        }
+
+        /* Back to Top Button - yellow */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #FFD93D; /* Yellow */
+            color: #2B32B2; /* Blue */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            border: 2px solid white;
+            box-shadow: 0 5px 15px rgba(255, 217, 61, 0.3);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #2B32B2; /* Blue */
+            color: #FFD93D; /* Yellow */
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(43, 50, 178, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 500px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
+            .signup-card {
+                padding: 30px 20px;
+            }
+
+            .job-header h1 {
+                font-size: 22px;
+            }
+
+            .input-wrapper input {
+                padding: 12px 14px 12px 42px;
+                font-size: 14px;
+            }
+
+            .signup-btn {
+                padding: 14px;
+            }
+
+            .job-logo img {
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .signup-card {
+                padding: 24px 16px;
+            }
+
+            .job-logo img {
+                height: 80px;
+            }
+
+            .job-header h1 {
+                font-size: 20px;
+            }
+            
+            .terms-check label {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-height: 700px) and (orientation: landscape) {
+            body {
+                padding: 12px;
+            }
+
+            .signup-card {
+                padding: 24px;
+            }
+
+            .job-header {
+                margin-bottom: 16px;
+            }
+
+            .form-group {
+                margin-bottom: 12px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Fix footer width */
+        #footer-placeholder {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #footer-placeholder > * {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        footer, .footer, [class*="footer"] {
+            width: 100%;
+            max-width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        /* Ensure no horizontal scroll */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- HEADER PLACEHOLDER with Loading Animation -->
+    <div id="header-placeholder">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin" style="color: #FFD93D; font-size: 2rem;"></i>
+        </div>
+    </div>
+
+    <div class="signup-container">
+        <div class="signup-card">
+            <!-- Header with Stacklylogo - redirects to home2.html -->
+            <div class="job-header">
+                <a href="home2.html" class="job-logo">
+                    <img src="Stackly.webp" alt="Stackly" onerror="this.src='https://via.placeholder.com/200x60?text=Stackly';">
+                </a>
+                <h1>Create Account</h1>
+                <p>Join Stackly today</p>
+                <div class="divider"></div>
+            </div>
+
+            <!-- Sign Up form -->
+            <form id="signupForm" novalidate>
+                <!-- Full Name - Only letters and spaces allowed -->
+                <div class="form-group">
+                    <label for="fullname">
+                        <i class="fas fa-user"></i> Full Name <span style="color: #dc2626;">*</span>
+                    </label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="fullname" placeholder="Enter your full name (letters only)" required>
+                    </div>
+                    <div class="error-message" id="fullnameError">
+                        <i class="fas fa-exclamation-circle"></i> Full name is required (letters only)
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">
+                        <i class="fas fa-envelope"></i> Email Address <span style="color: #dc2626;">*</span>
+                    </label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="error-message" id="emailError">
+                        <i class="fas fa-exclamation-circle"></i> Valid email required (e.g., name@domain.com)
+                    </div>
+                </div>
+
+                <!-- Mobile Number - Only 10 digits, no more allowed -->
+                <div class="form-group">
+                    <label for="phone">
+                        <i class="fas fa-phone"></i> Mobile Number <span style="color: #dc2626;">*</span>
+                    </label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="phone" placeholder="10-digit mobile number" maxlength="10" required>
+                    </div>
+                    <div class="error-message" id="phoneError">
+                        <i class="fas fa-exclamation-circle"></i> Valid 10-digit number required (starts with 6-9)
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fas fa-lock"></i> Password <span style="color: #dc2626;">*</span>
+                    </label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Create a strong password" required>
+                    </div>
+                    <div class="password-hint">
+                        <i class="fas fa-info-circle"></i> 8+ chars, 1 uppercase, 1 number, 1 special (@$!%*?&)
+                    </div>
+                    <div class="error-message" id="passwordError">
+                        <i class="fas fa-exclamation-circle"></i> Password must meet all requirements
+                    </div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="form-group">
+                    <label for="confirmPassword">
+                        <i class="fas fa-lock"></i> Confirm Password <span style="color: #dc2626;">*</span>
+                    </label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirmPassword" placeholder="Re-enter password" required>
+                    </div>
+                    <div class="error-message" id="confirmError">
+                        <i class="fas fa-exclamation-circle"></i> Passwords do not match
+                    </div>
+                </div>
+
+                <!-- Terms and conditions -->
+                <div class="terms-check">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">
+                        I agree to the <a href="4042.html" onclick="window.location.href='404.html'; return false;">Terms of Service</a> and 
+                        <a href="4042.html" onclick="window.location.href='404.html'; return false;">Privacy Policy</a> <span style="color: #dc2626;">*</span>
+                    </label>
+                </div>
+                <div class="error-message" id="termsError" style="margin-left: 0; margin-bottom: 10px;">
+                    <i class="fas fa-exclamation-circle"></i> You must accept the terms
+                </div>
+
+                <!-- Sign Up Button -->
+                <button type="submit" class="signup-btn">
+                    <span>Create Account</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+
+            <!-- Login link -->
+            <div class="login-text">
+                Already have an account?
+                <a href="login2.html">Log In</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER - Footer will load here -->
+    <div id="footer-placeholder">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin" style="color: #FFD93D; font-size: 2rem;"></i>
+        </div>
+    </div>
+
+    <script>
+        //======================================================
+        // Header and Footer Loader
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load header
+            fetch('header2.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Header file not found (header2.html)');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('header-placeholder').innerHTML = data;
+                    
+                    // Initialize header interactions after header is loaded
+                    setTimeout(initHeaderInteractions, 100);
+                })
+                .catch(error => {
+                    console.warn('Header could not be loaded:', error);
+                    document.getElementById('header-placeholder').innerHTML = 
+                        '<header style="background: linear-gradient(135deg, #2B32B2, #1488CC); color: white; padding: 20px; text-align: center;">⚠️ Header Not Found</header>';
+                });
+
+            // Load footer
+            fetch('footer2.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Footer file not found (footer2.html)');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                    
+                    // Optional: Initialize footer interactions if needed
+                    setTimeout(initFooterInteractions, 100);
+                })
+                .catch(error => {
+                    console.warn('Footer could not be loaded:', error);
+                    document.getElementById('footer-placeholder').innerHTML = 
+                        '<footer style="background: linear-gradient(135deg, #2B32B2, #1488CC); color: white; padding: 40px; text-align: center;">⚠️ Footer Not Found</footer>';
+                });
+        });
+
+        // Initialize header interactions (hamburger menu, dropdown)
+        function initHeaderInteractions() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+            const logo = document.querySelector('.logo');
+            
+            console.log('Header initialized - menu toggle:', menuToggle ? '✓ Found' : '✗ Not Found');
+            
+            // Mobile menu toggle with logo hide
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    
+                    if (logo) {
+                        if (navMenu.classList.contains('active')) {
+                            logo.style.opacity = '0';
+                            logo.style.visibility = 'hidden';
+                            logo.style.pointerEvents = 'none';
+                            document.body.style.overflow = 'hidden';
+                        } else {
+                            logo.style.opacity = '1';
+                            logo.style.visibility = 'visible';
+                            logo.style.pointerEvents = 'auto';
+                            document.body.style.overflow = 'auto';
+                        }
+                    }
+                });
+            }
+            
+            // Handle all dropdown buttons
+            document.querySelectorAll('[data-dropdown]').forEach(btn => {
+                const dropdownId = btn.getAttribute('data-dropdown');
+                const dropdown = document.getElementById(dropdownId);
+                
+                if (dropdown) {
+                    btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Close other dropdowns
+                        document.querySelectorAll('[data-dropdown]').forEach(otherBtn => {
+                            if (otherBtn !== btn) {
+                                const otherDropdownId = otherBtn.getAttribute('data-dropdown');
+                                const otherDropdown = document.getElementById(otherDropdownId);
+                                if (otherDropdown) {
+                                    otherDropdown.classList.remove('show');
+                                    otherBtn.classList.remove('active');
+                                }
+                            }
+                        });
+                        
+                        // Toggle current dropdown
+                        dropdown.classList.toggle('show');
+                        this.classList.toggle('active');
+                    });
+                }
+            });
+            
+            // Close mobile menu when clicking on any link
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        if (menuToggle) menuToggle.classList.remove('active');
+                        if (navMenu) navMenu.classList.remove('active');
+                        if (logo) {
+                            logo.style.opacity = '1';
+                            logo.style.visibility = 'visible';
+                            logo.style.pointerEvents = 'auto';
+                        }
+                        document.body.style.overflow = 'auto';
+                        
+                        document.querySelectorAll('.dropdown-menu').forEach(d => {
+                            d.classList.remove('show');
+                        });
+                        document.querySelectorAll('[data-dropdown]').forEach(btn => {
+                            btn.classList.remove('active');
+                        });
+                    }
+                });
+            });
+            
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('[data-dropdown]') && !e.target.closest('.dropdown-menu')) {
+                    document.querySelectorAll('.dropdown-menu').forEach(d => {
+                        d.classList.remove('show');
+                    });
+                    document.querySelectorAll('[data-dropdown]').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    if (menuToggle) menuToggle.classList.remove('active');
+                    if (navMenu) navMenu.classList.remove('active');
+                    if (logo) {
+                        logo.style.opacity = '1';
+                        logo.style.visibility = 'visible';
+                        logo.style.pointerEvents = 'auto';
+                    }
+                    document.body.style.overflow = 'auto';
+                    
+                    document.querySelectorAll('.dropdown-menu').forEach(d => {
+                        d.classList.remove('show');
+                    });
+                    document.querySelectorAll('[data-dropdown]').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+            
+            // Escape key handler
+            window.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    if (navMenu && navMenu.classList.contains('active')) {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        if (logo) {
+                            logo.style.opacity = '1';
+                            logo.style.visibility = 'visible';
+                            logo.style.pointerEvents = 'auto';
+                        }
+                        document.body.style.overflow = 'auto';
+                    }
+                    
+                    document.querySelectorAll('.dropdown-menu').forEach(d => {
+                        d.classList.remove('show');
+                    });
+                    document.querySelectorAll('[data-dropdown]').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+        }
+
+        // Initialize footer interactions (if needed)
+        function initFooterInteractions() {
+            console.log('Footer initialized');
+        }
+
+        // Refresh AOS on load and resize
+        window.addEventListener('load', () => AOS.refresh());
+        window.addEventListener('resize', () => AOS.refresh());
+
+        //=========================================================
+        
+        // Get elements
+        const form = document.getElementById('signupForm');
+        const fullnameInput = document.getElementById('fullname');
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
+        const passwordInput = document.getElementById('password');
+        const confirmInput = document.getElementById('confirmPassword');
+        const termsCheck = document.getElementById('terms');
+
+        // Error elements
+        const fullnameError = document.getElementById('fullnameError');
+        const emailError = document.getElementById('emailError');
+        const phoneError = document.getElementById('phoneError');
+        const passwordError = document.getElementById('passwordError');
+        const confirmError = document.getElementById('confirmError');
+        const termsError = document.getElementById('termsError');
+
+        // ========== STRICT INPUT RESTRICTIONS ==========
+        
+        // Full Name: Only allow letters and spaces
+        fullnameInput.addEventListener('keydown', function(e) {
+            const key = e.key;
+            // Allow control keys: Backspace, Tab, Arrow keys, Delete, Home, End, Enter
+            const controlKeys = ['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Delete', 'Home', 'End', 'Enter', 'Escape'];
+            
+            if (controlKeys.includes(key)) {
+                return; // Allow these keys
+            }
+            
+            // Allow space key
+            if (key === ' ') {
+                return;
+            }
+            
+            // Block if not a letter (A-Z or a-z)
+            if (!/^[a-zA-Z]$/.test(key)) {
+                e.preventDefault();
+            }
+        });
+
+        // Also block paste of invalid characters
+        fullnameInput.addEventListener('input', function() {
+            // Remove any numbers or special characters
+            this.value = this.value.replace(/[^A-Za-z\s]/g, '');
+        });
+
+        // Phone: Only allow digits, and limit to 10
+        phoneInput.addEventListener('keydown', function(e) {
+            const key = e.key;
+            // Allow control keys
+            const controlKeys = ['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Delete', 'Home', 'End', 'Enter', 'Escape'];
+            
+            if (controlKeys.includes(key)) {
+                return;
+            }
+            
+            // Block if not a digit (0-9)
+            if (!/^[0-9]$/.test(key)) {
+                e.preventDefault();
+            }
+        });
+
+        // Ensure maxlength 10 is strictly enforced even with paste
+        phoneInput.addEventListener('input', function() {
+            // Remove any non-digits
+            this.value = this.value.replace(/[^0-9]/g, '');
+            
+            // Enforce maxlength 10
+            if (this.value.length > 10) {
+                this.value = this.value.slice(0, 10);
+            }
+        });
+
+        // ========== VALIDATION FUNCTIONS ==========
+        
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function isValidPhone(phone) {
+            return /^[6-9]\d{9}$/.test(phone); // Indian mobile: starts with 6-9, exactly 10 digits
+        }
+
+        function isValidPassword(password) {
+            const hasLength = password.length >= 8;
+            const hasUpper = /[A-Z]/.test(password);
+            const hasNumber = /[0-9]/.test(password);
+            const hasSpecial = /[@$!%*?&]/.test(password);
+            return hasLength && hasUpper && hasNumber && hasSpecial;
+        }
+
+        function passwordsMatch() {
+            return passwordInput.value === confirmInput.value;
+        }
+
+        // Hide all errors function
+        function hideAllErrors() {
+            [fullnameError, emailError, phoneError, passwordError, confirmError, termsError].forEach(err => {
+                err.classList.remove('show');
+            });
+            [fullnameInput, emailInput, phoneInput, passwordInput, confirmInput].forEach(input => {
+                if (input) input.classList.remove('error');
+            });
+        }
+
+        // ========== REAL-TIME VALIDATION ==========
+        
+        fullnameInput.addEventListener('input', function() {
+            if (this.value.trim()) {
+                fullnameError.classList.remove('show');
+                this.classList.remove('error');
+            }
+        });
+
+        emailInput.addEventListener('input', function() {
+            const email = this.value.trim();
+            if (email && !isValidEmail(email)) {
+                emailError.classList.add('show');
+                this.classList.add('error');
+            } else {
+                emailError.classList.remove('show');
+                this.classList.remove('error');
+            }
+        });
+
+        phoneInput.addEventListener('input', function() {
+            const phone = this.value.trim();
+            if (phone && !isValidPhone(phone)) {
+                phoneError.classList.add('show');
+                this.classList.add('error');
+            } else {
+                phoneError.classList.remove('show');
+                this.classList.remove('error');
+            }
+        });
+
+        passwordInput.addEventListener('input', function() {
+            const password = this.value;
+            if (password && !isValidPassword(password)) {
+                passwordError.classList.add('show');
+                this.classList.add('error');
+            } else {
+                passwordError.classList.remove('show');
+                this.classList.remove('error');
+            }
+            // Also check confirm password if it has value
+            if (confirmInput.value) {
+                if (!passwordsMatch()) {
+                    confirmError.classList.add('show');
+                    confirmInput.classList.add('error');
+                } else {
+                    confirmError.classList.remove('show');
+                    confirmInput.classList.remove('error');
+                }
+            }
+        });
+
+        confirmInput.addEventListener('input', function() {
+            if (passwordInput.value && !passwordsMatch()) {
+                confirmError.classList.add('show');
+                this.classList.add('error');
+            } else {
+                confirmError.classList.remove('show');
+                this.classList.remove('error');
+            }
+        });
+
+        // ========== FORM SUBMIT HANDLER ==========
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const fullname = fullnameInput.value.trim();
+            const email = emailInput.value.trim();
+            const phone = phoneInput.value.trim();
+            const password = passwordInput.value;
+            const confirm = confirmInput.value;
+            const termsAccepted = termsCheck.checked;
+
+            let isValid = true;
+
+            // Validate fullname
+            if (!fullname) {
+                fullnameError.textContent = '⚠️ Full name is required';
+                fullnameError.classList.add('show');
+                fullnameInput.classList.add('error');
+                isValid = false;
+            } else {
+                fullnameError.classList.remove('show');
+                fullnameInput.classList.remove('error');
+            }
+
+            // Validate email
+            if (!email) {
+                emailError.textContent = '⚠️ Email address is required';
+                emailError.classList.add('show');
+                emailInput.classList.add('error');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                emailError.textContent = '⚠️ Valid email required (e.g., name@domain.com)';
+                emailError.classList.add('show');
+                emailInput.classList.add('error');
+                isValid = false;
+            } else {
+                emailError.classList.remove('show');
+                emailInput.classList.remove('error');
+            }
+
+            // Validate phone
+            if (!phone) {
+                phoneError.textContent = '⚠️ Mobile number is required';
+                phoneError.classList.add('show');
+                phoneInput.classList.add('error');
+                isValid = false;
+            } else if (!isValidPhone(phone)) {
+                phoneError.textContent = '⚠️ Valid 10-digit number required (starts with 6-9)';
+                phoneError.classList.add('show');
+                phoneInput.classList.add('error');
+                isValid = false;
+            } else {
+                phoneError.classList.remove('show');
+                phoneInput.classList.remove('error');
+            }
+
+            // Validate password
+            if (!password) {
+                passwordError.textContent = '⚠️ Password is required';
+                passwordError.classList.add('show');
+                passwordInput.classList.add('error');
+                isValid = false;
+            } else if (!isValidPassword(password)) {
+                passwordError.textContent = '⚠️ Must be 8+ chars, 1 uppercase, 1 number, 1 special (@$!%*?&)';
+                passwordError.classList.add('show');
+                passwordInput.classList.add('error');
+                isValid = false;
+            } else {
+                passwordError.classList.remove('show');
+                passwordInput.classList.remove('error');
+            }
+
+            // Validate confirm password
+            if (!confirm) {
+                confirmError.textContent = '⚠️ Please confirm your password';
+                confirmError.classList.add('show');
+                confirmInput.classList.add('error');
+                isValid = false;
+            } else if (password !== confirm) {
+                confirmError.textContent = '⚠️ Passwords do not match';
+                confirmError.classList.add('show');
+                confirmInput.classList.add('error');
+                isValid = false;
+            } else {
+                confirmError.classList.remove('show');
+                confirmInput.classList.remove('error');
+            }
+
+            // Validate terms
+            if (!termsAccepted) {
+                termsError.classList.add('show');
+                isValid = false;
+            } else {
+                termsError.classList.remove('show');
+            }
+
+            // If valid, redirect to 404.html
+            if (isValid) {
+                window.location.href = '4042.html';
+            }
+        });
+
+        // Terms checkbox click removes error
+        termsCheck.addEventListener('change', function() {
+            if (this.checked) {
+                termsError.classList.remove('show');
+            }
+        });
+
+        // Back to Top Button Functionality
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        // ===== NEWSLETTER VALIDATION WITH MESSAGE UNDER BOX =====
+    document.addEventListener('DOMContentLoaded', function() {
+        // Wait a moment for footer to load
+        setTimeout(function() {
+            // Get the newsletter button and input from footer
+            const footerBtn = document.querySelector('.footer .newsletter-input button');
+            const footerInput = document.querySelector('.footer .newsletter-input input');
+            const newsletterForm = document.querySelector('.footer .newsletter-form');
+            
+            if (!footerBtn || !footerInput || !newsletterForm) {
+                console.log('Newsletter elements not found in footer');
+                return;
+            }
+            
+            // Remove any existing onclick attribute
+            footerBtn.removeAttribute('onclick');
+            
+            // Function to show message under the box
+            function showMessage(message, isError) {
+                // Remove any existing message
+                const existingMsg = document.querySelector('.footer .newsletter-message');
+                if (existingMsg) existingMsg.remove();
+                
+                // Create message element
+                const msgDiv = document.createElement('div');
+                msgDiv.className = 'newsletter-message';
+                msgDiv.style.cssText = `
+                    margin-top: 10px;
+                    padding: 8px 15px;
+                    border-radius: 50px;
+                    font-size: 14px;
+                    text-align: center;
+                    background: ${isError ? '#fee' : '#e8f5e9'};
+                    color: ${isError ? '#c00' : '#2e7d32'};
+                `;
+                msgDiv.textContent = message;
+                
+                // Add to newsletter form
+                newsletterForm.appendChild(msgDiv);
+                
+                // Remove after 3 seconds
+                setTimeout(() => {
+                    if (msgDiv.parentNode) msgDiv.remove();
+                }, 3000);
+            }
+            
+            // Add click event
+            footerBtn.addEventListener('click', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                
+                const email = footerInput.value.trim();
+                
+                // Check if empty
+                if (email === '') {
+                    showMessage('Please enter your email address', true);
+                    footerInput.focus();
+                    return false;
+                }
+                
+                // Check if valid email format (simple check)
+                if (!email.includes('@') || !email.includes('.')) {
+                    showMessage('Please enter a valid email address', true);
+                    footerInput.focus();
+                    return false;
+                }
+                
+                // Valid email - show success message
+                showMessage('Thank you for subscribing!', false);
+                
+                // Redirect after delay
+                setTimeout(() => {
+                    window.location.href = '4042.html';
+                }, 1500);
+                
+                return false;
+            });
+            
+            // Enter key support
+            footerInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    footerBtn.click();
+                }
+            });
+            
+            console.log('Newsletter validation with message working');
+        }, 500);
+    });
+
+    </script>
+</body>
+</html>

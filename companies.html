@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>JobPortal — Companies · 10 Premium Sections</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* ----- RESET & BASE ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .mid-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        section {
+            margin: 120px 0;
+            position: relative;
+            width: 100%;
+            clear: both;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1e1e2f;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #4ecdc4;
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ----- AOS ANIMATIONS (100% movement) ----- */
+        [data-aos="fade-left"] { transform: translateX(-100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="fade-right"] { transform: translateX(100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="fade-up"] { transform: translateY(100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="fade-down"] { transform: translateY(-100px); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="zoom-in"] { transform: scale(0.6); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="zoom-out"] { transform: scale(1.4); opacity: 0; transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        [data-aos="flip-left"] { transform: perspective(2500px) rotateY(-150deg); opacity: 0; transition: all 1.2s ease; }
+        [data-aos="flip-right"] { transform: perspective(2500px) rotateY(150deg); opacity: 0; transition: all 1.2s ease; }
+        [data-aos="flip-up"] { transform: perspective(2500px) rotateX(-150deg); opacity: 0; transition: all 1.2s ease; }
+        [data-aos="flip-down"] { transform: perspective(2500px) rotateX(150deg); opacity: 0; transition: all 1.2s ease; }
+        [data-aos].aos-animate { transform: translate(0) scale(1) rotateY(0) rotateX(0); opacity: 1; }
+
+        /* ----- BUTTON STYLES (all visible, no invisible text) ----- */
+        .primary-btn, .outline-btn, .company-btn, .follow-btn, .industry-btn, .benefit-btn, .culture-btn, .review-btn, .office-btn, .highlight-btn {
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 8px;
+            padding: 12px 24px;
+            background: #4ecdc4;
+            color: #1e1e2f;
+        }
+
+        .primary-btn:hover, .company-btn:hover, .follow-btn:hover, .industry-btn:hover, 
+        .benefit-btn:hover, .culture-btn:hover, .review-btn:hover, .office-btn:hover, .highlight-btn:hover {
+            background: #1e1e2f;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .outline-btn {
+            background: transparent;
+            border: 2px solid #4ecdc4;
+            color: #1e1e2f;
+        }
+        .outline-btn:hover {
+            background: #4ecdc4;
+            color: #1e1e2f;
+            
+        }
+
+        /* ===== SECTION 1: HERO (Companies) - Dark with bg image ===== */
+        .companies-hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            margin-top: 20px;
+            background: linear-gradient(135deg, rgba(30,30,47,0.85), rgba(78,205,196,0.7)), url('Jp16.webp');
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 900px;
+            padding: 60px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .hero-badge {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(5px);
+            padding: 10px 25px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .hero-content h1 { font-size: 60px; font-weight: 700; margin-bottom: 20px; }
+        .hero-content h1 span { color: #4ecdc4; }
+        .hero-stats {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .hero-stats strong { font-size: 32px; color: #4ecdc4; display: block; }
+
+        /* ===== SECTION 2: FEATURED COMPANIES - Light (aligned neatly) ===== */
+        /* Featured Companies Section - Exact alignment as in image */
+        .featured-companies {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .company-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #eef2f6;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .company-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(78,205,196,0.15);
+            border-color: #4ecdc4;
+        }
+
+        .company-logo-wrapper {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            background: #f8fafc;
+            border: 1px solid #eef2f6;
+        }
+
+        .company-logo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .company-info {
+            width: 100%;
+        }
+
+        .company-info h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1e1e2f;
+            margin-bottom: 10px;
+        }
+
+        .company-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .company-meta .industry {
+            font-size: 15px;
+            color: #4ecdc4;
+            font-weight: 600;
+        }
+
+        .company-meta .employees {
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .company-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .company-tags .tag {
+            background: #f1f5f9;
+            color: #1e1e2f;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 4px 10px;
+            border-radius: 30px;
+            letter-spacing: 0.3px;
+        }
+
+        .company-btn {
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: #4ecdc4;
+            color: #1e1e2f;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .company-btn:hover {
+            background: #1e1e2f;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .featured-companies {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .featured-companies {
+                grid-template-columns: 1fr;
+            }
+            .company-card {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+        /* ===== SECTION 3: COMPANIES BY INDUSTRY - Dark with bg image ===== */
+        .industry-section {
+            border-radius: 40px;
+            padding: 80px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(30,30,47,0.85), rgba(78,205,196,0.75)), url('Jp8.webp');
+            background-size: cover;
+            background-position: center;
+        }
+        .industry-section .section-header h2 { color: white; }
+        .industry-section .section-header p { color: rgba(255,255,255,0.9); }
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .industry-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 35px 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .industry-card:hover {
+            background: #4ecdc4;
+            transform: translateY(-8px);
+            
+        }
+        /* .industry-card:hover * { color: #1e1e2f; } */
+        .industry-card i { font-size: 48px; color: #101312; margin-bottom: 15px; }
+        .industry-card h4 { font-size: 22px; margin-bottom: 10px; }
+        .industry-card p { font-size: 14px; opacity: 0.9; margin-bottom: 20px; }
+
+        /* ===== SECTION 4: COMPANY CULTURE - Light with more content ===== */
+        .culture-showcase {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .culture-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        .culture-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 40px rgba(78,205,196,0.2);
+        }
+        .culture-image {
+            height: 220px;
+            overflow: hidden;
+        }
+        .culture-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .culture-card:hover .culture-image img { transform: scale(1.05); }
+        .culture-content {
+            padding: 25px;
+        }
+        .culture-content h3 { font-size: 24px; color: #1e1e2f; margin-bottom: 8px; }
+        .culture-content .company-type { color: #4ecdc4; font-weight: 600; margin-bottom: 10px; }
+        .culture-content p { color: #64748b; line-height: 1.6; margin-bottom: 15px; }
+        .culture-stats {
+            display: flex;
+            gap: 15px;
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        /* ===== SECTION 5: BENEFITS SPOTLIGHT - Dark with bg image + more content ===== */
+        .benefits-section {
+            border-radius: 40px;
+            padding: 80px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(30,30,47,0.85), rgba(78,205,196,0.75)), url('design.webp');
+            background-size: cover;
+            background-position: center;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .benefit-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 35px 20px;
+            text-align: center;
+            transition: all 0.3s;
+            color: white;
+        }
+        .benefit-card:hover {
+            background: #4ecdc4;
+            transform: translateY(-8px);
+        }
+        .benefit-card:hover * { color: #1e1e2f; }
+        .benefit-card i { font-size: 48px; color: #4ecdc4; margin-bottom: 15px; }
+        .benefit-card h4 { font-size: 22px; margin-bottom: 10px; }
+        .benefit-card p { font-size: 14px; opacity: 0.9; margin-bottom: 20px; }
+
+        /* ===== SECTION 6: COMPANY REVIEWS - Light ===== */
+        .reviews-section {
+            background: white;
+            border-radius: 40px;
+            padding: 60px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+        }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .review-card {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid #eef2f6;
+            transition: all 0.3s;
+        }
+        .review-card:hover {
+            transform: translateY(-8px);
+            border-color: #4ecdc4;
+            box-shadow: 0 20px 30px rgba(78,205,196,0.1);
+        }
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .review-header img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .rating { color: #ffb800; margin: 10px 0; font-size: 14px; }
+        .rating span { color: #64748b; margin-left: 8px; }
+
+        /* ===== SECTION 7: GROWING COMPANIES - Dark with bg image (button fixed) ===== */
+        .growing-section {
+            border-radius: 40px;
+            padding: 80px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(30,30,47,0.85), rgba(78,205,196,0.75)), url('Jp9.webp');
+            background-size: cover;
+            background-position: center;
+        }
+        .growing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .growing-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 35px;
+            color: white;
+            transition: all 0.3s;
+        }
+        .growing-card:hover {
+            background: #4ecdc4;
+            transform: translateY(-8px);
+        }
+        /* .growing-card:hover * { color: #1e1e2f; } */
+        .growing-card h3 { font-size: 26px; margin-bottom: 15px; }
+        .growth-stats { font-size: 42px; font-weight: 800; color: #0d1717; margin: 15px 0; }
+        .growth-detail { font-size: 14px; opacity: 0.9; margin-bottom: 25px; }
+
+        /* ===== SECTION 8: OFFICE LOCATIONS - Light with buttons ===== */
+        .locations-showcase {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .office-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 280px;
+            cursor: pointer;
+        }
+        .office-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .office-card:hover img { transform: scale(1.1); }
+        .office-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 20px;
+            background: linear-gradient(to top, #1e1e2f, transparent);
+            color: white;
+        }
+        .office-overlay h4 { font-size: 24px; margin-bottom: 5px; }
+        .office-overlay p { margin-bottom: 15px; opacity: 0.9; }
+
+        /* ===== SECTION 9: COMPANY HIGHLIGHTS - Dark with bg image ===== */
+        .highlights-section {
+            border-radius: 40px;
+            padding: 80px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(30,30,47,0.85), rgba(78,205,196,0.75)), url('Jp6.webp');
+            background-size: cover;
+            background-position: center;
+        }
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .highlight-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 35px 20px;
+            text-align: center;
+            transition: all 0.3s;
+            color: white;
+        }
+        .highlight-card:hover {
+            background: #4ecdc4;
+            transform: translateY(-8px);
+        }
+        /* .highlight-card:hover * { color: #1e1e2f; } */
+        .highlight-number { font-size: 48px; font-weight: 800; color: #121616; margin-bottom: 10px; }
+        .highlight-label { font-size: 18px; margin-bottom: 5px; }
+        .highlight-desc { font-size: 14px; opacity: 0.9; margin-bottom: 20px; }
+
+        /* ===== SECTION 10: PARTNER CTA - Light with more content ===== */
+        .partner-cta {
+            background: white;
+            border-radius: 40px;
+            padding: 80px;
+            text-align: center;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.05);
+            border: 1px solid #eef2f6;
+        }
+        .partner-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        .partner-stat-item { text-align: center; }
+        .partner-stat-item .number { font-size: 36px; font-weight: 800; color: #4ecdc4; display: block; }
+        .partner-stat-item .label { color: #64748b; }
+        .partner-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+
+        /* ----- RESPONSIVE (no horizontal scroll) ----- */
+        @media (max-width: 1200px) {
+            .featured-companies, .industry-grid, .benefits-grid, .locations-showcase, .highlights-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .culture-showcase, .reviews-grid, .growing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 992px) {
+            .mid-section { padding: 0 20px; }
+            .hero-content h1 { font-size: 42px; }
+            .featured-companies, .industry-grid, .benefits-grid, .culture-showcase,
+            .reviews-grid, .growing-grid, .locations-showcase, .highlights-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .industry-section, .benefits-section, .growing-section, .highlights-section {
+                padding: 40px 20px;
+            }
+        }
+        @media (max-width: 768px) {
+            .mid-section { padding: 0 15px; }
+            .hero-content h1 { font-size: 32px; }
+            .hero-stats { flex-direction: column; gap: 15px; }
+            .featured-companies, .industry-grid, .benefits-grid, .culture-showcase,
+            .reviews-grid, .growing-grid, .locations-showcase, .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+            .company-card { max-width: 350px; margin: 0 auto; }
+        }
+        html, body { max-width: 100%; overflow-x: hidden; }
+        img, video, svg { max-width: 100%; height: auto; }
+
+        /* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #4ecdc4;  /* You can change this color */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    border: 2px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #3ab7ad;  /* Darker shade on hover */
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(78,205,196,0.4);
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Back to Top Button -->
+<div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+    <!-- HEADER PLACEHOLDER - Header will load here -->
+    <div id="header-placeholder"></div>
+
+    <div class="mid-section">
+
+        <!-- ===== SECTION 1: HERO (Companies) - Dark with bg image ===== -->
+        <section class="companies-hero" data-aos="fade-up">
+            <div class="hero-content">
+                <div class="hero-badge" data-aos="fade-down" data-aos-delay="100">
+                    <i class="fas fa-building"></i> 8,000+ COMPANIES · 156 INDUSTRIES
+                </div>
+                <h1 data-aos="fade-right" data-aos-delay="200">
+                    Discover Top <span>Companies</span>
+                </h1>
+                <p data-aos="fade-left" data-aos-delay="300" style="font-size: 18px; max-width: 600px; margin: 0 auto 30px;">
+                    Explore company profiles, culture, benefits, and thousands of open positions.
+                </p>
+                <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
+                    <div><strong>8,234</strong> Companies</div>
+                    <div><strong>156</strong> Industries</div>
+                    <div><strong>45.6K</strong> Reviews</div>
+                    <div><strong>92%</strong> Recommend</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 2: FEATURED COMPANIES - Perfect alignment like image ===== -->
+<section>
+    <div class="section-header" data-aos="fade-down">
+        <h2>Featured Companies</h2>
+        <p>Top employers hiring right now with excellent ratings</p>
+    </div>
+    
+    <div class="featured-companies">
+        <!-- Google -->
+        <div class="company-card" data-aos="flip-left" data-aos-delay="50">
+            <div class="company-logo-wrapper">
+                <img src="Jp1.webp" alt="Google">
+            </div>
+            <div class="company-info">
+                <h3>Google</h3>
+                <div class="company-meta">
+                    <span class="industry">Technology</span>
+                    <span class="employees">45,000+ employees</span>
+                </div>
+                <div class="company-tags">
+                    <span class="tag">Remote</span>
+                    <span class="tag">Hybrid</span>
+                    <span class="tag">On-site</span>
+                    <span class="tag">Global</span>
+                </div>
+                <button class="company-btn" onclick="window.location.href='404.html'">View Profile</button>
+            </div>
+        </div>
+        
+        <!-- Microsoft -->
+        <div class="company-card" data-aos="flip-left" data-aos-delay="70">
+            <div class="company-logo-wrapper">
+                <img src="Jp2.webp" alt="Microsoft">
+            </div>
+            <div class="company-info">
+                <h3>Microsoft</h3>
+                <div class="company-meta">
+                    <span class="industry">Technology</span>
+                    <span class="employees">180,000+ employees</span>
+                </div>
+                <div class="company-tags">
+                    <span class="tag">Remote</span>
+                    <span class="tag">Hybrid</span>
+                    <span class="tag">On-site</span>
+                    <span class="tag">Global</span>
+                </div>
+                <button class="company-btn" onclick="window.location.href='404.html'">View Profile</button>
+            </div>
+        </div>
+        
+        <!-- Amazon -->
+        <div class="company-card" data-aos="flip-left" data-aos-delay="90">
+            <div class="company-logo-wrapper">
+                <img src="Jp3.webp" alt="Amazon">
+            </div>
+            <div class="company-info">
+                <h3>Amazon</h3>
+                <div class="company-meta">
+                    <span class="industry">E-commerce</span>
+                    <span class="employees">1.5M+ employees</span>
+                </div>
+                <div class="company-tags">
+                    <span class="tag">Remote</span>
+                    <span class="tag">Hybrid</span>
+                    <span class="tag">On-site</span>
+                    <span class="tag">Global</span>
+                </div>
+                <button class="company-btn" onclick="window.location.href='404.html'">View Profile</button>
+            </div>
+        </div>
+        
+        <!-- Apple -->
+        <div class="company-card" data-aos="flip-left" data-aos-delay="110">
+            <div class="company-logo-wrapper">
+                <img src="Jp4.webp" alt="Apple">
+            </div>
+            <div class="company-info">
+                <h3>Apple</h3>
+                <div class="company-meta">
+                    <span class="industry">Technology</span>
+                    <span class="employees">150,000+ employees</span>
+                </div>
+                <div class="company-tags">
+                    <span class="tag">Remote</span>
+                    <span class="tag">Hybrid</span>
+                    <span class="tag">On-site</span>
+                    <span class="tag">Global</span>
+                </div>
+                <button class="company-btn" onclick="window.location.href='404.html'">View Profile</button>
+            </div>
+        </div>
+    </div>
+    </section>
+
+        <!-- ===== SECTION 3: COMPANIES BY INDUSTRY - Dark with bg image ===== -->
+        <section class="industry-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Companies by Industry</h2>
+                <p>Browse employers in your field of expertise</p>
+            </div>
+            <div class="industry-grid">
+                <div class="industry-card" data-aos="zoom-in" data-aos-delay="50">
+                    <i class="fas fa-code"></i>
+                    <h4>Technology</h4>
+                    <p>2,345 companies · 12,456 jobs</p>
+                    <button class="industry-btn" onclick="window.location.href='404.html'">Explore</button>
+                </div>
+                <div class="industry-card" data-aos="zoom-in" data-aos-delay="70">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Finance</h4>
+                    <p>1,234 companies · 6,789 jobs</p>
+                    <button class="industry-btn" onclick="window.location.href='404.html'">Explore</button>
+                </div>
+                <div class="industry-card" data-aos="zoom-in" data-aos-delay="90">
+                    <i class="fas fa-hospital"></i>
+                    <h4>Healthcare</h4>
+                    <p>987 companies · 5,432 jobs</p>
+                    <button class="industry-btn" onclick="window.location.href='404.html'">Explore</button>
+                </div>
+                <div class="industry-card" data-aos="zoom-in" data-aos-delay="110">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h4>Retail</h4>
+                    <p>756 companies · 4,321 jobs</p>
+                    <button class="industry-btn" onclick="window.location.href='404.html'">Explore</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 4: COMPANY CULTURE - Light with more content ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Company Culture</h2>
+                <p>Inside look at top workplaces and what makes them unique</p>
+            </div>
+            <div class="culture-showcase">
+                <div class="culture-card" data-aos="fade-right" data-aos-delay="50">
+                    <div class="culture-image">
+                        <img src="Jp5.webp" alt="Google Office">
+                    </div>
+                    <div class="culture-content">
+                        <h3>Google</h3>
+                        <div class="company-type">🏢 Technology · 45K+ employees</div>
+                        <p>Innovation, collaboration, and psychological safety. Free meals, gyms, and 20% time for passion projects.</p>
+                        <div class="culture-stats">
+                            <span><i class="fas fa-heart" style="color: #4ecdc4;"></i> 94% approve</span>
+                            <span><i class="fas fa-users"></i> 45K+ reviews</span>
+                        </div>
+                        <button class="culture-btn" onclick="window.location.href='404.html'">Learn More</button>
+                    </div>
+                </div>
+                <div class="culture-card" data-aos="fade-up" data-aos-delay="50">
+                    <div class="culture-image">
+                        <img src="Jp9.webp" alt="Microsoft">
+                    </div>
+                    <div class="culture-content">
+                        <h3>Microsoft</h3>
+                        <div class="company-type">🏢 Technology · 180K+ employees</div>
+                        <p>Growth mindset, diversity, and inclusion. Emphasis on work-life balance and continuous learning.</p>
+                        <div class="culture-stats">
+                            <span><i class="fas fa-heart" style="color: #4ecdc4;"></i> 91% approve</span>
+                            <span><i class="fas fa-users"></i> 38K+ reviews</span>
+                        </div>
+                        <button class="culture-btn" onclick="window.location.href='404.html'">Learn More</button>
+                    </div>
+                </div>
+                <div class="culture-card" data-aos="fade-left" data-aos-delay="50">
+                    <div class="culture-image">
+                        <img src="Jp7.webp" alt="Salesforce">
+                    </div>
+                    <div class="culture-content">
+                        <h3>Salesforce</h3>
+                        <div class="company-type">🏢 Technology · 70K+ employees</div>
+                        <p>Ohana culture, giving back, and equality. 7 days of volunteer time off and 1% equity for community.</p>
+                        <div class="culture-stats">
+                            <span><i class="fas fa-heart" style="color: #4ecdc4;"></i> 93% approve</span>
+                            <span><i class="fas fa-users"></i> 22K+ reviews</span>
+                        </div>
+                        <button class="culture-btn" onclick="window.location.href='404.html'">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 5: BENEFITS SPOTLIGHT - Dark with bg image + more content ===== -->
+        <section class="benefits-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2 style="color: white;">Top Company Benefits</h2>
+                <p style="color: rgba(255,255,255,0.9);">What leading employers offer their teams</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card" data-aos="zoom-in" data-aos-delay="50">
+                    <i class="fas fa-heart"></i>
+                    <h4>Health Insurance</h4>
+                    <p>Medical, dental, vision for you & family</p>
+                    <span style="font-size: 24px; font-weight: 700;">87%</span>
+                    <p style="margin-top: 5px;">of companies offer</p>
+                </div>
+                <div class="benefit-card" data-aos="zoom-in" data-aos-delay="70">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Stock Options</h4>
+                    <p>Equity and ownership in the company</p>
+                    <span style="font-size: 24px; font-weight: 700;">56%</span>
+                    <p style="margin-top: 5px;">of companies offer</p>
+                </div>
+                <div class="benefit-card" data-aos="zoom-in" data-aos-delay="90">
+                    <i class="fas fa-home"></i>
+                    <h4>Remote Work</h4>
+                    <p>Fully remote or flexible hybrid options</p>
+                    <span style="font-size: 24px; font-weight: 700;">72%</span>
+                    <p style="margin-top: 5px;">of companies offer</p>
+                </div>
+                <div class="benefit-card" data-aos="zoom-in" data-aos-delay="110">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h4>Learning Stipend</h4>
+                    <p>Annual budget for courses & conferences</p>
+                    <span style="font-size: 24px; font-weight: 700;">64%</span>
+                    <p style="margin-top: 5px;">of companies offer</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 6: COMPANY REVIEWS - Light ===== -->
+        <section class="reviews-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Employee Reviews</h2>
+                <p>What people really say about their employers</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card" data-aos="fade-right" data-aos-delay="50">
+                    <div class="review-header">
+                        <img src="Jp8.webp" alt="Sarah">
+                        <div>
+                            <h4>Sarah Chen</h4>
+                            <p style="color: #4ecdc4;">Software Engineer</p>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <span>5.0</span>
+                    </div>
+                    <p>"Google's culture of innovation is unmatched. Great benefits, work-life balance, and amazing colleagues."</p>
+                    <p style="margin-top: 10px;"><small>Current employee · 2 years</small></p>
+                    <button class="review-btn" style="margin-top: 15px;" onclick="window.location.href='404.html'">Read Full Review</button>
+                </div>
+                <div class="review-card" data-aos="fade-up" data-aos-delay="50">
+                    <div class="review-header">
+                        <img src="Jp9.webp" alt="Mike">
+                        <div>
+                            <h4>Mike Johnson</h4>
+                            <p style="color: #4ecdc4;">Product Manager</p>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        <span>4.7</span>
+                    </div>
+                    <p>"Microsoft offers incredible growth opportunities and truly values work-life balance. Great mentorship culture."</p>
+                    <p style="margin-top: 10px;"><small>Former employee · 3 years</small></p>
+                    <button class="review-btn" style="margin-top: 15px;" onclick="window.location.href='404.html'">Read Full Review</button>
+                </div>
+                <div class="review-card" data-aos="fade-left" data-aos-delay="50">
+                    <div class="review-header">
+                        <img src="Jp10.webp" alt="Priya">
+                        <div>
+                            <h4>Priya Patel</h4>
+                            <p style="color: #4ecdc4;">Data Scientist</p>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <span>5.0</span>
+                    </div>
+                    <p>"Amazon's fast-paced environment pushed me to grow faster than anywhere else. Excellent career progression."</p>
+                    <p style="margin-top: 10px;"><small>Current employee · 4 years</small></p>
+                    <button class="review-btn" style="margin-top: 15px;" onclick="window.location.href='404.html'">Read Full Review</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 7: GROWING COMPANIES - Dark with bg image (button fixed) ===== -->
+        <section class="growing-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2 style="color: white;">Fastest Growing Companies</h2>
+                <p style="color: rgba(255,255,255,0.9);">Year over year headcount growth</p>
+            </div>
+            <div class="growing-grid">
+                <div class="growing-card" data-aos="flip-left" data-aos-delay="50">
+                    <h3>Stripe</h3>
+                    <div class="growth-stats">+156%</div>
+                    <p class="growth-detail">Fintech · 2 years in a row</p>
+                    <p style="margin-bottom: 20px;">🌍 Remote-first · 2,300+ new hires</p>
+                    <button class="follow-btn" onclick="window.location.href='404.html'">View Jobs</button>
+                </div>
+                <div class="growing-card" data-aos="flip-left" data-aos-delay="70">
+                    <h3>Datadog</h3>
+                    <div class="growth-stats">+142%</div>
+                    <p class="growth-detail">Cloud Monitoring · 1.5 years</p>
+                    <p style="margin-bottom: 20px;">🌍 Remote · 1,800+ new hires</p>
+                    <button class="follow-btn" onclick="window.location.href='404.html'">View Jobs</button>
+                </div>
+                <div class="growing-card" data-aos="flip-left" data-aos-delay="90">
+                    <h3>Snowflake</h3>
+                    <div class="growth-stats">+138%</div>
+                    <p class="growth-detail">Data Cloud · 3 years</p>
+                    <p style="margin-bottom: 20px;">🌎 Hybrid · 2,100+ new hires</p>
+                    <button class="follow-btn" onclick="window.location.href='404.html'">View Jobs</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 8: OFFICE LOCATIONS - Light with buttons ===== -->
+        <section>
+            <div class="section-header" data-aos="fade-down">
+                <h2>Global Offices</h2>
+                <p>Company locations around the world with open positions</p>
+            </div>
+            <div class="locations-showcase">
+                <div class="office-card" data-aos="zoom-in" data-aos-delay="50">
+                    <img src="newyork.webp" alt="NYC">
+                    <div class="office-overlay">
+                        <h4>New York</h4>
+                        <p>245 companies · 3,456 jobs</p>
+                        <button class="office-btn" onclick="window.location.href='404.html'">View Jobs</button>
+                    </div>
+                </div>
+                <div class="office-card" data-aos="zoom-in" data-aos-delay="70">
+                    <img src="london.webp" alt="London">
+                    <div class="office-overlay">
+                        <h4>London</h4>
+                        <p>187 companies · 2,876 jobs</p>
+                        <button class="office-btn" onclick="window.location.href='404.html'">View Jobs</button>
+                    </div>
+                </div>
+                <div class="office-card" data-aos="zoom-in" data-aos-delay="90">
+                    <img src="singapore.webp" alt="Singapore">
+                    <div class="office-overlay">
+                        <h4>Singapore</h4>
+                        <p>156 companies · 2,234 jobs</p>
+                        <button class="office-btn" onclick="window.location.href='404.html'">View Jobs</button>
+                    </div>
+                </div>
+                <div class="office-card" data-aos="zoom-in" data-aos-delay="110">
+                    <img src="newyork.webp" alt="SF">
+                    <div class="office-overlay">
+                        <h4>San Francisco</h4>
+                        <p>312 companies · 4,567 jobs</p>
+                        <button class="office-btn" onclick="window.location.href='404.html'">View Jobs</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 9: COMPANY HIGHLIGHTS - Dark with bg image ===== -->
+        <section class="highlights-section" data-aos="fade-up">
+            <div class="section-header">
+                <h2 style="color: white;">Company Highlights</h2>
+                <p style="color: rgba(255,255,255,0.9);">Key metrics across our platform</p>
+            </div>
+            <div class="highlights-grid">
+                <div class="highlight-card" data-aos="flip-up" data-aos-delay="50">
+                    <div class="highlight-number">8,234</div>
+                    <div class="highlight-label">Total Companies</div>
+                    <div class="highlight-desc">Active employers on platform</div>
+                    <button class="highlight-btn" onclick="window.location.href='404.html'">Browse All</button>
+                </div>
+                <div class="highlight-card" data-aos="flip-up" data-aos-delay="70">
+                    <div class="highlight-number">156</div>
+                    <div class="highlight-label">Industries</div>
+                    <div class="highlight-desc">Diverse sectors represented</div>
+                    <button class="highlight-btn" onclick="window.location.href='404.html'">Explore</button>
+                </div>
+                <div class="highlight-card" data-aos="flip-up" data-aos-delay="90">
+                    <div class="highlight-number">45.6K</div>
+                    <div class="highlight-label">Employee Reviews</div>
+                    <div class="highlight-desc">Authentic, verified reviews</div>
+                    <button class="highlight-btn" onclick="window.location.href='404.html'">Read Reviews</button>
+                </div>
+                <div class="highlight-card" data-aos="flip-up" data-aos-delay="110">
+                    <div class="highlight-number">92%</div>
+                    <div class="highlight-label">Recommend Rate</div>
+                    <div class="highlight-desc">Employees recommend</div>
+                    <button class="highlight-btn" onclick="window.location.href='404.html'">Learn More</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 10: PARTNER CTA - Light with more content ===== -->
+        <section class="partner-cta" data-aos="zoom-out">
+            <h2>Add Your Company to JobPortal</h2>
+            <p style="font-size: 18px; max-width: 600px; margin: 20px auto;">Join thousands of employers using JobPortal to find top talent and build their brand.</p>
+            <div class="partner-stats">
+                <div class="partner-stat-item"><span class="number">8K+</span><span class="label">Companies</span></div>
+                <div class="partner-stat-item"><span class="number">156</span><span class="label">Industries</span></div>
+                <div class="partner-stat-item"><span class="number">92%</span><span class="label">Satisfaction</span></div>
+            </div>
+            <div class="partner-buttons">
+                <button class="primary-btn" onclick="window.location.href='404.html'">Register Company</button>
+                <button class="outline-btn" onclick="window.location.href='404.html'">Schedule Demo</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER PLACEHOLDER - Footer will load here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true,
+            offset: 50,
+            easing: 'ease-in-out'
+        });
+
+        // All buttons redirect to 404.html
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                window.location.href = '404.html';
+            });
+        });
+        // =====================================================
+        // ===== TAB FUNCTION =====
+    function showTab(event, tabId) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+        event.target.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+    }
+
+    // ===== NEWSLETTER VALIDATION =====
+    function validateNewsletter(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function showNewsletterError(message) {
+        // Remove any existing error message
+        const existingMsg = document.querySelector('.newsletter-error');
+        if (existingMsg) existingMsg.remove();
+        
+        // Create error message element
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'newsletter-error';
+        msgDiv.style.cssText = `
+            margin-top: 10px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+            background: #fee;
+            color: #c00;
+        `;
+        msgDiv.textContent = message;
+        
+        // Find newsletter container
+        const newsletter = document.querySelector('.newsletter-form, .footer-newsletter, [class*="newsletter"]');
+        if (newsletter) {
+            newsletter.appendChild(msgDiv);
+            
+            // Remove error message after 3 seconds
+            setTimeout(() => msgDiv.remove(), 3000);
+        } else {
+            alert(message);
+        }
+    }
+
+    // ===== HEADER & FOOTER LOADER =====
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load header
+        fetch('header1.html') // Make sure this filename is correct
+            .then(response => {
+                if (!response.ok) throw new Error('Header file not found');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                setTimeout(initHeaderInteractions, 100);
+            })
+            .catch(error => {
+                console.warn('Header could not be loaded:', error);
+                document.getElementById('header-placeholder').innerHTML = 
+                    '<header style="background: #6c5ce7; color: white; padding: 20px; text-align: center;">Header Not Found</header>';
+            });
+
+        // Load footer
+        fetch('footer1.html') // Make sure this filename is correct
+            .then(response => {
+                if (!response.ok) throw new Error('Footer file not found');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => {
+                console.warn('Footer could not be loaded:', error);
+                document.getElementById('footer-placeholder').innerHTML = 
+                    '<footer style="background: #1a1a2e; color: white; padding: 40px; text-align: center;">Footer Not Found</footer>';
+            });
+    });
+
+    // ===== HEADER INTERACTIONS =====
+    function initHeaderInteractions() {
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        // Mobile menu toggle
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                
+                if (navMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = 'auto';
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+        }
+        
+        // Dropdown functionality
+        document.querySelectorAll('.dropdown-icon').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const dropdownId = this.getAttribute('data-dropdown');
+                const dropdown = document.getElementById(dropdownId);
+                
+                if (!dropdown) return;
+                
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    if (menu.id !== dropdownId) {
+                        menu.classList.remove('show');
+                    }
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    if (btn !== this) {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                dropdown.classList.toggle('show');
+                this.classList.toggle('active');
+            });
+        });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-item-with-dropdown')) {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+        });
+        
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    if (menuToggle) menuToggle.classList.remove('active');
+                    if (navMenu) navMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                }
+            });
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                if (menuToggle) menuToggle.classList.remove('active');
+                if (navMenu) navMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                document.querySelectorAll('.dropdown-icon').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+        });
+    }
+
+    // ===== AOS INITIALIZATION =====
+    const aosScript = document.createElement('script');
+    aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+    document.head.appendChild(aosScript);
+    
+    aosScript.onload = function() {
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true,
+            offset: 50,
+            easing: 'ease-in-out'
+        });
+    };
+
+    // ===== ANIMATION OBSERVER =====
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            const animatedElements = document.querySelectorAll('.fade-up, .fade-left, .fade-right, .scale-up, [data-aos]');
+            animatedElements.forEach(el => observer.observe(el));
+        }, 500);
+    });
+
+    // ===== NEWSLETTER HANDLER - VALIDATE THEN REDIRECT TO 404 =====
+    document.addEventListener('click', function(e) {
+        const newsletterBtn = e.target.closest('.newsletter-btn, .subscribe-btn, [class*="newsletter"] button, button[type="submit"]');
+        if (!newsletterBtn) return;
+        
+        const form = newsletterBtn.closest('form');
+        const newsletterInput = form ? form.querySelector('input[type="email"]') : 
+                                document.querySelector('.newsletter-input, input[type="email"][placeholder*="email"]');
+        
+        if (newsletterInput) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const email = newsletterInput.value.trim();
+            
+            // If email is empty or invalid, show error and DON'T redirect
+            if (!email) {
+                showNewsletterError('Please enter your email address');
+                newsletterInput.focus();
+                return false;
+            }
+            
+            if (!validateNewsletter(email)) {
+                showNewsletterError('Please enter a valid email address');
+                newsletterInput.focus();
+                return false;
+            }
+            
+            // Email is valid - redirect to 404.html
+            window.location.href = '404.html';
+            return false;
+        }
+    });
+
+    // ===== BUTTON REDIRECT HANDLER (for all other buttons) =====
+    document.addEventListener('click', function(e) {
+        const button = e.target.closest('button');
+        if (!button) return;
+        
+        // Skip newsletter buttons (already handled above)
+        if (button.closest('.newsletter-form') || 
+            button.classList.contains('newsletter-btn') || 
+            button.classList.contains('subscribe-btn') ||
+            button.closest('[class*="newsletter"]')) {
+            return;
+        }
+        
+        // Skip special buttons
+        if (button.hasAttribute('onclick') || 
+            button.classList.contains('dropdown-icon') || 
+            button.classList.contains('video-btn') ||
+            button.classList.contains('tab-btn')) {
+            return;
+        }
+        
+        // Redirect all other buttons to 404
+        e.preventDefault();
+        window.location.href = '404.html';
+    });
+
+    // Back to Top Button Functionality
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 500) {  // Show after scrolling 500px
+        backToTop.classList.add('show');
+    } else {
+        backToTop.classList.remove('show');
+    }
+});
+
+backToTop.addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'  // Smooth scroll animation
+    });
+});
+    </script>
+</body>
+</html>
